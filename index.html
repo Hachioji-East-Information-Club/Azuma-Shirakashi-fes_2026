@@ -82,7 +82,7 @@
 
 <div class="counter-box">
     <div>このページの閲覧数</div>
-    <div id="counter" class="counter-number">0</div>
+    <div id="counter" class="counter-number">読み込み中...</div>
 </div>
 
 <div class="nav-buttons">
@@ -94,20 +94,25 @@
 </footer>
 
 <script>
-    // ローカルに保存されたカウントを取得
-    let count = localStorage.getItem("page_count");
+async function updateCounter() {
+    const namespace = "azuma_fes_2026";  // ひなた専用の名前空間
+    const key = "page_views";            // カウンターの名前
 
-    if (!count) {
-        count = 1;
-    } else {
-        count = Number(count) + 1;
+    // CountAPI（GitHub Pages で動く版）
+    const url = `https://api.countapi.xyz/update/${namespace}/${key}/?amount=1`;
+
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        // 数字だけ表示
+        document.getElementById("counter").textContent = data.value;
+    } catch (e) {
+        document.getElementById("counter").textContent = "エラー";
     }
+}
 
-    // 保存
-    localStorage.setItem("page_count", count);
-
-    // 表示
-    document.getElementById("counter").textContent = count;
+updateCounter();
 </script>
 
 </body>
