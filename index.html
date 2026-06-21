@@ -37,11 +37,11 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
 
-        .counter-number {
-            font-size: 3rem;
-            font-weight: bold;
+        /* 数字だけの画像を大きく表示 */
+        .counter-img {
+            width: 200px;   /* ← 数字の大きさはここで調整できる */
+            height: auto;
             margin-top: 10px;
-            color: #7a1f2a;
         }
 
         .nav-buttons {
@@ -82,7 +82,11 @@
 
 <div class="counter-box">
     <div>このページの閲覧数</div>
-    <div id="counter" class="counter-number">読み込み中...</div>
+
+    <!-- 数字だけのアクセスカウンター（hitなし・安定動作） -->
+    <img class="counter-img"
+         src="https://simple-hit-counter.glitch.me/hit?url=hachioji-east-information-club.github.io/Azuma-Shirakashi-fes_2026"
+         alt="アクセス数">
 </div>
 
 <div class="nav-buttons">
@@ -92,35 +96,6 @@
 <footer>
     © Yushi Information
 </footer>
-
-<script>
-async function updateCounter() {
-    const url = "https://raw.githubusercontent.com/hachioji-east-information-club/Azuma-Shirakashi-fes_2026/main/counter.json";
-
-    // 現在のカウントを取得
-    const res = await fetch(url + "?t=" + Date.now());
-    const data = await res.json();
-    let count = data.count + 1;
-
-    // 表示
-    document.getElementById("counter").textContent = count;
-
-    // GitHub に更新を送る（Issues を使う）
-    await fetch("https://api.github.com/repos/hachioji-east-information-club/Azuma-Shirakashi-fes_2026/issues", {
-        method: "POST",
-        headers: {
-            "Accept": "application/vnd.github+json",
-            "Authorization": "token GITHUB_TOKEN"
-        },
-        body: JSON.stringify({
-            title: "update counter",
-            body: String(count)
-        })
-    });
-}
-
-updateCounter();
-</script>
 
 </body>
 </html>
