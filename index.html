@@ -37,11 +37,20 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
 
-        /* 数字を大きく見せる */
+        /* 数字だけを見せるためのマスク（切り抜き） */
+        .counter-mask {
+            width: 120px;      /* ← 数字の幅だけ残す */
+            height: 40px;      /* ← 高さは数字に合わせる */
+            overflow: hidden;  /* ← はみ出した部分を隠す */
+            margin: 0 auto;
+        }
+
+        /* 画像を左にずらして “hit” を隠す */
         .counter-img {
-            width: 200px;   /* ← 数字の大きさはここで調整できる */
+            position: relative;
+            left: -60px;       /* ← hit の幅だけ左にずらす（調整可能） */
+            width: 200px;      /* ← 数字を大きくしたいならここを変える */
             height: auto;
-            margin-top: 10px;
         }
 
         .nav-buttons {
@@ -83,10 +92,12 @@
 <div class="counter-box">
     <div>このページの閲覧数</div>
 
-    <!-- hit を完全に消して数字だけ表示 -->
-    <img class="counter-img"
-         src="https://hits.sh/hachioji-east-information-club.github.io/Azuma-Shirakashi-fes_2026.svg?label=&color=7a1f2a&style=flat-square"
-         alt="アクセス数">
+    <!-- 数字だけを表示するためのマスク -->
+    <div class="counter-mask">
+        <img class="counter-img"
+             src="https://hits.sh/hachioji-east-information-club.github.io/Azuma-Shirakashi-fes_2026.svg?color=7a1f2a&style=flat-square"
+             alt="アクセス数">
+    </div>
 </div>
 
 <div class="nav-buttons">
