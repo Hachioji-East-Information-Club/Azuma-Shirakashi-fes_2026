@@ -26,23 +26,17 @@
             letter-spacing: 0.1em;
         }
 
-        .counter-box {
-            background-color: #c8b090;
-            margin: 30px auto;
-            padding: 20px;
-            width: 80%;
-            max-width: 400px;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        main {
+            padding: 40px 10px;
         }
 
-        .counter-img {
-            margin-top: 10px;
+        .description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
         }
 
         .nav-buttons {
-            margin-top: 40px;
+            margin-top: 20px;
         }
 
         .nav-buttons a {
@@ -77,57 +71,20 @@
     <h1>Azuma - 待ち時間表示</h1>
 </header>
 
-<div class="counter-box">
-    <div>このページの閲覧数</div>
+<main>
+    <p class="description">
+        八王子東高校有志情報研究が作成した、しらかし祭用の待ち時間表示ページです。<br>
+        下の「スタート」ボタンを押して始めてください！
+    </p>
 
-    <!-- ここに自作画像カウンターを表示 -->
-    <img id="counterImage" class="counter-img" alt="アクセス数">
-</div>
-
-<div class="nav-buttons">
-    <a href="start.html">スタート</a>
-</div>
+    <div class="nav-buttons">
+        <a href="start.html">スタート</a>
+    </div>
+</main>
 
 <footer>
     © Yushi Information
 </footer>
-
-<script>
-/* ひなた専用：全員のアクセス数をカウントする */
-async function updateCounter() {
-    const namespace = "azuma_fes_2026";
-    const key = "page_views";
-
-    // CountAPI（CORS対応版）
-    const url = `https://api.countapi.xyz/update/${namespace}/${key}/?amount=1`;
-
-    let count = 0;
-
-    try {
-        const res = await fetch(url);
-        const data = await res.json();
-        count = data.value;
-    } catch (e) {
-        count = 0;
-    }
-
-    // 数字を画像として描画
-    const canvas = document.createElement("canvas");
-    canvas.width = 300;
-    canvas.height = 100;
-    const ctx = canvas.getContext("2d");
-
-    ctx.fillStyle = "#7a1f2a";
-    ctx.font = "bold 60px Arial";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(count, 150, 50);
-
-    document.getElementById("counterImage").src = canvas.toDataURL();
-}
-
-updateCounter();
-</script>
 
 </body>
 </html>
