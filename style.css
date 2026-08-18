@@ -762,3 +762,58 @@ body{
     background:#8B1E3F;
     color:white;
 }
+
+/* ==========================
+   校内図・階数ボタン位置
+========================== */
+
+.mapArea{
+    position:relative !important;
+    width:100% !important;
+}
+
+.floorButtons{
+    position:absolute !important;
+
+    top:10px !important;
+    right:10px !important;
+
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+
+    width:42px !important;
+
+    gap:6px !important;
+
+    z-index:100 !important;
+}
+
+.floorBtn{
+    display:block !important;
+
+    width:42px !important;
+    height:38px !important;
+
+    padding:0 !important;
+
+    flex:none !important;
+
+    border:none;
+    border-radius:10px;
+
+    background:rgba(255,255,255,.95);
+    color:#555;
+
+    font-size:13px;
+    font-weight:bold;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+
+    cursor:pointer;
+}
+
+.floorBtn.activeFloor{
+    background:#8B1E3F;
+    color:white;
+}
