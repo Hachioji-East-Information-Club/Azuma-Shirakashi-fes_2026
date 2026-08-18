@@ -710,3 +710,44 @@ body{
     font-size:14px;
 
 }
+
+
+.mapArea{
+    position: relative;
+}
+
+.floorButtons{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    z-index: 10;
+}
+
+.floorBtn{
+    width: 42px;
+    height: 38px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.9);
+    color: #555;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+
+    cursor: pointer;
+}
+
+.floorBtn.activeFloor{
+    background: #e85d75;
+    color: white;
+}
