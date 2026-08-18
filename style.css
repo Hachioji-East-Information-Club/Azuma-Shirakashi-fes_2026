@@ -721,44 +721,44 @@ body{
    階数ボタン
 ========================== */
 
-.mapArea {
-    position: relative !important;
+.mapArea{
+    position:relative;
+    width:100%;
 }
 
-.floorButtons {
-    position: absolute !important;
+.floorButtons{
+    position:absolute;
 
-    top: 12px !important;
-    right: 12px !important;
-    left: auto !important;
+    top:12px;
+    right:12px;
 
-    display: flex !important;
-    flex-direction: column !important;
+    display:flex;
+    flex-direction:column;
 
-    gap: 6px !important;
+    gap:6px;
 
-    z-index: 20;
+    z-index:20;
 }
 
-.floorBtn {
-    width: 42px;
-    height: 38px;
+.floorBtn{
+    width:42px;
+    height:38px;
 
-    border: none;
-    border-radius: 10px;
+    border:none;
+    border-radius:10px;
 
-    background: rgba(255,255,255,0.9);
-    color: #555;
+    background:rgba(255,255,255,.95);
+    color:#555;
 
-    font-size: 13px;
-    font-weight: bold;
+    font-size:13px;
+    font-weight:bold;
 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
 
-    cursor: pointer;
+    cursor:pointer;
 }
 
-.floorBtn.activeFloor {
-    background: #e85d75;
-    color: white;
+.floorBtn.activeFloor{
+    background:#8B1E3F;
+    color:white;
 }
