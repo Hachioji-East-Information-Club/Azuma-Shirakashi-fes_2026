@@ -32,7 +32,7 @@ const booths = [
   { id:"調理部", name:"調理部", title:"Higashi's Kitchen Club", category:"食品販売", place:"被服室", building:"校舎棟", group:"部活動", wait:0, image:"" },
   { id:"吹奏楽部", name:"吹奏楽部", title:"とびこめ！HEWOCEAN！", category:"公演", place:"体育館", building:"体育館棟", group:"部活動", wait:0, image:"" },
   { id:"華道部", name:"華道部", title:"青春謳華", category:"展示", place:"2年1組", building:"校舎棟", group:"部活動", wait:0, image:"" },
-  { id:"自然科学部", name:"自然科学部", title:"この素晴らしいヒガシに実験を！", category:"展示", place:"科学室・生物室", building:"校舎棟", group:"部活動", wait:0, image:"" },
+  { id:"自然科学部", name:"自然科学部", title:"この素晴らしいヒガシに実験を！", category:"展示", place:"化学室・生物室", building:"校舎棟", group:"部活動", wait:0, image:"" },
   { id:"文芸部", name:"文芸部", title:"朧なる迷月 ～謎解く～", category:"アトラクション", place:"3年8組", building:"校舎棟", group:"部活動", wait:0, image:"" },
   { id:"ダンス部", name:"ダンス部", title:"SHINE ON STAGE", category:"公演", place:"体育館", building:"体育館棟", group:"部活動", wait:0, image:"" },
   { id:"ブレイクダンス部", name:"ブレイクダンス部", title:"BREAK DANCE SHOW", category:"公演", place:"体育館", building:"体育館棟", group:"部活動", wait:0, image:"" },
