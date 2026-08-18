@@ -586,3 +586,26 @@ document.addEventListener("click", function(e){
     }
 
 });
+
+
+// ==========================
+// 校内図・階数切り替え
+// ==========================
+
+function showFloor(building, floor){
+
+    if(building === "school"){
+
+        document.getElementById("schoolFloorMap").textContent =
+            "校舎棟 " + floor + "階の平面図";
+
+    }
+
+    if(building === "gym"){
+
+        document.getElementById("gymFloorMap").textContent =
+            "体育館棟 " + floor + "階の平面図";
+
+    }
+
+}
