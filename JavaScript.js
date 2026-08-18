@@ -599,6 +599,21 @@ document.addEventListener("click", function(e){
 
 function showFloor(building, floor){
 
+    // その建物の階数ボタンを取得
+    const mapArea = document.getElementById(
+        building === "school" ? "schoolMap" : "gymMap"
+    );
+
+    // その建物のボタンを全部通常色に戻す
+    mapArea.querySelectorAll(".floorBtn").forEach(btn => {
+        btn.classList.remove("activeFloor");
+    });
+
+    // 今押したボタンを色付きにする
+    event.currentTarget.classList.add("activeFloor");
+
+
+    // 表示する階数を変更
     if(building === "school"){
 
         document.getElementById("schoolFloorMap").textContent =
