@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AZUMA</title>
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==========================
+         Header
+    =========================== -->
+
+    <header class="header">
+
+        <h1>AZUMA</h1>
+
+        <div class="subTitle">
+            しらかし祭 待ち時間案内
+        </div>
+
+    </header>
+
+    <!-- ==========================
+         校内図
+    =========================== -->
+
+    <section id="mapPage" class="page active">
+
+        <div class="pageTitle">
+            校内図
+        </div>
+
+       <div class="mapBox">
+
+    <!-- 切り替えボタン -->
+    <div class="mapTabs">
+
+        <button
+            class="mapTab activeMapTab"
+            onclick="showMap('school')">
+
+            校舎棟
+
+        </button>
+
+        <button
+            class="mapTab"
+            onclick="showMap('gym')">
+
+            体育館棟
+
+        </button>
+
+    </div>
+
+<!-- 校舎棟（最初に表示） -->
+<div id="schoolMap" class="mapArea activeMap">
+
+    <div class="mapPlaceholder">
+        校舎棟の平面図
+    </div>
+
+</div>
+    
+
+<div id="gymMap" class="mapArea">
+
+    <div class="mapPlaceholder">
+        体育館棟の平面図
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+    </section>
+
+    <!-- ==========================
+         一覧
+    =========================== -->
+
+    <section id="listPage" class="page">
+
+        <div class="pageTitle">
+
+            一覧
+
+        </div>
+
+        <!-- 検索 -->
+
+        <div class="searchArea">
+
+            <input
+                id="searchBox"
+                type="text"
+                placeholder="団体名・企画名で検索">
+
+        </div>
+
+        <!-- カテゴリ -->
+
+        <div class="filterArea">
+
+            <button class="filterBtn activeFilter"
+                onclick="filterCategory('すべて')">
+                すべて
+            </button>
+
+            <button class="filterBtn"
+                onclick="filterCategory('演劇')">
+                演劇
+            </button>
+
+            <button class="filterBtn"
+                onclick="filterCategory('アトラクション')">
+                アトラクション
+            </button>
+
+            <button class="filterBtn"
+                onclick="filterCategory('公演')">
+                公演
+            </button>
+
+            <button class="filterBtn"
+                onclick="filterCategory('食品販売')">
+                食品販売
+            </button>
+
+            <button class="filterBtn"
+                onclick="filterCategory('喫茶')">
+                喫茶
+            </button>
+
+            <button class="filterBtn"
+                onclick="filterCategory('展示')">
+                展示
+            </button>
+
+            <button class="filterBtn"
+                onclick="filterCategory('バンド')">
+                バンド
+            </button>
+
+            <button class="filterBtn"
+                onclick="filterCategory('その他')">
+                その他
+            </button>
+
+        </div>
+
+        <!-- 建物 -->
+
+        <div class="buildingFilter">
+
+            <button
+                class="buildingBtn activeBuilding"
+                onclick="filterBuilding('すべて')">
+
+                すべて
+
+            </button>
+
+            <button
+                class="buildingBtn"
+                onclick="filterBuilding('校舎棟')">
+
+                校舎棟
+
+            </button>
+
+            <button
+                class="buildingBtn"
+                onclick="filterBuilding('体育館棟')">
+
+                体育館棟
+
+            </button>
+
+        </div>
+
+        <!-- 団体種別 -->
+
+        <div class="groupFilter">
+
+            <button
+                class="groupBtn activeGroup"
+                onclick="filterGroup('すべて')">
+
+                すべて
+
+            </button>
+
+            <button
+                class="groupBtn"
+                onclick="filterGroup('クラス')">
+
+                クラス
+
+            </button>
+
+            <button
+                class="groupBtn"
+                onclick="filterGroup('部活動')">
+
+                部活動
+
+            </button>
+
+            <button
+                class="groupBtn"
+                onclick="filterGroup('委員会')">
+
+                委員会
+
+            </button>
+
+            <button
+                class="groupBtn"
+                onclick="filterGroup('有志')">
+
+                有志
+
+            </button>
+
+            <button
+                class="groupBtn"
+                onclick="filterGroup('PTA')">
+
+                PTA
+
+            </button>
+
+            <button
+                class="groupBtn"
+                onclick="filterGroup('生徒会')">
+
+                生徒会
+
+            </button>
+
+        </div>
+
+        <!-- 団体一覧 -->
+
+        <div id="boothList">
+
+        </div>
+
+    </section>
+
+        <!-- ==========================
+         その他
+    =========================== -->
+
+    <section id="otherPage" class="page">
+
+        <div class="pageTitle">
+
+            その他
+
+        </div>
+
+        <div class="otherMenu">
+
+            <div class="menuCard">
+
+                <span class="material-icons">
+                    wc
+                </span>
+
+                <div>
+
+                    <h3>トイレ</h3>
+
+                    <p>校内のトイレの場所を確認できます。</p>
+
+                </div>
+
+            </div>
+
+            <div class="menuCard">
+
+                <span class="material-icons">
+                    local_hospital
+                </span>
+
+                <div>
+
+                    <h3>救護室</h3>
+
+                    <p>体調が悪くなった場合はこちらへ。</p>
+
+                </div>
+
+            </div>
+
+            <div class="menuCard">
+
+                <span class="material-icons">
+                    schedule
+                </span>
+
+                <div>
+
+                    <h3>タイムテーブル</h3>
+
+                    <p>公演時間はこちら。</p>
+
+                </div>
+
+            </div>
+
+            <div class="menuCard">
+
+                <span class="material-icons">
+                    campaign
+                </span>
+
+                <div>
+
+                    <h3>お知らせ</h3>
+
+                    <p>運営からのお知らせを表示します。</p>
+
+                </div>
+
+            </div>
+
+            <div class="menuCard">
+
+                <span class="material-icons">
+                    description
+                </span>
+
+                <div>
+
+                    <h3>パンフレット</h3>
+
+                    <p>PDFなどを掲載できます。</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================
+         下メニュー
+    =========================== -->
+
+    <nav class="bottomNav">
+
+        <button
+            class="navBtn activeNav"
+            onclick="showPage('mapPage', this)">
+
+            <span class="material-icons">
+                map
+            </span>
+
+            <span>
+
+                校内図
+
+            </span>
+
+        </button>
+
+        <button
+            class="navBtn"
+            onclick="showPage('listPage', this)">
+
+            <span class="material-icons">
+                format_list_bulleted
+            </span>
+
+            <span>
+
+                一覧
+
+            </span>
+
+        </button>
+
+        <button
+            class="navBtn"
+            onclick="showPage('otherPage', this)">
+
+            <span class="material-icons">
+                more_horiz
+            </span>
+
+            <span>
+
+                その他
+
+            </span>
+
+        </button>
+
+    </nav>
+
+    <!-- JavaScript -->
+
+    <script src="data.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
