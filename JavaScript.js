@@ -68,6 +68,11 @@ const booths = [
   { id:"けしつか", name:"けしつか", title:"けしつか", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
   { id:"百聞不如一聴", name:"百聞不如一聴", title:"百聞不如一聴", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" }
 ];
+let startTime = Date.now();
+setInterval(() => {
+    let elapsed = Math.floor((Date.now() - startTime) / 1000);
+    console.log(`経過秒数: ${elapsed}`);
+}, 1000);
 
 
 // ==========================================
