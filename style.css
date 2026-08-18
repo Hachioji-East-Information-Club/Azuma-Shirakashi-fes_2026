@@ -716,20 +716,31 @@ body{
     position: relative;
 }
 
-.floorButtons{
-    position: absolute;
-    top: 12px;
-    right: 12px;
 
-    display: flex;
-    flex-direction: column;
+/* ==========================
+   階数ボタン
+========================== */
 
-    gap: 6px;
-
-    z-index: 10;
+.mapArea {
+    position: relative !important;
 }
 
-.floorBtn{
+.floorButtons {
+    position: absolute !important;
+
+    top: 12px !important;
+    right: 12px !important;
+    left: auto !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    gap: 6px !important;
+
+    z-index: 20;
+}
+
+.floorBtn {
     width: 42px;
     height: 38px;
 
@@ -747,7 +758,7 @@ body{
     cursor: pointer;
 }
 
-.floorBtn.activeFloor{
+.floorBtn.activeFloor {
     background: #e85d75;
     color: white;
 }
