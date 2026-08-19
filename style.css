@@ -817,14 +817,74 @@ body{
     background:#8B1E3F;
     color:white;
 }
-.floorMap{
-    width:100%;
-    overflow:hidden;
+/* ==========================
+   校内図
+========================== */
+
+.mapArea {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
-.schoolMapImage{
-    width:100%;
-    height:auto;
-    display:block;
-    object-fit:contain;
+/* 地図 */
+.floorMap {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* 地図画像 */
+.schoolMapImage {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+
+    border-radius: 12px;
+
+    object-fit: contain;
+}
+
+/* ==========================
+   階数ボタン
+========================== */
+
+.floorButtons {
+    position: absolute !important;
+
+    top: 12px !important;
+    right: 12px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    gap: 6px !important;
+
+    z-index: 20;
+}
+
+.floorBtn {
+    width: 42px;
+    height: 38px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.9);
+
+    color: #555;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+
+    cursor: pointer;
+}
+
+.floorBtn.activeFloor {
+    background: #e85d75;
+    color: white;
 }
