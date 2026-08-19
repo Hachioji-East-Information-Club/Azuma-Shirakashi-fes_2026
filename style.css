@@ -596,31 +596,9 @@ body{
     background:#8b1e3f;
     color:white;
 }
-
-.mapArea{
-    display:none;
-}
-
 .activeMap{
     display:block;
 }
-
-.schoolMapImage{
-    width:100%;
-    max-width:100%;
-    height:auto;
-    display:block;
-    border-radius:12px;
-    background:white;
-
-    /* はみ出し防止 */
-    object-fit:contain;
-}
-
-.mapArea{
-    width:100%;
-}
-
 .mapPlaceholder{
     width:100%;
     min-height:420px;
@@ -711,21 +689,9 @@ body{
 
 }
 
-
-.mapArea{
-    position: relative;
-}
-
-
 /* ==========================
    階数ボタン
 ========================== */
-
-.mapArea{
-    position:relative;
-    width:100%;
-}
-
 .floorButtons{
     position:absolute;
 
@@ -766,11 +732,6 @@ body{
 /* ==========================
    校内図・階数ボタン位置
 ========================== */
-
-.mapArea{
-    position:relative !important;
-    width:100% !important;
-}
 
 .floorButtons{
     position:absolute !important;
