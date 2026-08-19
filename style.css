@@ -192,14 +192,20 @@ body {
    階数ボタン
 ========================== */
 
+/* ==========================================
+   階数ボタン
+========================================== */
+
+/* 階数ボタンを地図の下に横並びで配置 */
 .floorButtons {
     position: static !important;
 
     display: flex !important;
     flex-direction: row !important;
 
-    gap: 8px;
     width: 100%;
+
+    gap: 8px;
 
     margin-top: 12px;
     margin-bottom: 12px;
@@ -207,47 +213,20 @@ body {
     z-index: 20;
 }
 
+/* 階数ボタン */
 .floorBtn {
     flex: 1;
 
-    height: 40px;
+    width: auto;
+    height: 42px;
 
     border: none;
     border-radius: 10px;
 
-    background: rgba(255,255,255,0.9);
+    background: #f0f0f0;
     color: #555;
 
-    font-size: 13px;
-    font-weight: bold;
-
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.floorBtn.activeFloor {
-    background: #8B1E3F;
-    color: white;
-}
-
-
-/* 階数ボタン本体 */
-
-.floorBtn {
-    width: 42px;
-    height: 38px;
-
-    border: none;
-    border-radius: 10px;
-
-    background: rgba(255,255,255,.94);
-
-    color: #555;
-
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
 
     box-shadow: 0 2px 8px rgba(0,0,0,.15);
@@ -257,16 +236,115 @@ body {
     transition: .2s;
 }
 
+/* マウスを乗せたとき */
 .floorBtn:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px);
 }
 
-
-/* 選択中 */
-
+/* 現在選択中の階 */
 .floorBtn.activeFloor {
     background: #8B1E3F;
     color: white;
+}
+
+
+/* ==========================================
+   地図
+========================================== */
+
+.floorMap {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    /* 地図と階数ボタンを完全に分離 */
+    display: block;
+}
+
+/* 地図画像 */
+.schoolMapImage {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    height: auto;
+
+    border-radius: 12px;
+
+    object-fit: contain;
+}
+
+
+/* ==========================================
+   校舎棟・体育館棟
+========================================== */
+
+.mapArea {
+    display: none;
+
+    position: relative;
+
+    width: 100%;
+
+    border-radius: 12px;
+}
+
+.mapArea.activeMap {
+    display: block;
+}
+
+
+/* ==========================================
+   スマホ用 階数ボタン
+========================================== */
+
+@media screen and (max-width: 600px) {
+
+    .floorButtons {
+        position: static !important;
+
+        display: flex !important;
+        flex-direction: row !important;
+
+        width: 100%;
+
+        gap: 6px;
+
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .floorBtn {
+        flex: 1;
+
+        width: auto;
+        height: 40px;
+
+        font-size: 13px;
+    }
+}
+
+
+/* ==========================================
+   小さいスマホ
+========================================== */
+
+@media screen and (max-width: 380px) {
+
+    .floorButtons {
+        gap: 4px;
+    }
+
+    .floorBtn {
+        height: 38px;
+
+        font-size: 12px;
+    }
 }
 
 
