@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.min.js"></script>
+<script type="JavaScript.js" src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
 <body>
@@ -63,21 +63,82 @@
 
     </div>
 
-<!-- 校舎棟（最初に表示） -->
+<!-- 校舎棟 -->
 <div id="schoolMap" class="mapArea activeMap">
 
-    <div class="mapPlaceholder">
-        校舎棟の平面図
+    <!-- 地図 -->
+<div id="schoolFloorMap" class="floorMap">
+
+    <img
+        src="map/校舎棟5階.png"
+        class="schoolMapImage"
+        alt="校舎棟5階">
+
+    <div class="mapWaitTime" id="schoolWaitTime">
+        
+        0分
+    </div>
+
+</div>
+
+    <!-- 階数ボタン -->
+    <div class="floorButtons">
+
+        <button class="floorBtn"
+            onclick="showFloor('school', 1)">
+            1F
+        </button>
+
+        <button class="floorBtn"
+            onclick="showFloor('school', 2)">
+            2F
+        </button>
+
+        <button class="floorBtn"
+            onclick="showFloor('school', 3)">
+            3F
+        </button>
+
+        <button class="floorBtn"
+            onclick="showFloor('school', 4)">
+            4F
+        </button>
+
+        <button class="floorBtn activeFloor"
+            onclick="showFloor('school', 5)">
+            5F
+        </button>
+
     </div>
 
 </div>
     
 
 <div id="gymMap" class="mapArea">
+       <div id="gymFloorMap" class="floorMap">
+    <img id="gymMapImage" class="schoolMapImage" src="map/体育館1階.png" alt="体育館1階">
+</div>
 
-    <div class="mapPlaceholder">
-        体育館棟の平面図
-    </div>
+   <div class="floorButtons">
+
+    <button class="floorBtn activeFloor"
+        onclick="showFloor('gym', 1)">
+        1F
+    </button>
+
+    <button class="floorBtn"
+        onclick="showFloor('gym', 2)">
+        2F
+    </button>
+
+    <button class="floorBtn"
+        onclick="showFloor('gym', 3)">
+        3F
+    </button>
+
+</div>
+
+
 
 </div>
 
@@ -354,7 +415,7 @@
                 </div>
 
             </div>
-            
+                      
 <div class="menuCard" onclick="showTrainPage()">
 
     <span class="material-icons">
@@ -380,11 +441,7 @@
         </div>
 
     </section>
-
-    <!-- ==========================
-         下メニュー
-    =========================== -->
-<!-- ==========================
+    !-- ==========================
      路線図
 =========================== -->
 
@@ -468,6 +525,11 @@
 </section>
 
 </section>
+
+    <!-- ==========================
+         下メニュー
+    =========================== -->
+
     <nav class="bottomNav">
 
         <button
@@ -520,11 +582,11 @@
 
     </nav>
 
-    <!-- JavaScript -->
+    <!-- JavaScript.js -->
 
-    <script src="data.js"></script>
+   <!-- <script src="data.js"></script>-->
 
-    <script src="script.js"></script>
+    <script src="JavaScript.js"></script>
 
 </body>
 
