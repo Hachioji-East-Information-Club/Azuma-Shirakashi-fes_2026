@@ -63,24 +63,23 @@
 
     </div>
 
-<!-- 校舎棟（最初に表示） -->
+<!-- 校舎棟 -->
 <div id="schoolMap" class="mapArea activeMap">
 
+    <!-- 地図 -->
+    <div id="schoolFloorMap" class="floorMap">
+        <img
+            src="map/校舎棟5階.png"
+            class="schoolMapImage"
+            alt="校舎棟5階">
+    </div>
+
+    <!-- 階数ボタン -->
     <div class="floorButtons">
 
-        <button class="floorBtn activeFloor"
-            onclick="showFloor('school', 5)">
-            5F
-        </button>
-
         <button class="floorBtn"
-            onclick="showFloor('school', 4)">
-            4F
-        </button>
-
-        <button class="floorBtn"
-            onclick="showFloor('school', 3)">
-            3F
+            onclick="showFloor('school', 1)">
+            1F
         </button>
 
         <button class="floorBtn"
@@ -89,15 +88,21 @@
         </button>
 
         <button class="floorBtn"
-            onclick="showFloor('school', 1)">
-            1F
+            onclick="showFloor('school', 3)">
+            3F
+        </button>
+
+        <button class="floorBtn"
+            onclick="showFloor('school', 4)">
+            4F
+        </button>
+
+        <button class="floorBtn activeFloor"
+            onclick="showFloor('school', 5)">
+            5F
         </button>
 
     </div>
-
- <div id="schoolFloorMap" class="floorMap">
-    <img id="schoolMapImage" class="schoolMapImage" src="map/校舎棟5階.png" alt="校舎棟5階">
-</div>
 
 </div>
     
