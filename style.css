@@ -820,13 +820,11 @@ body{
 .floorMap{
     width:100%;
     overflow:hidden;
-    border-radius:12px;
 }
 
 .schoolMapImage{
     width:100%;
     height:auto;
     display:block;
-    border-radius:12px;
     object-fit:contain;
 }
