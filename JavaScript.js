@@ -601,74 +601,76 @@ document.addEventListener("click", function(e){
 // 校内図・階数切り替え
 // ==========================
 
-function showFloor(building, floor){
+// ==========================
+// 校内図・階数切り替え
+// ==========================
 
-    // ----------------------
+function showFloor(building, floor) {
+
+    // --------------------------
     // 校舎棟
-    // ----------------------
+    // --------------------------
 
-    if(building === "school"){
+    if (building === "school") {
 
-        const image = document.getElementById("schoolMapImage");
+        const image = document.querySelector("#schoolFloorMap img");
 
-        image.src = "map/校舎棟" + floor + "階.png";
+        if (image) {
 
-        image.alt = "校舎棟" + floor + "階";
+            image.src = "map/校舎棟" + floor + "階.png";
+            image.alt = "校舎棟" + floor + "階";
 
-        // 校舎棟の階数ボタンだけ色変更
-        document.querySelectorAll("#schoolMap .floorBtn")
-            .forEach(btn => {
+        }
 
-                btn.classList.remove("activeFloor");
+        // 校舎棟のボタンだけ取得
+        const buttons = document.querySelectorAll("#schoolMap .floorBtn");
 
-            });
+        buttons.forEach(button => {
+            button.classList.remove("activeFloor");
+        });
 
-        // 押したボタンをON
-        document.querySelectorAll("#schoolMap .floorBtn")
-            .forEach(btn => {
+        // 押した階を選択状態にする
+        buttons.forEach(button => {
 
-                if(btn.textContent.trim() === floor + "F"){
+            if (button.textContent.trim() === floor + "F") {
+                button.classList.add("activeFloor");
+            }
 
-                    btn.classList.add("activeFloor");
-
-                }
-
-            });
+        });
 
     }
 
 
-    // ----------------------
+    // --------------------------
     // 体育館棟
-    // ----------------------
+    // --------------------------
 
-    if(building === "gym"){
+    if (building === "gym") {
 
-        const image = document.getElementById("gymMapImage");
+        const image = document.querySelector("#gymFloorMap img");
 
-        image.src = "map/体育館" + floor + "階.png";
+        if (image) {
 
-        image.alt = "体育館" + floor + "階";
+            image.src = "map/体育館" + floor + "階.png";
+            image.alt = "体育館" + floor + "階";
 
-        // 体育館棟の階数ボタンだけ色変更
-        document.querySelectorAll("#gymMap .floorBtn")
-            .forEach(btn => {
+        }
 
-                btn.classList.remove("activeFloor");
+        // 体育館棟のボタンだけ取得
+        const buttons = document.querySelectorAll("#gymMap .floorBtn");
 
-            });
+        buttons.forEach(button => {
+            button.classList.remove("activeFloor");
+        });
 
-        // 押したボタンをON
-        document.querySelectorAll("#gymMap .floorBtn")
-            .forEach(btn => {
+        // 押した階を選択状態にする
+        buttons.forEach(button => {
 
-                if(btn.textContent.trim() === floor + "F"){
+            if (button.textContent.trim() === floor + "F") {
+                button.classList.add("activeFloor");
+            }
 
-                    btn.classList.add("activeFloor");
-
-                }
-
-            });
+        });
 
     }
 
