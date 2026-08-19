@@ -597,34 +597,78 @@ document.addEventListener("click", function(e){
 // 校内図・階数切り替え
 // ==========================
 
+// ==========================
+// 校内図・階数切り替え
+// ==========================
+
 function showFloor(building, floor){
 
-    // その建物の階数ボタンを取得
-    const mapArea = document.getElementById(
-        building === "school" ? "schoolMap" : "gymMap"
-    );
+    // ----------------------
+    // 校舎棟
+    // ----------------------
 
-    // その建物のボタンを全部通常色に戻す
-    mapArea.querySelectorAll(".floorBtn").forEach(btn => {
-        btn.classList.remove("activeFloor");
-    });
-
-    // 今押したボタンを色付きにする
-    event.currentTarget.classList.add("activeFloor");
-
-
-    // 表示する階数を変更
     if(building === "school"){
 
-        document.getElementById("schoolFloorMap").textContent =
-            "校舎棟 " + floor + "階の平面図";
+        const image = document.getElementById("schoolMapImage");
+
+        image.src = "map/校舎棟" + floor + "階.png";
+
+        image.alt = "校舎棟" + floor + "階";
+
+        // 校舎棟の階数ボタンだけ色変更
+        document.querySelectorAll("#schoolMap .floorBtn")
+            .forEach(btn => {
+
+                btn.classList.remove("activeFloor");
+
+            });
+
+        // 押したボタンをON
+        document.querySelectorAll("#schoolMap .floorBtn")
+            .forEach(btn => {
+
+                if(btn.textContent.trim() === floor + "F"){
+
+                    btn.classList.add("activeFloor");
+
+                }
+
+            });
 
     }
 
+
+    // ----------------------
+    // 体育館棟
+    // ----------------------
+
     if(building === "gym"){
 
-        document.getElementById("gymFloorMap").textContent =
-            "体育館棟 " + floor + "階の平面図";
+        const image = document.getElementById("gymMapImage");
+
+        image.src = "map/体育館" + floor + "階.png";
+
+        image.alt = "体育館" + floor + "階";
+
+        // 体育館棟の階数ボタンだけ色変更
+        document.querySelectorAll("#gymMap .floorBtn")
+            .forEach(btn => {
+
+                btn.classList.remove("activeFloor");
+
+            });
+
+        // 押したボタンをON
+        document.querySelectorAll("#gymMap .floorBtn")
+            .forEach(btn => {
+
+                if(btn.textContent.trim() === floor + "F"){
+
+                    btn.classList.add("activeFloor");
+
+                }
+
+            });
 
     }
 
