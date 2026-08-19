@@ -3,777 +3,830 @@
    style.css
 ========================================== */
 
-
-/* ==========================================
-   基本設定
-========================================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Yu Gothic UI", "Meiryo", sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Yu Gothic UI","Meiryo",sans-serif;
 }
 
-body {
-    background: #f5f5f5;
-    color: #333;
-    padding-bottom: 90px;
+body{
+
+    background:#f5f5f5;
+    color:#333;
+
+    padding-bottom:90px;
+
 }
 
-
-/* ==========================================
+/* ==========================
    Header
-========================================== */
+========================== */
 
-.header {
-    background: #8B1E3F;
-    color: white;
-    text-align: center;
+.header{
 
-    padding: 18px 10px;
+    background:#8B1E3F;
 
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    color:white;
 
-    box-shadow: 0 3px 10px rgba(0, 0, 0, .15);
+    text-align:center;
+
+    padding:18px 10px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+
 }
 
-.header h1 {
-    font-size: 28px;
-    letter-spacing: 2px;
+.header h1{
+
+    font-size:28px;
+
+    letter-spacing:2px;
+
 }
 
-.subTitle {
-    margin-top: 5px;
-    font-size: 13px;
-    opacity: .9;
+.subTitle{
+
+    margin-top:5px;
+
+    font-size:13px;
+
+    opacity:.9;
+
 }
 
-
-/* ==========================================
+/* ==========================
    Page
-========================================== */
+========================== */
 
-.page {
-    display: none;
-    padding: 15px;
+.page{
+
+    display:none;
+
+    padding:15px;
+
 }
 
-.page.active {
-    display: block;
+.active{
+
+    display:block;
+
 }
 
-.pageTitle {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
+.pageTitle{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    margin-bottom:15px;
+
 }
 
-
-/* ==========================================
+/* ==========================
    校内図
-========================================== */
+========================== */
 
-.mapBox {
-    background: white;
-    border-radius: 15px;
-    padding: 16px;
+.mapBox{
+    background:white;
+    border-radius:15px;
+    padding:16px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
+    /* ←ここが重要 */
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
 
-    min-height: 400px;
+    min-height:400px;
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
+.mapPlaceholder{
 
-/* ==========================================
-   校内図タブ
-========================================== */
+    color:#999;
 
-.mapTabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 16px;
-    width: 100%;
+    font-size:20px;
+
 }
 
-.mapTab {
-    flex: 1;
-    min-width: 0;
+.mapImage{
 
-    padding: 10px 8px;
+    width:100%;
 
-    border: none;
-    border-radius: 12px;
+    border-radius:10px;
 
-    background: #e0e0e0;
-
-    font-size: 15px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: .2s;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-    white-space: nowrap;
 }
 
-.mapTab:hover {
-    transform: translateY(-1px);
-}
-
-.mapTab.activeMapTab {
-    background: #8B1E3F;
-    color: white;
-}
-
-
-/* ==========================================
-   地図エリア
-========================================== */
-
-.mapArea {
-    display: none;
-
-    position: relative;
-
-    width: 100%;
-
-    overflow: hidden;
-
-    border-radius: 12px;
-}
-
-.mapArea.activeMap {
-    display: block;
-}
-
-
-/* ==========================================
-   階数ボタン
-========================================== */
-
-.floorButtons {
-    position: absolute;
-
-    top: 12px;
-    right: 12px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 6px;
-
-    z-index: 20;
-}
-
-.floorBtn {
-    width: 42px;
-    height: 38px;
-
-    border: none;
-    border-radius: 10px;
-
-    background: rgba(255, 255, 255, .92);
-    color: #555;
-
-    font-size: 13px;
-    font-weight: bold;
-
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
-
-    cursor: pointer;
-
-    transition: .2s;
-}
-
-.floorBtn:hover {
-    transform: scale(1.05);
-}
-
-.floorBtn.activeFloor {
-    background: #e85d75;
-    color: white;
-}
-
-
-/* ==========================================
-   地図画像
-========================================== */
-
-.floorMap {
-    width: 100%;
-
-    overflow: hidden;
-
-    border-radius: 12px;
-}
-
-.schoolMapImage {
-    display: block;
-
-    width: 100%;
-    max-width: 100%;
-
-    height: auto;
-
-    border-radius: 12px;
-
-    object-fit: contain;
-}
-
-
-/* ==========================================
-   地図プレースホルダー
-========================================== */
-
-.mapPlaceholder {
-    width: 100%;
-    min-height: 420px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    color: #888;
-    font-size: 16px;
-
-    background: #fafafa;
-
-    border-radius: 12px;
-}
-
-
-/* ==========================================
+/* ==========================
    検索
-========================================== */
+========================== */
 
-.searchArea {
-    margin-bottom: 15px;
+.searchArea{
+
+    margin-bottom:15px;
+
 }
 
-#searchBox {
-    width: 100%;
+#searchBox{
 
-    padding: 12px;
+    width:100%;
 
-    border-radius: 10px;
+    padding:12px;
 
-    border: 1px solid #ccc;
+    border-radius:10px;
 
-    font-size: 16px;
+    border:1px solid #ccc;
 
-    background: white;
+    font-size:16px;
 
-    outline: none;
 }
 
-#searchBox:focus {
-    border-color: #8B1E3F;
-}
-
-
-/* ==========================================
-   絞り込みエリア
-========================================== */
+/* ==========================
+   絞り込み
+========================== */
 
 .filterArea,
 .groupFilter,
-.buildingFilter {
-    display: flex;
+.buildingFilter{
 
-    gap: 8px;
+    display:flex;
 
-    overflow-x: auto;
+    gap:8px;
 
-    margin-bottom: 12px;
+    overflow-x:auto;
 
-    padding-bottom: 5px;
+    margin-bottom:12px;
+
+    padding-bottom:5px;
+
 }
-
-
-/* スクロールバー */
 
 .filterArea::-webkit-scrollbar,
 .groupFilter::-webkit-scrollbar,
-.buildingFilter::-webkit-scrollbar {
-    height: 5px;
+.buildingFilter::-webkit-scrollbar{
+
+    height:5px;
+
 }
-
-.filterArea::-webkit-scrollbar-thumb,
-.groupFilter::-webkit-scrollbar-thumb,
-.buildingFilter::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
-}
-
-
-/* ==========================================
-   絞り込みボタン
-========================================== */
 
 .filterBtn,
 .groupBtn,
-.buildingBtn {
-    flex-shrink: 0;
+.buildingBtn{
 
-    border: none;
+    flex-shrink:0;
 
-    background: white;
+    border:none;
 
-    padding: 8px 15px;
+    background:white;
 
-    border-radius: 30px;
+    padding:8px 15px;
 
-    cursor: pointer;
+    border-radius:30px;
 
-    transition: .2s;
+    cursor:pointer;
 
-    box-shadow: 0 1px 5px rgba(0, 0, 0, .15);
+    transition:.2s;
+
+    box-shadow:0 1px 5px rgba(0,0,0,.15);
+
 }
 
 .filterBtn:hover,
 .groupBtn:hover,
-.buildingBtn:hover {
-    transform: translateY(-2px);
+.buildingBtn:hover{
+
+    transform:translateY(-2px);
+
 }
 
-.filterBtn.activeFilter,
-.groupBtn.activeGroup,
-.buildingBtn.activeBuilding {
-    background: #8B1E3F;
-    color: white;
+.activeFilter,
+.activeGroup,
+.activeBuilding{
+
+    background:#8B1E3F;
+
+    color:white;
+
 }
 
-
-/* ==========================================
+/* ==========================
    団体一覧
-========================================== */
+========================== */
 
-#boothList {
-    display: flex;
+#boothList{
 
-    flex-direction: column;
+    display:flex;
 
-    gap: 15px;
+    flex-direction:column;
 
-    padding-bottom: 20px;
+    gap:15px;
+
+    padding-bottom:20px;
+
 }
 
+.boothCard{
 
-/* ==========================================
-   団体カード
-========================================== */
+    background:white;
 
-.boothCard {
-    background: white;
+    border-radius:16px;
 
-    border-radius: 16px;
+    padding:16px;
 
-    padding: 16px;
+    box-shadow:0 3px 10px rgba(0,0,0,.12);
 
-    box-shadow: 0 3px 10px rgba(0, 0, 0, .12);
+    transition:.2s;
 
-    transition: .2s;
 }
 
-.boothCard:hover {
-    transform: translateY(-2px);
+.boothCard:hover{
+
+    transform:translateY(-2px);
+
 }
 
+.boothTop{
 
-/* ==========================================
-   カード上部
-========================================== */
+    display:flex;
 
-.cardHeader {
-    display: flex;
+    justify-content:space-between;
 
-    justify-content: space-between;
-    align-items: flex-start;
+    align-items:flex-start;
 
-    gap: 16px;
+    margin-bottom:10px;
 
-    margin-bottom: 8px;
+    gap:12px;
+
 }
 
-.titleArea {
-    flex: 1;
+.boothName{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#222;
+
 }
 
-.boothName {
-    font-size: 20px;
+.groupTag{
 
-    font-weight: bold;
+    background:#8B1E3F;
 
-    line-height: 1.4;
+    color:white;
 
-    color: #222;
-}
+    font-size:12px;
 
-.boothTitle {
-    margin-top: 4px;
+    padding:4px 10px;
 
-    color: #666;
-
-    font-size: 14px;
-}
-
-
-/* ==========================================
-   団体タグ
-========================================== */
-
-.groupTag {
-    display: inline-block;
-
-    background: #8B1E3F;
-
-    color: white;
-
-    font-size: 12px;
-
-    padding: 4px 10px;
-
-    border-radius: 20px;
+    border-radius:20px;
 
     margin-bottom: 10px;
+
 }
 
+.boothTitle{
 
-/* ==========================================
-   写真
-========================================== */
+    color:#666;
 
-.boothImage {
-    width: 100%;
+    margin-bottom:12px;
 
-    height: auto;
+    font-size:15px;
 
-    display: block;
-
-    border-radius: 12px;
-
-    margin-top: 12px;
-    margin-bottom: 12px;
 }
 
+.infoRow{
 
-/* ==========================================
-   情報チップ
-========================================== */
+    display:flex;
 
-.infoRow {
-    display: flex;
+    flex-wrap:wrap;
 
-    flex-wrap: wrap;
+    gap:8px;
 
-    gap: 8px;
+    margin-bottom:10px;
 
-    margin-top: 12px;
-    margin-bottom: 10px;
+    margin-top:12px;
+
 }
 
-.infoChip {
-    background: #f0f0f0;
+.infoChip{
 
-    padding: 6px 10px;
+    background:#f0f0f0;
 
-    border-radius: 20px;
+    padding:6px 10px;
 
-    font-size: 13px;
+    border-radius:20px;
+
+    font-size:13px;
+
 }
 
-
-/* ==========================================
+/* ==========================
    待ち時間
-========================================== */
+========================== */
 
-.waitRow {
-    display: flex;
+.waitRow{
 
-    justify-content: space-between;
+    display:flex;
 
-    align-items: center;
+    justify-content:space-between;
 
-    margin-top: 12px;
+    align-items:center;
+
+    margin-top:12px;
+
 }
 
-.waitTime {
-    font-size: 22px;
+.waitTime{
 
-    font-weight: bold;
+    font-size:22px;
+
+    font-weight:bold;
+
 }
 
-.status {
-    padding: 6px 14px;
+.status{
 
-    border-radius: 20px;
+    padding:6px 14px;
 
-    color: white;
+    border-radius:20px;
 
-    font-size: 14px;
+    color:white;
 
-    font-weight: bold;
+    font-size:14px;
+
+    font-weight:bold;
+
 }
 
+.green{
 
-/* ==========================================
-   混雑状態
-========================================== */
+    background:#2ecc71;
 
-.green {
-    background: #2ecc71;
 }
 
-.yellow {
-    background: #f1c40f;
-    color: #333;
+.yellow{
+
+    background:#f1c40f;
+
+    color:#333;
+
 }
 
-.red {
-    background: #e74c3c;
+.red{
+
+    background:#e74c3c;
+
 }
 
-
-/* ==========================================
-   お気に入り
-========================================== */
-
-.boothHeader {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 10px;
-}
-
-.favoriteBtn {
-    background: none;
-
-    border: none;
-
-    font-size: 28px;
-
-    cursor: pointer;
-
-    color: #c7c7c7;
-
-    transition: .2s;
-
-    flex-shrink: 0;
-}
-
-.favoriteBtn:hover {
-    color: #ff6b9d;
-
-    transform: scale(1.15);
-}
-
-
-/* ==========================================
+/* ==========================
    その他
-========================================== */
+========================== */
 
-.otherMenu {
-    display: flex;
+.otherMenu{
 
-    flex-direction: column;
+    display:flex;
 
-    gap: 15px;
+    flex-direction:column;
+
+    gap:15px;
+
 }
 
-.menuCard {
-    background: white;
+.menuCard{
 
-    border-radius: 15px;
+    background:white;
 
-    padding: 16px;
+    border-radius:15px;
 
-    display: flex;
+    padding:16px;
 
-    gap: 15px;
+    display:flex;
 
-    align-items: center;
+    gap:15px;
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    align-items:center;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+
 }
 
-.menuCard .material-icons {
-    font-size: 34px;
+.menuCard .material-icons{
 
-    color: #8B1E3F;
+    font-size:34px;
+
+    color:#8B1E3F;
+
 }
 
-.menuCard h3 {
-    margin-bottom: 4px;
+.menuCard h3{
+
+    margin-bottom:4px;
+
 }
 
-.menuCard p {
-    font-size: 14px;
+.menuCard p{
 
-    color: #666;
+    font-size:14px;
+
+    color:#666;
+
 }
 
-
-/* ==========================================
+/* ==========================
    下メニュー
-========================================== */
+========================== */
 
-.bottomNav {
-    position: fixed;
+.bottomNav{
 
-    bottom: 0;
-    left: 0;
+    position:fixed;
 
-    width: 100%;
-    height: 75px;
+    bottom:0;
 
-    background: white;
+    left:0;
 
-    display: flex;
+    width:100%;
 
-    border-top: 1px solid #ccc;
+    height:75px;
 
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, .15);
+    background:white;
 
-    z-index: 100;
+    display:flex;
+
+    border-top:1px solid #ccc;
+
+    box-shadow:0 -2px 10px rgba(0,0,0,.15);
+
 }
 
-.navBtn {
-    flex: 1;
+.navBtn{
 
-    border: none;
+    flex:1;
 
-    background: white;
+    border:none;
 
-    display: flex;
+    background:white;
 
-    flex-direction: column;
+    display:flex;
 
-    justify-content: center;
+    flex-direction:column;
 
-    align-items: center;
+    justify-content:center;
 
-    gap: 4px;
+    align-items:center;
 
-    cursor: pointer;
+    gap:4px;
 
-    transition: .2s;
+    cursor:pointer;
+
+    transition:.2s;
+
 }
 
-.navBtn:not(:last-child) {
-    border-right: 1px solid #ddd;
+/* ← 境界線を追加 */
+
+.navBtn:not(:last-child){
+
+    border-right:1px solid #ddd;
+
 }
 
-.navBtn .material-icons {
-    font-size: 28px;
+.navBtn .material-icons{
+
+    font-size:28px;
+
 }
 
-.navBtn span:last-child {
-    font-size: 12px;
+.navBtn span:last-child{
+
+    font-size:12px;
+
 }
 
-.navBtn.activeNav {
-    color: #8B1E3F;
+.activeNav{
 
-    font-weight: bold;
+    color:#8B1E3F;
+
+    font-weight:bold;
+
 }
 
+/* ==========================
+   写真
+========================== */
 
-/* ==========================================
+.boothImage{
+
+    width:100%;
+
+    border-radius:12px;
+
+    margin-top:12px;
+
+    margin-bottom:12px;
+
+}
+
+/* ==========================
    スマホ最適化
-========================================== */
+========================== */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width:600px){
 
-    .page {
-        padding: 12px;
+    .boothName{
+
+        font-size:18px;
+
     }
 
-    .pageTitle {
-        font-size: 22px;
+    .waitTime{
+
+        font-size:20px;
+
     }
 
-    .boothName {
-        font-size: 18px;
-    }
+    .pageTitle{
 
-    .waitTime {
-        font-size: 20px;
-    }
+        font-size:22px;
 
-    .mapBox {
-        padding: 12px;
-    }
-
-    .mapTabs {
-        gap: 8px;
-    }
-
-    .mapTab {
-        font-size: 14px;
-        padding: 9px 6px;
-    }
-
-    .floorButtons {
-        top: 8px;
-        right: 8px;
-
-        gap: 5px;
-    }
-
-    .floorBtn {
-        width: 40px;
-        height: 36px;
-
-        font-size: 12px;
-    }
-
-    .schoolMapImage {
-        width: 100%;
-        height: auto;
     }
 
 }
 
+/* ===========================
+   校内図切り替え
+=========================== */
 
-/* ==========================================
-   極端に小さい画面
-========================================== */
+.mapTabs{
+    display:flex;
+    gap:10px;
+    margin-bottom:16px;
+    width:100%;
+}
 
-@media screen and (max-width: 380px) {
+.mapTab{
+    flex:1;
+    min-width:0;
+    padding:10px 8px;
+    border:none;
+    border-radius:12px;
+    background:#e0e0e0;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
 
-    .floorBtn {
-        width: 36px;
-        height: 34px;
+    /* 追加 */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    white-space:nowrap;
+}
 
-        font-size: 11px;
-    }
+.activeMapTab{
+    background:#8b1e3f;
+    color:white;
+}
 
-    .floorButtons {
-        top: 6px;
-        right: 6px;
+.mapArea{
+    display:none;
+}
 
-        gap: 4px;
-    }
+.activeMap{
+    display:block;
+}
 
-    .mapBox {
-        padding: 10px;
-    }
+.schoolMapImage{
+    width:100%;
+    max-width:100%;
+    height:auto;
+    display:block;
+    border-radius:12px;
+    background:white;
 
+    /* はみ出し防止 */
+    object-fit:contain;
+}
+
+.mapArea{
+    width:100%;
+}
+
+.mapPlaceholder{
+    width:100%;
+    min-height:420px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    color:#888;
+    font-size:16px;
+    background:#fafafa;
+    border-radius:12px;
+}
+
+.boothHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.favoriteBtn{
+
+    background:none;
+
+    border:none;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    color:#c7c7c7;
+
+    transition:.2s;
+
+    flex-shrink:0;
+
+}
+
+.favoriteBtn:hover{
+
+    color:#ff6b9d;
+
+    transform:scale(1.15);
+
+}
+
+/* ---------- カード上部 ---------- */
+
+.cardHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:16px;
+
+    margin-bottom:8px;
+
+}
+
+.titleArea{
+
+    flex:1;
+
+}
+
+.boothName{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    line-height:1.4;
+
+}
+
+.boothTitle{
+
+    margin-top:4px;
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+
+.mapArea{
+    position: relative;
+}
+
+
+/* ==========================
+   階数ボタン
+========================== */
+
+.mapArea{
+    position:relative;
+    width:100%;
+}
+
+.floorButtons{
+    position:absolute;
+
+    top:12px;
+    right:12px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:6px;
+
+    z-index:20;
+}
+
+.floorBtn{
+    width:42px;
+    height:38px;
+
+    border:none;
+    border-radius:10px;
+
+    background:rgba(255,255,255,.95);
+    color:#555;
+
+    font-size:13px;
+    font-weight:bold;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+
+    cursor:pointer;
+}
+
+.floorBtn.activeFloor{
+    background:#8B1E3F;
+    color:white;
+}
+
+/* ==========================
+   校内図・階数ボタン位置
+========================== */
+
+.mapArea{
+    position:relative !important;
+    width:100% !important;
+}
+
+.floorButtons{
+    position:absolute !important;
+
+    top:10px !important;
+    right:10px !important;
+
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+
+    width:42px !important;
+
+    gap:6px !important;
+
+    z-index:100 !important;
+}
+
+.floorBtn{
+    display:block !important;
+
+    width:42px !important;
+    height:38px !important;
+
+    padding:0 !important;
+
+    flex:none !important;
+
+    border:none;
+    border-radius:10px;
+
+    background:rgba(255,255,255,.95);
+    color:#555;
+
+    font-size:13px;
+    font-weight:bold;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+
+    cursor:pointer;
+}
+
+.floorBtn.activeFloor{
+    background:#8B1E3F;
+    color:white;
+}
+.floorMap{
+    width:100%;
+    overflow:hidden;
+    border-radius:12px;
+}
+
+.schoolMapImage{
+    width:100%;
+    height:auto;
+    display:block;
+    border-radius:12px;
+    object-fit:contain;
 }
