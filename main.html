@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<script type="JavaScript.js" src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.min.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,6 +13,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" type="text/css">
+
 </head>
 
 <body>
@@ -30,6 +32,7 @@
 
     </header>
 
+
     <!-- ==========================
          校内図
     =========================== -->
@@ -40,113 +43,161 @@
             校内図
         </div>
 
-       <div class="mapBox">
+        <div class="mapBox">
 
-    <!-- 切り替えボタン -->
-    <div class="mapTabs">
+            <!-- 切り替えボタン -->
 
-        <button
-            class="mapTab activeMapTab"
-            onclick="showMap('school')">
+            <div class="mapTabs">
 
-            校舎棟
+                <button
+                    class="mapTab activeMapTab"
+                    onclick="showMap('school')">
 
-        </button>
+                    校舎棟
 
-        <button
-            class="mapTab"
-            onclick="showMap('gym')">
+                </button>
 
-            体育館棟
+                <button
+                    class="mapTab"
+                    onclick="showMap('gym')">
 
-        </button>
+                    体育館棟
 
-    </div>
+                </button>
 
-<!-- 校舎棟 -->
-<div id="schoolMap" class="mapArea activeMap">
-
-    <!-- 地図 -->
-<div id="schoolFloorMap" class="floorMap">
-
-    <img
-        src="map/校舎棟5階.png"
-        class="schoolMapImage"
-        alt="校舎棟5階">
-
-    <div class="mapWaitTime" id="schoolWaitTime">
-        
-        0分
-    </div>
-
-</div>
-
-    <!-- 階数ボタン -->
-    <div class="floorButtons">
-
-        <button class="floorBtn"
-            onclick="showFloor('school', 1)">
-            1F
-        </button>
-
-        <button class="floorBtn"
-            onclick="showFloor('school', 2)">
-            2F
-        </button>
-
-        <button class="floorBtn"
-            onclick="showFloor('school', 3)">
-            3F
-        </button>
-
-        <button class="floorBtn"
-            onclick="showFloor('school', 4)">
-            4F
-        </button>
-
-        <button class="floorBtn activeFloor"
-            onclick="showFloor('school', 5)">
-            5F
-        </button>
-
-    </div>
-
-</div>
-    
-
-<div id="gymMap" class="mapArea">
-       <div id="gymFloorMap" class="floorMap">
-    <img id="gymMapImage" class="schoolMapImage" src="map/体育館1階.png" alt="体育館1階">
-</div>
-
-   <div class="floorButtons">
-
-    <button class="floorBtn activeFloor"
-        onclick="showFloor('gym', 1)">
-        1F
-    </button>
-
-    <button class="floorBtn"
-        onclick="showFloor('gym', 2)">
-        2F
-    </button>
-
-    <button class="floorBtn"
-        onclick="showFloor('gym', 3)">
-        3F
-    </button>
-
-</div>
+            </div>
 
 
+            <!-- ==========================
+                 校舎棟
+            =========================== -->
 
-</div>
+            <div id="schoolMap" class="mapArea activeMap">
 
-</div>
+                <!-- 地図 -->
 
-</div>
+                <div id="schoolFloorMap" class="floorMap">
+
+                    <img
+                        src="map/校舎棟5階.png"
+                        class="schoolMapImage"
+                        alt="校舎棟5階">
+
+                    <div
+                        class="mapWaitTime"
+                        id="schoolWaitTime">
+
+                        0分
+
+                    </div>
+
+                </div>
+
+
+                <!-- 階数ボタン -->
+
+                <div class="floorButtons">
+
+                    <button
+                        class="floorBtn"
+                        onclick="showFloor('school', 1)">
+
+                        1F
+
+                    </button>
+
+                    <button
+                        class="floorBtn"
+                        onclick="showFloor('school', 2)">
+
+                        2F
+
+                    </button>
+
+                    <button
+                        class="floorBtn"
+                        onclick="showFloor('school', 3)">
+
+                        3F
+
+                    </button>
+
+                    <button
+                        class="floorBtn"
+                        onclick="showFloor('school', 4)">
+
+                        4F
+
+                    </button>
+
+                    <button
+                        class="floorBtn activeFloor"
+                        onclick="showFloor('school', 5)">
+
+                        5F
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==========================
+                 体育館棟
+            =========================== -->
+
+            <div id="gymMap" class="mapArea">
+
+                <div
+                    id="gymFloorMap"
+                    class="floorMap">
+
+                    <img
+                        id="gymMapImage"
+                        class="schoolMapImage"
+                        src="map/体育館1階.png"
+                        alt="体育館1階">
+
+                </div>
+
+
+                <!-- 階数ボタン -->
+
+                <div class="floorButtons">
+
+                    <button
+                        class="floorBtn activeFloor"
+                        onclick="showFloor('gym', 1)">
+
+                        1F
+
+                    </button>
+
+                    <button
+                        class="floorBtn"
+                        onclick="showFloor('gym', 2)">
+
+                        2F
+
+                    </button>
+
+                    <button
+                        class="floorBtn"
+                        onclick="showFloor('gym', 3)">
+
+                        3F
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </section>
+
 
     <!-- ==========================
          一覧
@@ -155,10 +206,9 @@
     <section id="listPage" class="page">
 
         <div class="pageTitle">
-
             一覧
-
         </div>
+
 
         <!-- 検索 -->
 
@@ -171,56 +221,85 @@
 
         </div>
 
+
         <!-- カテゴリ -->
 
         <div class="filterArea">
 
-            <button class="filterBtn activeFilter"
+            <button
+                class="filterBtn activeFilter"
                 onclick="filterCategory('すべて')">
+
                 すべて
+
             </button>
 
-            <button class="filterBtn"
+            <button
+                class="filterBtn"
                 onclick="filterCategory('演劇')">
+
                 演劇
+
             </button>
 
-            <button class="filterBtn"
+            <button
+                class="filterBtn"
                 onclick="filterCategory('アトラクション')">
+
                 アトラクション
+
             </button>
 
-            <button class="filterBtn"
+            <button
+                class="filterBtn"
                 onclick="filterCategory('公演')">
+
                 公演
+
             </button>
 
-            <button class="filterBtn"
+            <button
+                class="filterBtn"
                 onclick="filterCategory('食品販売')">
+
                 食品販売
+
             </button>
 
-            <button class="filterBtn"
+            <button
+                class="filterBtn"
                 onclick="filterCategory('喫茶')">
+
                 喫茶
+
             </button>
 
-            <button class="filterBtn"
+            <button
+                class="filterBtn"
                 onclick="filterCategory('展示')">
+
                 展示
+
             </button>
 
-            <button class="filterBtn"
+            <button
+                class="filterBtn"
                 onclick="filterCategory('バンド')">
+
                 バンド
+
             </button>
 
-            <button class="filterBtn"
+            <button
+                class="filterBtn"
                 onclick="filterCategory('その他')">
+
                 その他
+
             </button>
 
         </div>
+
 
         <!-- 建物 -->
 
@@ -251,6 +330,7 @@
             </button>
 
         </div>
+
 
         <!-- 団体種別 -->
 
@@ -314,25 +394,25 @@
 
         </div>
 
+
         <!-- 団体一覧 -->
 
         <div id="boothList">
-
         </div>
 
     </section>
 
-        <!-- ==========================
+
+    <!-- ==========================
          その他
     =========================== -->
 
     <section id="otherPage" class="page">
 
         <div class="pageTitle">
-
             その他
-
         </div>
+
 
         <div class="otherMenu">
 
@@ -346,11 +426,14 @@
 
                     <h3>トイレ</h3>
 
-                    <p>校内のトイレの場所を確認できます。</p>
+                    <p>
+                        校内のトイレの場所を確認できます。
+                    </p>
 
                 </div>
 
             </div>
+
 
             <div class="menuCard">
 
@@ -362,11 +445,14 @@
 
                     <h3>救護室</h3>
 
-                    <p>体調が悪くなった場合はこちらへ。</p>
+                    <p>
+                        体調が悪くなった場合はこちらへ。
+                    </p>
 
                 </div>
 
             </div>
+
 
             <div class="menuCard">
 
@@ -378,11 +464,14 @@
 
                     <h3>タイムテーブル</h3>
 
-                    <p>公演時間はこちら。</p>
+                    <p>
+                        公演時間はこちら。
+                    </p>
 
                 </div>
 
             </div>
+
 
             <div class="menuCard">
 
@@ -394,11 +483,14 @@
 
                     <h3>お知らせ</h3>
 
-                    <p>運営からのお知らせを表示します。</p>
+                    <p>
+                        運営からのお知らせを表示します。
+                    </p>
 
                 </div>
 
             </div>
+
 
             <div class="menuCard">
 
@@ -410,29 +502,32 @@
 
                     <h3>パンフレット</h3>
 
-                    <p>PDFなどを掲載できます。</p>
+                    <p>
+                        PDFなどを掲載できます。
+                    </p>
 
                 </div>
 
             </div>
-                      
-<div class="menuCard" onclick="showTrainPage()">
 
-    <span class="material-icons">
-        train
-    </span>
 
-    <div>
+            <!-- 電車 -->
 
-        <h3>電車</h3>
+            <div
+                class="menuCard"
+                onclick="showTrainPage()">
 
-        <p>次の八高線の電車が分かります。</p>
+                <span class="material-icons">
+                    train
+                </span>
 
-    </div>
+                <div>
 
-</div>
+                    <h3>電車</h3>
 
-</div>
+                    <p>
+                        次の八高線の電車が分かります。
+                    </p>
 
                 </div>
 
@@ -441,90 +536,103 @@
         </div>
 
     </section>
-    !-- ==========================
-     路線図
-=========================== -->
 
-<section id="trainPage" class="page">
 
-    <div class="trainPageContent">
+    <!-- ==========================
+         路線図
+    =========================== -->
 
-        <!-- タイトル -->
-        <div class="trainTitle">
-            <span>電車</span>
+    <section id="trainPage" class="page">
+
+        <div class="trainPageContent">
+
+            <!-- タイトル -->
+
+            <div class="trainTitle">
+                <span>電車</span>
+            </div>
+
+
+            <!-- 上り・下り -->
+
+            <div class="trainDirectionButtons">
+
+                <div class="trainDirectionGroup">
+
+                    <button
+                        id="upButton"
+                        class="trainDirection activeTrainDirection"
+                        onclick="selectTrainDirection('up')">
+
+                        上り
+
+                    </button>
+
+                    <div class="trainDirectionInfo">
+                        （八王子方面）
+                    </div>
+
+                </div>
+
+
+                <div class="trainDirectionGroup">
+
+                    <button
+                        id="downButton"
+                        class="trainDirection"
+                        onclick="selectTrainDirection('down')">
+
+                        下り
+
+                    </button>
+
+                    <div class="trainDirectionInfo">
+                        （拝島方面）
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 次の電車 -->
+
+            <div class="nextTrainText">
+                次の電車は…
+            </div>
+
+
+            <!-- 時刻 -->
+
+            <div
+                id="nextTrainTime"
+                class="nextTrainTime">
+
+                --:--
+
+            </div>
+
+
+            <!-- 現在時刻 -->
+
+            <div
+                id="trainCurrentTime"
+                class="trainCurrentTime">
+
+                現在時刻は--:--です
+
+            </div>
+
+
+            <!-- 下部メニュー -->
+
+            <div class="trainBottomMenu">
+            </div>
+
         </div>
 
+    </section>
 
-       <!-- 上り・下り -->
-<div class="trainDirectionButtons">
-
-    <div class="trainDirectionGroup">
-
-        <button
-            id="upButton"
-            class="trainDirection activeTrainDirection"
-            onclick="selectTrainDirection('up')">
-            上り
-        </button>
-
-        <div class="trainDirectionInfo">
-            （八王子方面）
-        </div>
-
-    </div>
-
-
-    <div class="trainDirectionGroup">
-
-        <button
-            id="downButton"
-            class="trainDirection"
-            onclick="selectTrainDirection('down')">
-            下り
-        </button>
-
-        <div class="trainDirectionInfo">
-            （拝島方面）
-        </div>
-
-    </div>
-
-</div>
-
-
-        <!-- 次の電車 -->
-        <div class="nextTrainText">
-            次の電車は…
-        </div>
-
-
-        <!-- 時刻 -->
-        <div
-            id="nextTrainTime"
-            class="nextTrainTime">
-            --:--
-        </div>
-
-
-        <!-- 現在時刻 -->
-        <div
-            id="trainCurrentTime"
-            class="trainCurrentTime">
-            現在時刻は--:--です
-        </div>
-
-
-       <!-- 下部メニュー -->
-<div class="trainBottomMenu">
-</div>
-
-    </div>
-
-</section>
-
-</section>
-
-</section>
 
     <!-- ==========================
          下メニュー
@@ -541,12 +649,11 @@
             </span>
 
             <span>
-
                 校内図
-
             </span>
 
         </button>
+
 
         <button
             class="navBtn"
@@ -557,12 +664,11 @@
             </span>
 
             <span>
-
                 一覧
-
             </span>
 
         </button>
+
 
         <button
             class="navBtn"
@@ -573,18 +679,17 @@
             </span>
 
             <span>
-
                 その他
-
             </span>
 
         </button>
 
     </nav>
 
-    <!-- JavaScript.js -->
 
-   <!-- <script src="data.js"></script>-->
+    <!-- JavaScript -->
+
+    <!-- <script src="data.js"></script> -->
 
     <script src="JavaScript.js"></script>
 
