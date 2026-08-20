@@ -312,7 +312,7 @@ function displayBooths(list) {
 
 function updateList() {
 
-    let result = booths;
+    let result = [...booths];
 
 
     // キーワード検索
@@ -391,7 +391,10 @@ function updateList() {
 
     }
 
-
+// 待ち時間の降順で並べ替え
+result.sort((a, b) => {
+    return Number(b.wait) - Number(a.wait);
+});
     displayBooths(result);
 
 }
