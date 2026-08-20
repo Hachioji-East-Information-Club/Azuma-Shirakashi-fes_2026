@@ -316,6 +316,13 @@ function updateList() {
 
     let result = [...booths];
 
+    if (favoriteOnly) {
+        const favorites = getFavorites();
+
+        result = result.filter(booth =>
+            favorites.includes(booth.id)
+        );
+    }
 
     // キーワード検索
 
@@ -831,9 +838,9 @@ document.addEventListener("click", function(e) {
     }
 
 
-    saveFavorites(favorites);
-
-    updateFavoriteButtons();
+   saveFavorites(favorites);
+updateFavoriteButtons();
+updateList();
 
 });
 
@@ -1710,9 +1717,7 @@ let favoriteOnly = false;
 
 
 function filterFavorite(onlyFavorite) {
-
     favoriteOnly = onlyFavorite;
-
 
     document
         .getElementById("allBoothsBtn")
@@ -1721,7 +1726,6 @@ function filterFavorite(onlyFavorite) {
             !onlyFavorite
         );
 
-
     document
         .getElementById("favoriteOnlyBtn")
         .classList.toggle(
@@ -1729,17 +1733,5 @@ function filterFavorite(onlyFavorite) {
             onlyFavorite
         );
 
-
     updateList();
-
-if (favoriteOnly) {
-
-    const favorites = getFavorites();
-
-    result = result.filter(booth =>
-        favorites.includes(booth.id)
-    );
-
-}
-  
 }
