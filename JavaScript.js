@@ -1701,3 +1701,45 @@ function updateNoticeBadges(notices) {
     }
 
 }
+
+// ==========================================
+// お気に入り絞り込み
+// ==========================================
+
+let favoriteOnly = false;
+
+
+function filterFavorite(onlyFavorite) {
+
+    favoriteOnly = onlyFavorite;
+
+
+    document
+        .getElementById("allBoothsBtn")
+        .classList.toggle(
+            "activeFavoriteFilter",
+            !onlyFavorite
+        );
+
+
+    document
+        .getElementById("favoriteOnlyBtn")
+        .classList.toggle(
+            "activeFavoriteFilter",
+            onlyFavorite
+        );
+
+
+    updateList();
+
+if (favoriteOnly) {
+
+    const favorites = getFavorites();
+
+    result = result.filter(booth =>
+        favorites.includes(booth.id)
+    );
+
+}
+  
+}
