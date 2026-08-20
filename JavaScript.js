@@ -1350,6 +1350,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateTrainTime();
 
+    loadNotices();
+
+
 });
 
 
@@ -1360,8 +1363,14 @@ document.addEventListener("DOMContentLoaded", () => {
 setInterval(() => {
 
     updateTrainTime();
-
+　
 }, 1000);
+
+setInterval(() => {
+
+    loadNotices();
+
+}, 10000);
 
 // ==========================================
 // お知らせページ
@@ -1395,5 +1404,69 @@ function showNoticePage() {
             btn.classList.remove("activeNav");
 
         });
+
+}
+
+// ==========================================
+// お知らせ読み込み
+// ==========================================
+
+async function loadNotices() {
+
+    try {
+
+        const response = await fetch(
+            "notice.json?time=" + new Date().getTime()
+        );
+
+        if (!response.ok) {
+            return;
+        }
+
+        const notices = await response.json();
+
+        const noticeList =
+            document.getElementById("noticeList");
+
+        if (!noticeList) {
+            return;
+        }
+
+        noticeList.innerHTML = "";
+
+        notices.forEach(notice => {
+
+            noticeList.innerHTML += `
+
+                <div class="noticeCard">
+
+                    <div class="noticeDate">
+                        ${notice.date}
+                    </div>
+
+                    <div class="noticeTitle">
+                        ${notice.title}
+                    </div>
+
+                    <div class="noticeText">
+                        ${notice.text}
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.log(
+            "お知らせデータ取得失敗",
+            error
+        );
+
+    }
 
 }
