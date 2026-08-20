@@ -1362,3 +1362,38 @@ setInterval(() => {
     updateTrainTime();
 
 }, 1000);
+
+// ==========================================
+// お知らせページ
+// ==========================================
+
+function showNoticePage() {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+
+            page.classList.remove("active");
+
+        });
+
+
+    const noticePage =
+        document.getElementById("noticePage");
+
+    if (noticePage) {
+
+        noticePage.classList.add("active");
+
+    }
+
+
+    document
+        .querySelectorAll(".navBtn")
+        .forEach(btn => {
+
+            btn.classList.remove("activeNav");
+
+        });
+
+}
