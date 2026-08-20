@@ -303,6 +303,8 @@ function displayBooths(list) {
 
     });
 
+  updateFavoriteButtons();
+
 }
 
 
@@ -746,40 +748,94 @@ function showMap(type) {
 // お気に入りボタン
 // ==========================================
 
-document.addEventListener(
-    "click",
-    function(e) {
-
-        if (
-            !e.target.classList
-                .contains("favoriteBtn")
-        ) {
-
-            return;
-
-        }
+const FAVORITE_KEY = "azumaFavorites";
 
 
-        if (
-            e.target.textContent.trim()
-            === "🤍"
-        ) {
+// 保存されているお気に入りを取得
+function getFavorites() {
 
-            e.target.textContent =
-                "❤️";
+    return JSON.parse(
+        localStorage.getItem(FAVORITE_KEY) || "[]"
+    );
 
-        }
+}
 
-        else {
 
-            e.target.textContent =
-                "🤍";
+// お気に入りを保存
+function saveFavorites(favorites) {
 
-        }
+    localStorage.setItem(
+        FAVORITE_KEY,
+        JSON.stringify(favorites)
+    );
+
+}
+
+
+// お気に入り状態を反映
+function updateFavoriteButtons() {
+
+    const favorites = getFavorites();
+
+    document
+        .querySelectorAll(".favoriteBtn")
+        .forEach(button => {
+
+            const id = button.dataset.id;
+
+            if (favorites.includes(id)) {
+
+                button.textContent = "❤️";
+
+            } else {
+
+                button.textContent = "🤍";
+
+            }
+
+        });
+
+}
+
+
+// ボタンを押したとき
+document.addEventListener("click", function(e) {
+
+    if (
+        !e.target.classList.contains("favoriteBtn")
+    ) {
+        return;
+    }
+
+
+    const id = e.target.dataset.id;
+
+    let favorites = getFavorites();
+
+
+    if (favorites.includes(id)) {
+
+        // お気に入り解除
+
+        favorites =
+            favorites.filter(
+                favoriteId => favoriteId !== id
+            );
+
+    } else {
+
+        // お気に入り登録
+
+        favorites.push(id);
 
     }
-);
 
+
+    saveFavorites(favorites);
+
+    updateFavoriteButtons();
+
+});
 
 // ==========================================
 // 校内図・階数切り替え
