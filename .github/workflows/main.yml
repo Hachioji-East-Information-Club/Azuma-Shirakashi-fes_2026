@@ -1,0 +1,25 @@
+name: Update wait.json
+
+on:
+  repository_dispatch:
+    types: [update-wait]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update wait.json
+        run: |
+          echo '${{ github.event.client_payload.wait_data }}' > wait.json
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add wait.json
+          git commit -m "Update wait data" || exit 0
+          git push
