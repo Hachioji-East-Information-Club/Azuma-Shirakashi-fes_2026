@@ -98,7 +98,38 @@ let currentKeyword = "";
 
 function getStatus(wait){
 
-    if(wait >= 30){
+    const num = Number(wait);
+
+    // 数字の場合
+    if(!isNaN(num)){
+
+        if(num >= 30){
+
+            return{
+                text:"混雑",
+                color:"red"
+            };
+
+        }
+
+        if(num >= 10){
+
+            return{
+                text:"やや混雑",
+                color:"yellow"
+            };
+
+        }
+
+        return{
+            text:"空いています",
+            color:"green"
+        };
+
+    }
+
+    // 「混み」の場合
+    if(String(wait).includes("混み")){
 
         return{
             text:"混雑",
@@ -107,24 +138,23 @@ function getStatus(wait){
 
     }
 
-    if(wait >= 10){
+    // 「空き」の場合
+    if(String(wait).includes("空き")){
 
         return{
-            text:"やや混雑",
-            color:"yellow"
+            text:"空いています",
+            color:"green"
         };
 
     }
 
+    // その他
     return{
-
-        text:"空いています",
+        text:"",
         color:"green"
-
     };
 
 }
-
 
 // ----------------------
 // カード生成
@@ -202,11 +232,15 @@ function createCard(booth){
 
         </div>
 
-        <div class="waitTime">
+       <div class="waitTime">
 
-            ${booth.wait}分
+    ${
+        !isNaN(Number(booth.wait))
+            ? booth.wait + "分"
+            : booth.wait
+    }
 
-        </div>
+</div>
 
     </div>
 
@@ -462,7 +496,7 @@ function updateWait(id,newWait){
 
     }
 
-    booth.wait = Number(newWait);
+    booth.wait = newWait;
 
     updateList();
 
@@ -495,7 +529,7 @@ async function loadWaitData(){
 
             if(booth){
 
-                booth.wait = Number(item.wait);
+                booth.wait = item.wait;
 
             }
 
