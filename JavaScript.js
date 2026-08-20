@@ -1063,3 +1063,28 @@ setInterval(() => {
     }
 
 }
+
+// ==========================
+// 電車ページ表示
+// ==========================
+
+function showTrainPage(){
+
+    // すべてのページを非表示
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    // 電車ページを表示
+    const trainPage = document.getElementById("trainPage");
+
+    if(trainPage){
+        trainPage.classList.add("active");
+    }
+
+    // 下メニューの選択状態をリセット
+    document.querySelectorAll(".navBtn").forEach(btn => {
+        btn.classList.remove("activeNav");
+    });
+
+}
