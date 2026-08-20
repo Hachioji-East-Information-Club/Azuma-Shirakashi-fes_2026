@@ -1390,6 +1390,7 @@ function showNoticePage() {
     const noticePage =
         document.getElementById("noticePage");
 
+
     if (noticePage) {
 
         noticePage.classList.add("active");
@@ -1405,8 +1406,45 @@ function showNoticePage() {
 
         });
 
-}
 
+    // ==========================================
+    // お知らせを確認済みにする
+    // ==========================================
+
+    fetch(
+        "notice.json?time=" + Date.now()
+    )
+    .then(response => response.json())
+    .then(notices => {
+
+        if (
+            notices &&
+            notices.length > 0
+        ) {
+
+            // 最新のお知らせを確認済みにする
+            localStorage.setItem(
+                NOTICE_READ_KEY,
+                notices[0].id
+            );
+
+
+            // 赤丸を消す
+            updateNoticeBadges(notices);
+
+        }
+
+    })
+    .catch(error => {
+
+        console.log(
+            "お知らせ確認状態の更新失敗",
+            error
+        );
+
+    });
+
+}
 // ==========================================
 // お知らせ読み込み
 // ==========================================
@@ -1416,7 +1454,7 @@ async function loadNotices() {
     try {
 
         const response = await fetch(
-            "notice.json?time=" + new Date().getTime()
+            "notice.json?time=" + Date.now()
         );
 
         if (!response.ok) {
@@ -1440,8 +1478,17 @@ async function loadNotices() {
 
                 <div class="noticeCard">
 
-                    <div class="noticeDate">
-                        ${notice.date}
+                    <div class="noticeCardHeader">
+
+                        <div class="noticeDate">
+                            ${notice.date}
+                        </div>
+
+                        <span
+                            class="newNoticeDot"
+                            data-notice-id="${notice.id}">
+                        </span>
+
                     </div>
 
                     <div class="noticeTitle">
@@ -1458,6 +1505,9 @@ async function loadNotices() {
 
         });
 
+        // 新規お知らせの赤丸を更新
+        updateNoticeBadges(notices);
+
     }
 
     catch (error) {
@@ -1466,6 +1516,128 @@ async function loadNotices() {
             "お知らせデータ取得失敗",
             error
         );
+
+    }
+
+}
+// ==========================================
+// 新規お知らせ判定
+// ==========================================
+
+const NOTICE_READ_KEY = "azumaReadNoticeId";
+
+
+function updateNoticeBadges(notices) {
+
+    if (!notices || notices.length === 0) {
+        return;
+    }
+
+
+    // 最後に確認したお知らせID
+    const readNoticeId =
+        localStorage.getItem(NOTICE_READ_KEY);
+
+
+    // 最新のお知らせ
+    const latestNotice =
+        notices[0];
+
+
+    // 未確認のお知らせがあるか
+    const hasNewNotice =
+        readNoticeId !== latestNotice.id;
+
+
+    // ==========================================
+    // お知らせカードの赤丸
+    // ==========================================
+
+    document
+        .querySelectorAll(".newNoticeDot")
+        .forEach(dot => {
+
+            const noticeId =
+                dot.dataset.noticeId;
+
+
+            if (
+                hasNewNotice &&
+                noticeId === latestNotice.id
+            ) {
+
+                dot.classList.add(
+                    "showNewNoticeDot"
+                );
+
+            }
+
+            else {
+
+                dot.classList.remove(
+                    "showNewNoticeDot"
+                );
+
+            }
+
+        });
+
+
+    // ==========================================
+    // その他・お知らせの赤丸
+    // ==========================================
+
+    const otherBadge =
+        document.getElementById(
+            "otherNoticeBadge"
+        );
+
+
+    const noticeBadge =
+        document.getElementById(
+            "noticeBadge"
+        );
+
+
+    if (hasNewNotice) {
+
+        if (otherBadge) {
+
+            otherBadge.classList.add(
+                "showNewNoticeDot"
+            );
+
+        }
+
+
+        if (noticeBadge) {
+
+            noticeBadge.classList.add(
+                "showNewNoticeDot"
+            );
+
+        }
+
+    }
+
+    else {
+
+        if (otherBadge) {
+
+            otherBadge.classList.remove(
+                "showNewNoticeDot"
+            );
+
+        }
+
+
+        if (noticeBadge) {
+
+            noticeBadge.classList.remove(
+                "showNewNoticeDot"
+            );
+
+        }
 
     }
 
