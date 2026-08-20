@@ -1006,7 +1006,7 @@ const trainTimes = {
         { time: "05:55", destination: "川越" },
 
         { time: "06:13", destination: "川越" },
-        { time: "06:40", destination: "高麗" },
+        { time: "06:40", destination: "高麗川" },
 
         { time: "07:06", destination: "川越" },
         { time: "07:24", destination: "川越" },
@@ -1021,7 +1021,7 @@ const trainTimes = {
         { time: "09:57", destination: "川越" },
 
         { time: "10:17", destination: "川越" },
-        { time: "10:43", destination: "高麗" },
+        { time: "10:43", destination: "高麗川" },
 
         { time: "11:13", destination: "川越" },
         { time: "11:43", destination: "川越" },
@@ -1047,7 +1047,7 @@ const trainTimes = {
         { time: "17:55", destination: "川越" },
 
         { time: "18:19", destination: "川越" },
-        { time: "18:41", destination: "高麗" },
+        { time: "18:41", destination: "高麗川" },
 
         { time: "19:07", destination: "川越" },
         { time: "19:29", destination: "川越" },
@@ -1056,13 +1056,13 @@ const trainTimes = {
         { time: "20:11", destination: "川越" },
         { time: "20:43", destination: "川越" },
 
-        { time: "21:14", destination: "高麗" },
+        { time: "21:14", destination: "高麗川" },
         { time: "21:43", destination: "川越" },
 
         { time: "22:11", destination: "川越" },
         { time: "22:43", destination: "川越" },
 
-        { time: "23:20", destination: "高麗" }
+        { time: "23:20", destination: "高麗川" }
     ]
 
 };
