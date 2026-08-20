@@ -910,13 +910,8 @@ function showFloor(building, floor) {
 
         });
 
-      function showFloor(building, floor) {
-
-    // ここは今のまま
-    // ...
+         }
 }
-
-
 // ↓↓↓ ここから追加 ↓↓↓
 
 // ==========================================
