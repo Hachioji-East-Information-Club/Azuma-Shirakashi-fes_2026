@@ -95,12 +95,15 @@ let currentKeyword = "";
 // ----------------------
 // 混雑判定
 // ----------------------
+// ----------------------
+// 混雑判定
+// ----------------------
 
 function getStatus(wait){
 
-    const num = Number(wait);
+    const num = parseInt(String(wait).replace("分", ""), 10);
 
-    // 数字の場合
+    // 待ち時間が数字の場合
     if(!isNaN(num)){
 
         if(num >= 30){
@@ -127,6 +130,33 @@ function getStatus(wait){
         };
 
     }
+
+    // 「混み」の場合
+    if(String(wait).includes("混み")){
+
+        return{
+            text:"混雑",
+            color:"red"
+        };
+
+    }
+
+    // 「空き」の場合
+    if(String(wait).includes("空き")){
+
+        return{
+            text:"空いています",
+            color:"green"
+        };
+
+    }
+
+    return{
+        text:"",
+        color:"green"
+    };
+
+}
 
     // 「混み」の場合
     if(String(wait).includes("混み")){
