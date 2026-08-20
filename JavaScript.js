@@ -979,17 +979,42 @@ function selectTrainDirection(direction) {
 // 時刻更新
 function updateTrainTime() {
 
-    const now = new Date();
+   for (let i = 0; i < times.length; i++) {
 
-    const currentHour = now.getHours();
-    const currentMinute = now.getMinutes();
+    const train =
+        typeof times[i] === "string"
+            ? {
+                time: times[i],
+                destination: ""
+              }
+            : times[i];
 
-    const currentTimeElement =
-        document.getElementById("trainCurrentTime");
 
-    const nextTrainElement =
-        document.getElementById("nextTrainTime");
+    const timeParts =
+        train.time.split(":");
 
+    const hour =
+        Number(timeParts[0]);
+
+    const minute =
+        Number(timeParts[1]);
+
+
+    if (
+        hour > currentHour ||
+        (
+            hour === currentHour &&
+            minute > currentMinute
+        )
+    ) {
+
+        nextTrain = train;
+
+        break;
+
+    }
+
+}
 
     // 現在時刻
     if (currentTimeElement) {
@@ -1007,18 +1032,149 @@ function updateTrainTime() {
     // 今はテスト用
     const trainTimes = {
 
-        up: [
-            "07:00",
-            "07:30",
-            "08:00"
-        ],
+       const trainTimes = {
 
-        down: [
-            "07:15",
-            "07:45",
-            "08:15"
-        ]
+    // ==========================================
+    // 上り（八王子行き）
+    // ==========================================
 
+    up: [
+        { time: "05:55", destination: "八王子" },
+
+        { time: "06:21", destination: "八王子" },
+        { time: "06:48", destination: "八王子" },
+
+        { time: "07:05", destination: "八王子" },
+        { time: "07:24", destination: "八王子" },
+        { time: "07:42", destination: "八王子" },
+
+        { time: "08:04", destination: "八王子" },
+        { time: "08:18", destination: "八王子" },
+        { time: "08:38", destination: "八王子" },
+        { time: "08:56", destination: "八王子" },
+
+        { time: "09:26", destination: "八王子" },
+        { time: "09:43", destination: "八王子" },
+
+        { time: "10:17", destination: "八王子" },
+        { time: "10:44", destination: "八王子" },
+
+        { time: "11:14", destination: "八王子" },
+        { time: "11:44", destination: "八王子" },
+
+        { time: "12:14", destination: "八王子" },
+        { time: "12:44", destination: "八王子" },
+
+        { time: "13:14", destination: "八王子" },
+        { time: "13:44", destination: "八王子" },
+
+        { time: "14:14", destination: "八王子" },
+        { time: "14:44", destination: "八王子" },
+
+        { time: "15:14", destination: "八王子" },
+        { time: "15:43", destination: "八王子" },
+
+        { time: "16:11", destination: "八王子" },
+        { time: "16:38", destination: "八王子" },
+
+        { time: "17:09", destination: "八王子" },
+        { time: "17:23", destination: "八王子" },
+        { time: "17:40", destination: "八王子" },
+
+        { time: "18:04", destination: "八王子" },
+        { time: "18:20", destination: "八王子" },
+        { time: "18:41", destination: "八王子" },
+
+        { time: "19:06", destination: "八王子" },
+        { time: "19:29", destination: "八王子" },
+        { time: "19:49", destination: "八王子" },
+
+        { time: "20:11", destination: "八王子" },
+        { time: "20:29", destination: "八王子" },
+
+        { time: "21:01", destination: "八王子" },
+        { time: "21:21", destination: "八王子" },
+        { time: "21:43", destination: "八王子" },
+
+        { time: "22:11", destination: "八王子" },
+        { time: "22:30", destination: "八王子" },
+
+        { time: "23:01", destination: "八王子" },
+        { time: "23:27", destination: "八王子" }
+    ],
+
+
+    // ==========================================
+    // 下り
+    // ==========================================
+
+    down: [
+        { time: "04:49", destination: "川越" },
+
+        { time: "05:21", destination: "川越" },
+        { time: "05:55", destination: "川越" },
+
+        { time: "06:13", destination: "川越" },
+        { time: "06:40", destination: "高麗" },
+
+        { time: "07:06", destination: "川越" },
+        { time: "07:24", destination: "川越" },
+        { time: "07:43", destination: "拝島" },
+        { time: "07:57", destination: "川越" },
+
+        { time: "08:17", destination: "川越" },
+        { time: "08:38", destination: "川越" },
+        { time: "08:57", destination: "川越" },
+
+        { time: "09:25", destination: "川越" },
+        { time: "09:57", destination: "川越" },
+
+        { time: "10:17", destination: "川越" },
+        { time: "10:43", destination: "高麗" },
+
+        { time: "11:13", destination: "川越" },
+        { time: "11:43", destination: "川越" },
+
+        { time: "12:13", destination: "川越" },
+        { time: "12:43", destination: "川越" },
+
+        { time: "13:13", destination: "川越" },
+        { time: "13:43", destination: "川越" },
+
+        { time: "14:13", destination: "川越" },
+        { time: "14:43", destination: "川越" },
+
+        { time: "15:13", destination: "川越" },
+        { time: "15:42", destination: "川越" },
+
+        { time: "16:11", destination: "川越" },
+        { time: "16:29", destination: "箱根ヶ崎" },
+        { time: "16:51", destination: "川越" },
+
+        { time: "17:22", destination: "川越" },
+        { time: "17:41", destination: "拝島" },
+        { time: "17:55", destination: "川越" },
+
+        { time: "18:19", destination: "川越" },
+        { time: "18:41", destination: "高麗" },
+
+        { time: "19:07", destination: "川越" },
+        { time: "19:29", destination: "川越" },
+        { time: "19:49", destination: "川越" },
+
+        { time: "20:11", destination: "川越" },
+        { time: "20:43", destination: "川越" },
+
+        { time: "21:14", destination: "高麗" },
+        { time: "21:43", destination: "川越" },
+
+        { time: "22:11", destination: "川越" },
+        { time: "22:43", destination: "川越" },
+
+        { time: "23:20", destination: "高麗" }
+    ]
+
+};
     };
 
 
@@ -1058,23 +1214,28 @@ function updateTrainTime() {
     }
 
 
-    if (nextTrainElement) {
+  if (nextTrainElement) {
 
-        if (nextTrain) {
+    if (nextTrain) {
 
-            nextTrainElement.textContent =
-                nextTrain;
+        nextTrainElement.textContent =
+            nextTrain.time +
+            (
+                nextTrain.destination
+                    ? "　" + nextTrain.destination + "行"
+                    : ""
+            );
 
-        } else {
+    } else {
 
-            nextTrainElement.textContent =
-                "--:--";
-
-        }
+        nextTrainElement.textContent =
+            "--:--";
 
     }
 
 }
+
+
 
 
 // 毎秒更新
