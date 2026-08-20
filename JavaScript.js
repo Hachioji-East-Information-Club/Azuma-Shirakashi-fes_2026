@@ -68,23 +68,28 @@ const booths = [
   { id:"けしつか", name:"けしつか", title:"けしつか", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
   { id:"百聞不如一聴", name:"百聞不如一聴", title:"百聞不如一聴", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" }
 ];
+
+
+// ==========================================
+// 経過時間
+// ==========================================
+
 let startTime = Date.now();
+
 setInterval(() => {
-    let elapsed = Math.floor((Date.now() - startTime) / 1000);
+
+    let elapsed = Math.floor(
+        (Date.now() - startTime) / 1000
+    );
+
     console.log(`経過秒数: ${elapsed}`);
+
 }, 1000);
 
 
 // ==========================================
-// AZUMA Ver.3
-// script.js
-// Part1
-// 基本設定・一覧表示
-// ==========================================
-
-// ----------------------
 // 現在の絞り込み条件
-// ----------------------
+// ==========================================
 
 let currentCategory = "すべて";
 let currentBuilding = "すべて";
@@ -92,78 +97,87 @@ let currentGroup = "すべて";
 let currentKeyword = "";
 
 
-// ----------------------
+// ==========================================
 // 混雑判定
-// ----------------------
-// ----------------------
-// 混雑判定
-// ----------------------
+// ==========================================
 
-function getStatus(wait){
+function getStatus(wait) {
 
-    const num = parseInt(String(wait).replace("分", ""), 10);
+    const num = parseInt(
+        String(wait).replace("分", ""),
+        10
+    );
+
 
     // 待ち時間が数字の場合
-    if(!isNaN(num)){
 
-        if(num >= 30){
+    if (!isNaN(num)) {
 
-            return{
-                text:"混雑",
-                color:"red"
+        if (num >= 30) {
+
+            return {
+                text: "混雑",
+                color: "red"
             };
 
         }
 
-        if(num >= 10){
+        if (num >= 10) {
 
-            return{
-                text:"やや混雑",
-                color:"yellow"
+            return {
+                text: "やや混雑",
+                color: "yellow"
             };
 
         }
 
-        return{
-            text:"空いています",
-            color:"green"
+        return {
+            text: "空いています",
+            color: "green"
         };
 
     }
+
 
     // 「混み」の場合
-    if(String(wait).includes("混み")){
 
-        return{
-            text:"混雑",
-            color:"red"
+    if (String(wait).includes("混み")) {
+
+        return {
+            text: "混雑",
+            color: "red"
         };
 
     }
+
 
     // 「空き」の場合
-    if(String(wait).includes("空き")){
 
-        return{
-            text:"空いています",
-            color:"green"
+    if (String(wait).includes("空き")) {
+
+        return {
+            text: "空いています",
+            color: "green"
         };
 
     }
 
-    return{
-        text:"",
-        color:"green"
+
+    // その他
+
+    return {
+        text: "",
+        color: "green"
     };
 
 }
 
-    
-// ----------------------
-// カード生成
-// ----------------------
 
-function createCard(booth){
+// ==========================================
+// カード生成
+// ==========================================
+
+function createCard(booth) {
 
     const status = getStatus(booth.wait);
 
@@ -187,11 +201,17 @@ function createCard(booth){
 
         </div>
 
-        <button class="favoriteBtn" data-id="${booth.id}">
+
+        <button
+            class="favoriteBtn"
+            data-id="${booth.id}">
+
             🤍
+
         </button>
 
     </div>
+
 
     ${
         booth.image
@@ -199,51 +219,44 @@ function createCard(booth){
         : ""
     }
 
+
     <div class="infoRow">
 
         <div class="infoChip">
-
             🏷️ ${booth.category}
-
         </div>
 
         <div class="infoChip">
-
             🏫 ${booth.building}
-
         </div>
 
         <div class="infoChip">
-
             📍 ${booth.place}
-
         </div>
 
         <div class="infoChip">
-
             👥 ${booth.group}
-        
         </div>
 
     </div>
 
+
     <div class="waitRow">
 
         <div class="status ${status.color}">
-
             ${status.text}
-
         </div>
 
-       <div class="waitTime">
 
-    ${
-        !isNaN(Number(booth.wait))
-            ? booth.wait + "分"
-            : booth.wait
-    }
+        <div class="waitTime">
 
-</div>
+            ${
+                !isNaN(Number(booth.wait))
+                    ? booth.wait + "分"
+                    : booth.wait
+            }
+
+        </div>
 
     </div>
 
@@ -254,17 +267,19 @@ function createCard(booth){
 }
 
 
-// ----------------------
+// ==========================================
 // 一覧表示
-// ----------------------
+// ==========================================
 
-function displayBooths(list){
+function displayBooths(list) {
 
-    const boothList = document.getElementById("boothList");
+    const boothList =
+        document.getElementById("boothList");
 
     boothList.innerHTML = "";
 
-    if(list.length === 0){
+
+    if (list.length === 0) {
 
         boothList.innerHTML = `
 
@@ -280,49 +295,69 @@ function displayBooths(list){
 
     }
 
-    list.forEach(booth=>{
 
-        boothList.innerHTML += createCard(booth);
+    list.forEach(booth => {
+
+        boothList.innerHTML +=
+            createCard(booth);
 
     });
 
 }
 
-// ==========================================
-// AZUMA Ver.3
-// script.js
-// Part2
-// 検索・絞り込み・ページ切替
-// ==========================================
 
-// ----------------------
+// ==========================================
 // 一覧更新
-// ----------------------
+// ==========================================
 
-function updateList(){
+function updateList() {
 
     let result = booths;
 
-    // キーワード検索
-    if(currentKeyword !== ""){
 
-        result = result.filter(booth=>{
+    // キーワード検索
+
+    if (currentKeyword !== "") {
+
+        result = result.filter(booth => {
 
             return (
-                booth.id.toLowerCase().includes(currentKeyword.toLowerCase()) ||
-                booth.name.toLowerCase().includes(currentKeyword.toLowerCase()) ||
-                (booth.title && booth.title.toLowerCase().includes(currentKeyword.toLowerCase()))
+                booth.id
+                    .toLowerCase()
+                    .includes(
+                        currentKeyword.toLowerCase()
+                    )
+
+                ||
+
+                booth.name
+                    .toLowerCase()
+                    .includes(
+                        currentKeyword.toLowerCase()
+                    )
+
+                ||
+
+                (
+                    booth.title &&
+                    booth.title
+                        .toLowerCase()
+                        .includes(
+                            currentKeyword.toLowerCase()
+                        )
+                )
             );
 
         });
 
     }
 
+
     // カテゴリ
 
-    if(currentCategory !== "すべて"){
+    if (currentCategory !== "すべて") {
 
-        result = result.filter(booth=>{
+        result = result.filter(booth => {
 
             return booth.category === currentCategory;
 
@@ -330,11 +365,12 @@ function updateList(){
 
     }
 
+
     // 建物
 
-    if(currentBuilding !== "すべて"){
+    if (currentBuilding !== "すべて") {
 
-        result = result.filter(booth=>{
+        result = result.filter(booth => {
 
             return booth.building === currentBuilding;
 
@@ -342,11 +378,12 @@ function updateList(){
 
     }
 
+
     // 団体
 
-    if(currentGroup !== "すべて"){
+    if (currentGroup !== "すべて") {
 
-        result = result.filter(booth=>{
+        result = result.filter(booth => {
 
             return booth.group === currentGroup;
 
@@ -354,150 +391,198 @@ function updateList(){
 
     }
 
+
     displayBooths(result);
 
 }
 
 
-
-// ----------------------
+// ==========================================
 // カテゴリ変更
-// ----------------------
+// ==========================================
 
-function filterCategory(category){
+function filterCategory(category) {
 
     currentCategory = category;
 
-    document.querySelectorAll(".filterBtn").forEach(btn=>{
 
-        btn.classList.remove("activeFilter");
+    document
+        .querySelectorAll(".filterBtn")
+        .forEach(btn => {
 
-        if(btn.textContent.trim()===category){
+            btn.classList.remove(
+                "activeFilter"
+            );
 
-            btn.classList.add("activeFilter");
 
-        }
+            if (
+                btn.textContent.trim()
+                === category
+            ) {
 
-    });
+                btn.classList.add(
+                    "activeFilter"
+                );
+
+            }
+
+        });
+
 
     updateList();
 
 }
 
 
-
-// ----------------------
+// ==========================================
 // 建物変更
-// ----------------------
+// ==========================================
 
-function filterBuilding(building){
+function filterBuilding(building) {
 
     currentBuilding = building;
 
-    document.querySelectorAll(".buildingBtn").forEach(btn=>{
 
-        btn.classList.remove("activeBuilding");
+    document
+        .querySelectorAll(".buildingBtn")
+        .forEach(btn => {
 
-        if(btn.textContent.trim()===building){
+            btn.classList.remove(
+                "activeBuilding"
+            );
 
-            btn.classList.add("activeBuilding");
 
-        }
+            if (
+                btn.textContent.trim()
+                === building
+            ) {
 
-    });
+                btn.classList.add(
+                    "activeBuilding"
+                );
+
+            }
+
+        });
+
 
     updateList();
 
 }
 
 
-
-// ----------------------
+// ==========================================
 // 団体変更
-// ----------------------
+// ==========================================
 
-function filterGroup(group){
+function filterGroup(group) {
 
     currentGroup = group;
 
-    document.querySelectorAll(".groupBtn").forEach(btn=>{
 
-        btn.classList.remove("activeGroup");
+    document
+        .querySelectorAll(".groupBtn")
+        .forEach(btn => {
 
-        if(btn.textContent.trim()===group){
+            btn.classList.remove(
+                "activeGroup"
+            );
 
-            btn.classList.add("activeGroup");
 
-        }
+            if (
+                btn.textContent.trim()
+                === group
+            ) {
 
-    });
+                btn.classList.add(
+                    "activeGroup"
+                );
+
+            }
+
+        });
+
 
     updateList();
 
 }
 
 
-
-// ----------------------
+// ==========================================
 // 検索
-// ----------------------
+// ==========================================
 
-const searchBox = document.getElementById("searchBox");
-
-searchBox.addEventListener("input",()=>{
-
-    currentKeyword = searchBox.value;
-
-    updateList();
-
-});
+const searchBox =
+    document.getElementById("searchBox");
 
 
+searchBox.addEventListener(
+    "input",
+    () => {
 
-// ----------------------
+        currentKeyword =
+            searchBox.value;
+
+        updateList();
+
+    }
+);
+
+
+// ==========================================
 // ページ切替
-// ----------------------
+// ==========================================
 
-function showPage(pageId,button){
+function showPage(pageId, button) {
 
-    document.querySelectorAll(".page").forEach(page=>{
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
 
-        page.classList.remove("active");
+            page.classList.remove("active");
 
-    });
+        });
 
-    document.getElementById(pageId).classList.add("active");
 
-    document.querySelectorAll(".navBtn").forEach(btn=>{
+    document
+        .getElementById(pageId)
+        .classList.add("active");
 
-        btn.classList.remove("activeNav");
 
-    });
+    document
+        .querySelectorAll(".navBtn")
+        .forEach(btn => {
+
+            btn.classList.remove(
+                "activeNav"
+            );
+
+        });
+
 
     button.classList.add("activeNav");
 
 }
 
-// ==========================================
-// AZUMA Ver.3
-// script.js
-// Part3
-// 待ち時間更新・JSON連携
-// ==========================================
 
-// ----------------------
+// ==========================================
 // 待ち時間更新
-// ----------------------
+// ==========================================
 
-function updateWait(id,newWait){
+function updateWait(id, newWait) {
 
-    const booth = booths.find(booth => booth.id === id);
+    const booth =
+        booths.find(
+            booth => booth.id === id
+        );
 
-    if(!booth){
+
+    if (!booth) {
 
         return;
 
     }
+
 
     booth.wait = newWait;
 
@@ -506,31 +591,42 @@ function updateWait(id,newWait){
 }
 
 
-
-// ----------------------
+// ==========================================
 // JSON読み込み
-// （Power Automate対応）
-// ----------------------
+// Power Automate対応
+// ==========================================
 
-async function loadWaitData(){
+async function loadWaitData() {
 
-    try{
+    try {
 
-        const response = await fetch("wait.json?time=" + new Date().getTime());
+        const response =
+            await fetch(
+                "wait.json?time="
+                + new Date().getTime()
+            );
 
-        if(!response.ok){
+
+        if (!response.ok) {
 
             return;
 
         }
 
-        const waits = await response.json();
 
-        waits.forEach(item=>{
+        const waits =
+            await response.json();
 
-            const booth = booths.find(b=>b.id===item.id);
 
-            if(booth){
+        waits.forEach(item => {
+
+            const booth =
+                booths.find(
+                    b => b.id === item.id
+                );
+
+
+            if (booth) {
 
                 booth.wait = item.wait;
 
@@ -538,38 +634,38 @@ async function loadWaitData(){
 
         });
 
+
         updateList();
 
     }
 
-    catch(error){
+    catch (error) {
 
-        console.log("待ち時間データ取得失敗");
+        console.log(
+            "待ち時間データ取得失敗"
+        );
 
     }
 
 }
 
 
-
-// ----------------------
+// ==========================================
 // 自動更新
-// ----------------------
+// ==========================================
 
-// 10秒ごとに待ち時間取得
-setInterval(()=>{
+setInterval(() => {
 
     loadWaitData();
 
-},10000);
+}, 10000);
 
 
-
-// ----------------------
+// ==========================================
 // 初期表示
-// ----------------------
+// ==========================================
 
-window.onload = ()=>{
+window.onload = () => {
 
     updateList();
 
@@ -577,72 +673,117 @@ window.onload = ()=>{
 
 };
 
-/* ==========================================
-   校内図切り替え
-========================================== */
 
-function showMap(type){
+// ==========================================
+// 校内図切り替え
+// ==========================================
+
+function showMap(type) {
 
     // 地図を全部隠す
-    document.querySelectorAll('.mapArea')
-        .forEach(map => map.classList.remove('activeMap'));
+
+    document
+        .querySelectorAll(".mapArea")
+        .forEach(map => {
+
+            map.classList.remove(
+                "activeMap"
+            );
+
+        });
+
 
     // ボタンを全部リセット
-    document.querySelectorAll('.mapTab')
-        .forEach(btn => btn.classList.remove('activeMapTab'));
 
-    if(type === 'school'){
+    document
+        .querySelectorAll(".mapTab")
+        .forEach(btn => {
 
-        document.getElementById('schoolMap')
-            .classList.add('activeMap');
+            btn.classList.remove(
+                "activeMapTab"
+            );
 
-        document.querySelectorAll('.mapTab')[0]
-            .classList.add('activeMapTab');
+        });
 
-    }else{
 
-        document.getElementById('gymMap')
-            .classList.add('activeMap');
+    if (type === "school") {
 
-        document.querySelectorAll('.mapTab')[1]
-            .classList.add('activeMapTab');
+        document
+            .getElementById("schoolMap")
+            .classList.add("activeMap");
+
+
+        document
+            .querySelectorAll(".mapTab")[0]
+            .classList.add(
+                "activeMapTab"
+            );
+
     }
+
+    else {
+
+        document
+            .getElementById("gymMap")
+            .classList.add("activeMap");
+
+
+        document
+            .querySelectorAll(".mapTab")[1]
+            .classList.add(
+                "activeMapTab"
+            );
+
+    }
+
 }
 
-// ===========================
+
+// ==========================================
 // お気に入りボタン
-// ===========================
+// ==========================================
 
-document.addEventListener("click", function(e){
+document.addEventListener(
+    "click",
+    function(e) {
 
-    if(!e.target.classList.contains("favoriteBtn")) return;
+        if (
+            !e.target.classList
+                .contains("favoriteBtn")
+        ) {
 
-    if(e.target.textContent === "🤍"){
+            return;
 
-        e.target.textContent = "❤️";
+        }
 
-    }else{
 
-        e.target.textContent = "🤍";
+        if (
+            e.target.textContent.trim()
+            === "🤍"
+        ) {
+
+            e.target.textContent =
+                "❤️";
+
+        }
+
+        else {
+
+            e.target.textContent =
+                "🤍";
+
+        }
 
     }
+);
 
-});
 
-
-// ==========================
+// ==========================================
 // 校内図・階数切り替え
-// ==========================
-
-// ==========================
-// 校内図・階数切り替え
-// ==========================
-
-// ==========================
-// 校内図・階数切り替え
-// ==========================
+// ==========================================
 
 function showFloor(building, floor) {
+
 
     // --------------------------
     // 校舎棟
@@ -650,27 +791,57 @@ function showFloor(building, floor) {
 
     if (building === "school") {
 
-        const image = document.querySelector("#schoolFloorMap img");
+        const image =
+            document.querySelector(
+                "#schoolFloorMap img"
+            );
+
 
         if (image) {
 
-            image.src = "map/校舎棟" + floor + "階.png";
-            image.alt = "校舎棟" + floor + "階";
+            image.src =
+                "map/校舎棟"
+                + floor
+                + "階.png";
+
+            image.alt =
+                "校舎棟"
+                + floor
+                + "階";
 
         }
 
+
         // 校舎棟のボタンだけ取得
-        const buttons = document.querySelectorAll("#schoolMap .floorBtn");
+
+        const buttons =
+            document.querySelectorAll(
+                "#schoolMap .floorBtn"
+            );
+
 
         buttons.forEach(button => {
-            button.classList.remove("activeFloor");
+
+            button.classList.remove(
+                "activeFloor"
+            );
+
         });
 
+
         // 押した階を選択状態にする
+
         buttons.forEach(button => {
 
-            if (button.textContent.trim() === floor + "F") {
-                button.classList.add("activeFloor");
+            if (
+                button.textContent.trim()
+                === floor + "F"
+            ) {
+
+                button.classList.add(
+                    "activeFloor"
+                );
+
             }
 
         });
@@ -684,27 +855,57 @@ function showFloor(building, floor) {
 
     if (building === "gym") {
 
-        const image = document.querySelector("#gymFloorMap img");
+        const image =
+            document.querySelector(
+                "#gymFloorMap img"
+            );
+
 
         if (image) {
 
-            image.src = "map/体育館" + floor + "階.png";
-            image.alt = "体育館" + floor + "階";
+            image.src =
+                "map/体育館"
+                + floor
+                + "階.png";
+
+            image.alt =
+                "体育館"
+                + floor
+                + "階";
 
         }
 
+
         // 体育館棟のボタンだけ取得
-        const buttons = document.querySelectorAll("#gymMap .floorBtn");
+
+        const buttons =
+            document.querySelectorAll(
+                "#gymMap .floorBtn"
+            );
+
 
         buttons.forEach(button => {
-            button.classList.remove("activeFloor");
+
+            button.classList.remove(
+                "activeFloor"
+            );
+
         });
 
+
         // 押した階を選択状態にする
+
         buttons.forEach(button => {
 
-            if (button.textContent.trim() === floor + "F") {
-                button.classList.add("activeFloor");
+            if (
+                button.textContent.trim()
+                === floor + "F"
+            ) {
+
+                button.classList.add(
+                    "activeFloor"
+                );
+
             }
 
         });
