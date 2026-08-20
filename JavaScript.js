@@ -158,34 +158,7 @@ function getStatus(wait){
 
 }
 
-    // 「混み」の場合
-    if(String(wait).includes("混み")){
-
-        return{
-            text:"混雑",
-            color:"red"
-        };
-
-    }
-
-    // 「空き」の場合
-    if(String(wait).includes("空き")){
-
-        return{
-            text:"空いています",
-            color:"green"
-        };
-
-    }
-
-    // その他
-    return{
-        text:"",
-        color:"green"
-    };
-
-}
-
+    
 // ----------------------
 // カード生成
 // ----------------------
