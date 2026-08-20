@@ -972,3 +972,80 @@ body {
     line-height: 1.7;
     color: #555;
 }
+
+/* ==========================================
+   新規お知らせ赤丸
+========================================== */
+
+.newNoticeDot {
+
+    display: none;
+
+    width: 9px;
+    height: 9px;
+
+    background: #ff3b30;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+
+}
+
+
+.newNoticeDot.showNewNoticeDot {
+
+    display: block;
+
+}
+
+
+/* お知らせカード */
+
+.noticeCardHeader {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+/* お知らせメニュー */
+
+.noticeMenuCard {
+
+    position: relative;
+
+}
+
+
+.noticeMenuCard > .newNoticeDot {
+
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+}
+
+
+/* その他ボタン */
+
+.navBtn {
+
+    position: relative;
+
+}
+
+
+.navBtn > .newNoticeDot {
+
+    position: absolute;
+
+    top: 7px;
+    right: 7px;
+
+}
