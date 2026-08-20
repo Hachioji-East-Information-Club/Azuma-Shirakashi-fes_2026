@@ -913,7 +913,6 @@ function showFloor(building, floor) {
          }
 }
 // ↓↓↓ ここから追加 ↓↓↓
-
 // ==========================================
 // 電車機能
 // ==========================================
@@ -927,14 +926,12 @@ let currentTrainDirection = "up";
 
 const trainTimes = {
 
-    // --------------------------------------
+    // ==========================================
     // 上り（八王子行き）
-    // --------------------------------------
+    // ==========================================
 
     up: [
-
         { time: "05:55", destination: "八王子" },
-
         { time: "06:21", destination: "八王子" },
         { time: "06:48", destination: "八王子" },
 
@@ -995,23 +992,21 @@ const trainTimes = {
 
         { time: "23:01", destination: "八王子" },
         { time: "23:27", destination: "八王子" }
-
     ],
 
 
-    // --------------------------------------
+    // ==========================================
     // 下り
-    // --------------------------------------
+    // ==========================================
 
     down: [
-
         { time: "04:49", destination: "川越" },
 
         { time: "05:21", destination: "川越" },
         { time: "05:55", destination: "川越" },
 
         { time: "06:13", destination: "川越" },
-        { time: "06:40", destination: "高麗川" },
+        { time: "06:40", destination: "高麗" },
 
         { time: "07:06", destination: "川越" },
         { time: "07:24", destination: "川越" },
@@ -1026,7 +1021,7 @@ const trainTimes = {
         { time: "09:57", destination: "川越" },
 
         { time: "10:17", destination: "川越" },
-        { time: "10:43", destination: "高麗川" },
+        { time: "10:43", destination: "高麗" },
 
         { time: "11:13", destination: "川越" },
         { time: "11:43", destination: "川越" },
@@ -1052,7 +1047,7 @@ const trainTimes = {
         { time: "17:55", destination: "川越" },
 
         { time: "18:19", destination: "川越" },
-        { time: "18:41", destination: "高麗川" },
+        { time: "18:41", destination: "高麗" },
 
         { time: "19:07", destination: "川越" },
         { time: "19:29", destination: "川越" },
@@ -1061,14 +1056,13 @@ const trainTimes = {
         { time: "20:11", destination: "川越" },
         { time: "20:43", destination: "川越" },
 
-        { time: "21:14", destination: "高麗川" },
+        { time: "21:14", destination: "高麗" },
         { time: "21:43", destination: "川越" },
 
         { time: "22:11", destination: "川越" },
         { time: "22:43", destination: "川越" },
 
-        { time: "23:20", destination: "高麗川" }
-
+        { time: "23:20", destination: "高麗" }
     ]
 
 };
@@ -1096,7 +1090,6 @@ function showTrainPage() {
     });
 
     updateTrainTime();
-
 }
 
 
@@ -1114,7 +1107,6 @@ function selectTrainDirection(direction) {
     const downButton =
         document.getElementById("downButton");
 
-
     if (upButton) {
         upButton.classList.remove(
             "activeTrainDirection"
@@ -1126,7 +1118,6 @@ function selectTrainDirection(direction) {
             "activeTrainDirection"
         );
     }
-
 
     if (direction === "up") {
 
@@ -1146,14 +1137,12 @@ function selectTrainDirection(direction) {
 
     }
 
-
     updateTrainTime();
-
 }
 
 
 // ==========================================
-// 現在時刻を取得して次の電車を表示
+// 次の電車を取得
 // ==========================================
 
 function updateTrainTime() {
@@ -1166,37 +1155,27 @@ function updateTrainTime() {
     const currentMinute =
         now.getMinutes();
 
-    const currentSecond =
-        now.getSeconds();
-
-
-    // --------------------------------------
-    // 現在時刻
-    // --------------------------------------
 
     const currentTimeElement =
-        document.getElementById(
-            "currentTime"
-        );
+        document.getElementById("currentTime");
 
+    const nextTrainElement =
+        document.getElementById("nextTrain");
+
+
+    // 現在時刻
 
     if (currentTimeElement) {
 
         currentTimeElement.textContent =
-            "現在時刻は"
-            + String(currentHour).padStart(2, "0")
-            + ":"
-            + String(currentMinute).padStart(2, "0")
-            + ":"
-            + String(currentSecond).padStart(2, "0")
-            + "です";
+            "現在時刻は " +
+            String(currentHour).padStart(2, "0") +
+            ":" +
+            String(currentMinute).padStart(2, "0") +
+            " です";
 
     }
 
-
-    // --------------------------------------
-    // 選択中の方向の時刻表
-    // --------------------------------------
 
     const times =
         trainTimes[currentTrainDirection];
@@ -1204,10 +1183,6 @@ function updateTrainTime() {
 
     let nextTrain = null;
 
-
-    // --------------------------------------
-    // 次の電車を探す
-    // --------------------------------------
 
     for (let i = 0; i < times.length; i++) {
 
@@ -1238,25 +1213,17 @@ function updateTrainTime() {
     }
 
 
-    // --------------------------------------
-    // 次の電車表示
-    // --------------------------------------
-
-    const nextTrainElement =
-        document.getElementById(
-            "nextTrain"
-        );
-
+    // 次の電車
 
     if (nextTrainElement) {
 
         if (nextTrain) {
 
             nextTrainElement.textContent =
-                nextTrain.time
-                + "　"
-                + nextTrain.destination
-                + "行";
+                nextTrain.time +
+                "　" +
+                nextTrain.destination +
+                "行";
 
         } else {
 
