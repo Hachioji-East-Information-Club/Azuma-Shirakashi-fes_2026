@@ -1142,7 +1142,7 @@ function selectTrainDirection(direction) {
 
 
 // ==========================================
-// 次の電車を取得
+// 次の電車を取得・現在時刻を表示
 // ==========================================
 
 function updateTrainTime() {
@@ -1156,26 +1156,33 @@ function updateTrainTime() {
         now.getMinutes();
 
 
+    // HTMLのIDと一致させる
     const currentTimeElement =
-        document.getElementById("currentTime");
+        document.getElementById("trainCurrentTime");
 
     const nextTrainElement =
-        document.getElementById("nextTrain");
+        document.getElementById("nextTrainTime");
 
 
+    // ==========================================
     // 現在時刻
+    // ==========================================
 
     if (currentTimeElement) {
 
         currentTimeElement.textContent =
-            "現在時刻は " +
+            "現在時刻は" +
             String(currentHour).padStart(2, "0") +
             ":" +
             String(currentMinute).padStart(2, "0") +
-            " です";
+            "です";
 
     }
 
+
+    // ==========================================
+    // 現在選択されている方向の時刻表
+    // ==========================================
 
     const times =
         trainTimes[currentTrainDirection];
@@ -1183,6 +1190,10 @@ function updateTrainTime() {
 
     let nextTrain = null;
 
+
+    // ==========================================
+    // 次の電車を探す
+    // ==========================================
 
     for (let i = 0; i < times.length; i++) {
 
@@ -1213,7 +1224,9 @@ function updateTrainTime() {
     }
 
 
-    // 次の電車
+    // ==========================================
+    // 次の電車を表示
+    // ==========================================
 
     if (nextTrainElement) {
 
