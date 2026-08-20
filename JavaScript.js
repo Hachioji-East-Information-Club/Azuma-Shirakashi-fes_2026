@@ -910,6 +910,156 @@ function showFloor(building, floor) {
 
         });
 
+      function showFloor(building, floor) {
+
+    // ここは今のまま
+    // ...
+}
+
+
+// ↓↓↓ ここから追加 ↓↓↓
+
+// ==========================================
+// 電車機能
+// ==========================================
+
+let currentTrainDirection = "up";
+
+function showTrainPage(){
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    const trainPage = document.getElementById("trainPage");
+
+    if(trainPage){
+        trainPage.classList.add("active");
+    }
+
+    document.querySelectorAll(".navBtn").forEach(btn => {
+        btn.classList.remove("activeNav");
+    });
+
+    updateTrainTime();
+}
+
+function selectTrainDirection(direction){
+
+    currentTrainDirection = direction;
+
+    const upButton = document.getElementById("upButton");
+    const downButton = document.getElementById("downButton");
+
+    if(upButton){
+        upButton.classList.remove("activeTrainDirection");
+    }
+
+    if(downButton){
+        downButton.classList.remove("activeTrainDirection");
+    }
+
+    if(direction === "up"){
+
+        if(upButton){
+            upButton.classList.add("activeTrainDirection");
+        }
+
+    }else{
+
+        if(downButton){
+            downButton.classList.add("activeTrainDirection");
+        }
+
+    }
+
+    updateTrainTime();
+}
+
+function updateTrainTime(){
+
+    const now = new Date();
+
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+
+    const currentTimeElement =
+        document.getElementById("trainCurrentTime");
+
+    const nextTrainElement =
+        document.getElementById("nextTrainTime");
+
+    if(currentTimeElement){
+
+        currentTimeElement.textContent =
+            "現在時刻は" +
+            String(currentHour).padStart(2,"0") +
+            ":" +
+            String(currentMinute).padStart(2,"0") +
+            "です";
+
+    }
+
+    // 電車の時刻表
+    const trainTimes = {
+
+        up: [
+        ],
+
+        down: [
+        ]
+
+    };
+
+    const times = trainTimes[currentTrainDirection];
+
+    let nextTrain = null;
+
+    for(let i = 0; i < times.length; i++){
+
+        const timeParts = times[i].split(":");
+
+        const hour = Number(timeParts[0]);
+        const minute = Number(timeParts[1]);
+
+        if(
+            hour > currentHour ||
+            (
+                hour === currentHour &&
+                minute > currentMinute
+            )
+        ){
+
+            nextTrain = times[i];
+
+            break;
+
+        }
+
+    }
+
+    if(nextTrainElement){
+
+        if(nextTrain){
+
+            nextTrainElement.textContent = nextTrain;
+
+        }else{
+
+            nextTrainElement.textContent = "--:--";
+
+        }
+
+    }
+
+}
+
+setInterval(() => {
+
+    updateTrainTime();
+
+}, 1000);
+
     }
 
 }
