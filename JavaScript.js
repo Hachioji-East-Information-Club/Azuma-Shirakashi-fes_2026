@@ -1142,51 +1142,47 @@ function selectTrainDirection(direction) {
 
 
 // ==========================================
-// 次の電車を取得・現在時刻を表示
+// 電車機能 初期化・毎秒更新
 // ==========================================
 
 function updateTrainTime() {
 
     const now = new Date();
 
-    const currentHour =
-        now.getHours();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
 
-    const currentMinute =
-        now.getMinutes();
-
-
-    // HTMLのIDと一致させる
+    // 現在時刻
     const currentTimeElement =
         document.getElementById("trainCurrentTime");
 
+    // 次の電車
     const nextTrainElement =
         document.getElementById("nextTrainTime");
 
 
     // ==========================================
-    // 現在時刻
+    // 現在時刻を表示
     // ==========================================
 
     if (currentTimeElement) {
 
         currentTimeElement.textContent =
-            "現在時刻は" +
+            "現在時刻は " +
             String(currentHour).padStart(2, "0") +
             ":" +
             String(currentMinute).padStart(2, "0") +
-            "です";
+            " です";
 
     }
 
 
     // ==========================================
-    // 現在選択されている方向の時刻表
+    // 時刻表
     // ==========================================
 
     const times =
         trainTimes[currentTrainDirection];
-
 
     let nextTrain = null;
 
@@ -1197,15 +1193,8 @@ function updateTrainTime() {
 
     for (let i = 0; i < times.length; i++) {
 
-        const timeParts =
-            times[i].time.split(":");
-
-        const hour =
-            Number(timeParts[0]);
-
-        const minute =
-            Number(timeParts[1]);
-
+        const [hour, minute] =
+            times[i].time.split(":").map(Number);
 
         if (
             hour > currentHour ||
@@ -1248,6 +1237,120 @@ function updateTrainTime() {
     }
 
 }
+
+
+// ==========================================
+// 電車ページを開いたとき
+// ==========================================
+
+function showTrainPage() {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+
+            page.classList.remove("active");
+
+        });
+
+
+    const trainPage =
+        document.getElementById("trainPage");
+
+    if (trainPage) {
+
+        trainPage.classList.add("active");
+
+    }
+
+
+    document
+        .querySelectorAll(".navBtn")
+        .forEach(btn => {
+
+            btn.classList.remove("activeNav");
+
+        });
+
+
+    // ★ 電車ページを開いた瞬間に更新
+    updateTrainTime();
+
+}
+
+
+// ==========================================
+// 上り・下り切り替え
+// ==========================================
+
+function selectTrainDirection(direction) {
+
+    currentTrainDirection = direction;
+
+
+    const upButton =
+        document.getElementById("upButton");
+
+    const downButton =
+        document.getElementById("downButton");
+
+
+    if (upButton) {
+
+        upButton.classList.remove(
+            "activeTrainDirection"
+        );
+
+    }
+
+
+    if (downButton) {
+
+        downButton.classList.remove(
+            "activeTrainDirection"
+        );
+
+    }
+
+
+    if (direction === "up") {
+
+        if (upButton) {
+
+            upButton.classList.add(
+                "activeTrainDirection"
+            );
+
+        }
+
+    } else {
+
+        if (downButton) {
+
+            downButton.classList.add(
+                "activeTrainDirection"
+            );
+
+        }
+
+    }
+
+
+    updateTrainTime();
+
+}
+
+
+// ==========================================
+// 起動時
+// ==========================================
+
+// ページ読み込み完了時に一度実行
+document.addEventListener("DOMContentLoaded", () => {
+
+    updateTrainTime();
+
+});
 
 
 // ==========================================
