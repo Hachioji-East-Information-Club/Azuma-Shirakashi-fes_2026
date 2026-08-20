@@ -1049,3 +1049,22 @@ body {
     right: 7px;
 
 }
+
+.favoriteFilter {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.favoriteFilterBtn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background: #eee;
+    cursor: pointer;
+}
+
+.favoriteFilterBtn.activeFavoriteFilter {
+    background: #ff6b81;
+    color: white;
+}
