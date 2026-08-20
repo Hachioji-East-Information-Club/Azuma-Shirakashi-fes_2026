@@ -925,7 +925,9 @@ function showFloor(building, floor) {
 
 let currentTrainDirection = "up";
 
-function showTrainPage(){
+
+// 電車ページ表示
+function showTrainPage() {
 
     document.querySelectorAll(".page").forEach(page => {
         page.classList.remove("active");
@@ -933,7 +935,7 @@ function showTrainPage(){
 
     const trainPage = document.getElementById("trainPage");
 
-    if(trainPage){
+    if (trainPage) {
         trainPage.classList.add("active");
     }
 
@@ -944,30 +946,32 @@ function showTrainPage(){
     updateTrainTime();
 }
 
-function selectTrainDirection(direction){
+
+// 上り・下り切り替え
+function selectTrainDirection(direction) {
 
     currentTrainDirection = direction;
 
     const upButton = document.getElementById("upButton");
     const downButton = document.getElementById("downButton");
 
-    if(upButton){
+    if (upButton) {
         upButton.classList.remove("activeTrainDirection");
     }
 
-    if(downButton){
+    if (downButton) {
         downButton.classList.remove("activeTrainDirection");
     }
 
-    if(direction === "up"){
+    if (direction === "up") {
 
-        if(upButton){
+        if (upButton) {
             upButton.classList.add("activeTrainDirection");
         }
 
-    }else{
+    } else {
 
-        if(downButton){
+        if (downButton) {
             downButton.classList.add("activeTrainDirection");
         }
 
@@ -976,7 +980,9 @@ function selectTrainDirection(direction){
     updateTrainTime();
 }
 
-function updateTrainTime(){
+
+// 時刻更新
+function updateTrainTime() {
 
     const now = new Date();
 
@@ -989,46 +995,64 @@ function updateTrainTime(){
     const nextTrainElement =
         document.getElementById("nextTrainTime");
 
-    if(currentTimeElement){
+
+    // 現在時刻
+    if (currentTimeElement) {
 
         currentTimeElement.textContent =
             "現在時刻は" +
-            String(currentHour).padStart(2,"0") +
+            String(currentHour).padStart(2, "0") +
             ":" +
-            String(currentMinute).padStart(2,"0") +
+            String(currentMinute).padStart(2, "0") +
             "です";
 
     }
 
-    // 電車の時刻表
+
+    // 今はテスト用
     const trainTimes = {
 
         up: [
+            "07:00",
+            "07:30",
+            "08:00"
         ],
 
         down: [
+            "07:15",
+            "07:45",
+            "08:15"
         ]
 
     };
 
-    const times = trainTimes[currentTrainDirection];
+
+    const times =
+        trainTimes[currentTrainDirection];
+
 
     let nextTrain = null;
 
-    for(let i = 0; i < times.length; i++){
 
-        const timeParts = times[i].split(":");
+    for (let i = 0; i < times.length; i++) {
 
-        const hour = Number(timeParts[0]);
-        const minute = Number(timeParts[1]);
+        const timeParts =
+            times[i].split(":");
 
-        if(
+        const hour =
+            Number(timeParts[0]);
+
+        const minute =
+            Number(timeParts[1]);
+
+
+        if (
             hour > currentHour ||
             (
                 hour === currentHour &&
                 minute > currentMinute
             )
-        ){
+        ) {
 
             nextTrain = times[i];
 
@@ -1038,15 +1062,18 @@ function updateTrainTime(){
 
     }
 
-    if(nextTrainElement){
 
-        if(nextTrain){
+    if (nextTrainElement) {
 
-            nextTrainElement.textContent = nextTrain;
+        if (nextTrain) {
 
-        }else{
+            nextTrainElement.textContent =
+                nextTrain;
 
-            nextTrainElement.textContent = "--:--";
+        } else {
+
+            nextTrainElement.textContent =
+                "--:--";
 
         }
 
@@ -1054,37 +1081,10 @@ function updateTrainTime(){
 
 }
 
+
+// 毎秒更新
 setInterval(() => {
 
     updateTrainTime();
 
 }, 1000);
-
-    }
-
-}
-
-// ==========================
-// 電車ページ表示
-// ==========================
-
-function showTrainPage(){
-
-    // すべてのページを非表示
-    document.querySelectorAll(".page").forEach(page => {
-        page.classList.remove("active");
-    });
-
-    // 電車ページを表示
-    const trainPage = document.getElementById("trainPage");
-
-    if(trainPage){
-        trainPage.classList.add("active");
-    }
-
-    // 下メニューの選択状態をリセット
-    document.querySelectorAll(".navBtn").forEach(btn => {
-        btn.classList.remove("activeNav");
-    });
-
-}
