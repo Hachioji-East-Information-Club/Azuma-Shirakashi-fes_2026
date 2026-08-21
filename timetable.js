@@ -509,3 +509,652 @@ const timetable = {
     ]
 
 };
+// ==========================================
+// タイムテーブル表示
+// ==========================================
+
+let currentTimetableDate = "9月5日";
+
+
+// ==========================================
+// 場所
+// ==========================================
+
+const timetablePlaces = [
+    "体育館",
+    "5ホール",
+    "剣道場",
+    "中庭",
+    "憩いの広場",
+    "化学室",
+    "視聴覚室"
+];
+
+
+// ==========================================
+// 時間設定
+// 9:00 ～ 15:30
+// 30分 = 1時間分の高さ
+// ==========================================
+
+const timetableStartHour = 9;
+const timetableStartMinute = 0;
+
+const timetableEndHour = 15;
+const timetableEndMinute = 30;
+
+const timetableHourHeight = 120;
+
+
+// ==========================================
+// 時刻を分に変換
+// ==========================================
+
+function timetableTimeToMinutes(time) {
+
+    const [hour, minute] =
+        time.split(":").map(Number);
+
+    return hour * 60 + minute;
+
+}
+
+
+// ==========================================
+// 分を時刻表示に変換
+// ==========================================
+
+function timetableMinutesToTime(minutes) {
+
+    const hour =
+        Math.floor(minutes / 60);
+
+    const minute =
+        minutes % 60;
+
+    return (
+        String(hour).padStart(2, "0") +
+        ":" +
+        String(minute).padStart(2, "0")
+    );
+
+}
+
+
+// ==========================================
+// タイムテーブル描画
+// ==========================================
+
+function renderTimetable() {
+
+    const grid =
+        document.getElementById("timetableGrid");
+
+    if (!grid) {
+        return;
+    }
+
+    grid.innerHTML = "";
+
+
+    const startMinutes =
+        timetableStartHour * 60 +
+        timetableStartMinute;
+
+    const endMinutes =
+        timetableEndHour * 60 +
+        timetableEndMinute;
+
+
+    const totalMinutes =
+        endMinutes - startMinutes;
+
+
+    // ==========================================
+    // 全体
+    // ==========================================
+
+    const timetable =
+        document.createElement("div");
+
+    timetable.className =
+        "timetable";
+
+
+    // ==========================================
+    // ヘッダー
+    // ==========================================
+
+    const header =
+        document.createElement("div");
+
+    header.className =
+        "timetableRow timetableHeaderRow";
+
+
+    const timeHeader =
+        document.createElement("div");
+
+    timeHeader.className =
+        "timetableTimeHeader";
+
+    timeHeader.textContent =
+        "時間";
+
+
+    header.appendChild(timeHeader);
+
+
+    timetablePlaces.forEach(place => {
+
+        const placeHeader =
+            document.createElement("div");
+
+        placeHeader.className =
+            "timetablePlaceHeader";
+
+        placeHeader.textContent =
+            place;
+
+        header.appendChild(placeHeader);
+
+    });
+
+
+    timetable.appendChild(header);
+
+
+    // ==========================================
+    // 本体
+    // ==========================================
+
+    const body =
+        document.createElement("div");
+
+    body.className =
+        "timetableBody";
+
+
+    // 時間軸
+    // ==========================================
+
+    const timeColumn =
+        document.createElement("div");
+
+    timeColumn.className =
+        "timetableTimeColumn";
+
+
+    for (
+        let minute = startMinutes;
+        minute <= endMinutes;
+        minute += 30
+    ) {
+
+        const time =
+            document.createElement("div");
+
+        time.className =
+            "timetableTime";
+
+        time.textContent =
+            timetableMinutesToTime(minute);
+
+        time.style.top =
+            (
+                (minute - startMinutes)
+                / 60
+                * timetableHourHeight
+            ) + "px";
+
+        timeColumn.appendChild(time);
+
+    }
+
+
+    body.appendChild(timeColumn);
+
+
+    // ==========================================
+    // 各場所
+    // ==========================================
+
+    timetablePlaces.forEach(place => {
+
+        const column =
+            document.createElement("div");
+
+        column.className =
+            "timetableColumn";
+
+
+        // 横線
+        for (
+            let minute = startMinutes;
+            minute <= endMinutes;
+            minute += 30
+        ) {
+
+            const line =
+                document.createElement("div");
+
+            line.className =
+                "timetableHorizontalLine";
+
+            line.style.top =
+                (
+                    (minute - startMinutes)
+                    / 60
+                    * timetableHourHeight
+                ) + "px";
+
+            column.appendChild(line);
+
+        }
+
+
+        // ------------------------------------------
+        // 出し物
+        // ------------------------------------------
+
+        const events =
+            timetable[currentTimetableDate]
+                ?.filter(event =>
+                    event.place === place
+                ) || [];
+
+
+        events.forEach(event => {
+
+            const eventStart =
+                timetableTimeToMinutes(
+                    event.start
+                );
+
+            const eventEnd =
+                timetableTimeToMinutes(
+                    event.end
+                );
+
+
+            const top =
+                (
+                    eventStart -
+                    startMinutes
+                )
+                / 60
+                * timetableHourHeight;
+
+
+            const height =
+                (
+                    eventEnd -
+                    eventStart
+                )
+                / 60
+                * timetableHourHeight;
+
+
+            const eventElement =
+                document.createElement("div");
+
+            eventElement.className =
+                "timetableEvent";
+
+
+            eventElement.style.top =
+                top + "px";
+
+
+            eventElement.style.height =
+                height + "px";
+
+
+            eventElement.innerHTML = `
+
+                <div class="timetableEventName">
+                    ${event.name}
+                </div>
+
+                <div class="timetableEventTime">
+                    ${event.start}〜${event.end}
+                </div>
+
+            `;
+
+
+            // --------------------------------------
+            // タップしたら出し物一覧を検索
+            // --------------------------------------
+
+            eventElement.addEventListener(
+                "click",
+                () => {
+
+                    if (!event.boothId) {
+                        return;
+                    }
+
+                    const booth =
+                        booths.find(
+                            booth =>
+                                booth.id ===
+                                event.boothId
+                        );
+
+                    if (!booth) {
+                        return;
+                    }
+
+                    // 一覧ページへ
+                    showPage("boothPage");
+
+                    // 検索欄があれば検索
+                    const searchBox =
+                        document.getElementById(
+                            "searchBox"
+                        );
+
+                    if (searchBox) {
+
+                        searchBox.value =
+                            booth.name;
+
+                        currentKeyword =
+                            booth.name;
+
+                        updateList();
+
+                    }
+
+                }
+            );
+
+
+            column.appendChild(
+                eventElement
+            );
+
+        });
+
+
+        body.appendChild(column);
+
+    });
+
+
+    // ==========================================
+    // 現在時刻線
+    // ==========================================
+
+    const currentLine =
+        document.createElement("div");
+
+    currentLine.id =
+        "timetableCurrentLine";
+
+    body.appendChild(
+        currentLine
+    );
+
+
+    timetable.appendChild(body);
+
+    grid.appendChild(timetable);
+
+
+    updateTimetableCurrentTime();
+
+}
+
+
+// ==========================================
+// 日付切り替え
+// ==========================================
+
+function selectTimetableDate(date) {
+
+    currentTimetableDate =
+        date;
+
+
+    document
+        .querySelectorAll(
+            ".timetableDateButtons button"
+        )
+        .forEach(button => {
+
+            button.classList.remove(
+                "activeTimetableDate"
+            );
+
+        });
+
+
+    if (date === "9月5日") {
+
+        document
+            .getElementById(
+                "date5Button"
+            )
+            ?.classList.add(
+                "activeTimetableDate"
+            );
+
+    }
+
+
+    if (date === "9月6日") {
+
+        document
+            .getElementById(
+                "date6Button"
+            )
+            ?.classList.add(
+                "activeTimetableDate"
+            );
+
+    }
+
+
+    renderTimetable();
+
+}
+
+
+// ==========================================
+// 現在時刻
+// ==========================================
+
+function updateTimetableCurrentTime() {
+
+    const now =
+        new Date();
+
+
+    const hour =
+        now.getHours();
+
+    const minute =
+        now.getMinutes();
+
+    const second =
+        now.getSeconds();
+
+
+    const timeText =
+        String(hour).padStart(2, "0") +
+        ":" +
+        String(minute).padStart(2, "0");
+
+
+    const timeElement =
+        document.getElementById(
+            "timetableCurrentTime"
+        );
+
+
+    if (timeElement) {
+
+        timeElement.textContent =
+            timeText;
+
+    }
+
+
+    // ------------------------------------------
+    // 現在時刻線
+    // ------------------------------------------
+
+    const line =
+        document.getElementById(
+            "timetableCurrentLine"
+        );
+
+
+    if (!line) {
+        return;
+    }
+
+
+    const startMinutes =
+        timetableStartHour * 60 +
+        timetableStartMinute;
+
+
+    const currentMinutes =
+        hour * 60 +
+        minute +
+        second / 60;
+
+
+    const position =
+        (
+            currentMinutes -
+            startMinutes
+        )
+        / 60
+        * timetableHourHeight;
+
+
+    const endMinutes =
+        timetableEndHour * 60 +
+        timetableEndMinute;
+
+
+    // 時間外なら非表示
+
+    if (
+        currentMinutes < startMinutes ||
+        currentMinutes > endMinutes
+    ) {
+
+        line.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    line.style.display =
+        "block";
+
+
+    line.style.top =
+        position + "px";
+
+}
+
+
+// ==========================================
+// タイムテーブルページ
+// ==========================================
+
+function showTimetablePage() {
+
+    localStorage.setItem(
+        "azumaCurrentPage",
+        "timetablePage"
+    );
+
+
+    // お知らせページを離れる場合
+
+    if (
+        document
+            .getElementById("noticePage")
+            ?.classList.contains("active")
+    ) {
+
+        markNoticesAsRead();
+
+    }
+
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+
+            page.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    const page =
+        document.getElementById(
+            "timetablePage"
+        );
+
+
+    if (page) {
+
+        page.classList.add(
+            "active"
+        );
+
+    }
+
+
+    document
+        .querySelectorAll(".navBtn")
+        .forEach(btn => {
+
+            btn.classList.remove(
+                "activeNav"
+            );
+
+        });
+
+
+    selectTimetableDate(
+        currentTimetableDate
+    );
+
+}
+
+
+// ==========================================
+// 起動時
+// ==========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        renderTimetable();
+
+    }
+);
+
+
+// ==========================================
+// 現在時刻を毎秒更新
+// ==========================================
+
+setInterval(
+    updateTimetableCurrentTime,
+    1000
+);
