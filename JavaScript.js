@@ -1923,11 +1923,13 @@ function showPamphletPage() {
 
 
 // ==========================================
-// スワイプ
+// パンフレット スワイプ
 // ==========================================
 
 let pamphletTouchStartX = 0;
-let pamphletTouchEndX = 0;
+let pamphletTouchStartY = 0;
+let pamphletTouchStartTime = 0;
+let pamphletTouchMoved = false;
 
 
 document.addEventListener(
@@ -1935,41 +1937,127 @@ document.addEventListener(
     () => {
 
         const viewer =
-            document.querySelector(
-                ".pamphletViewer"
-            );
-
+            document.querySelector(".pamphletViewer");
 
         if (!viewer) return;
 
+
+        // ------------------------------------------
+        // 指を置いた
+        // ------------------------------------------
 
         viewer.addEventListener(
             "touchstart",
             (e) => {
 
+                // 2本以上の指は無視
+                if (e.touches.length !== 1) {
+
+                    pamphletTouchMoved = false;
+
+                    return;
+
+                }
+
+
+                const touch =
+                    e.touches[0];
+
                 pamphletTouchStartX =
-                    e.changedTouches[0].screenX;
+                    touch.clientX;
+
+                pamphletTouchStartY =
+                    touch.clientY;
+
+                pamphletTouchStartTime =
+                    Date.now();
+
+                pamphletTouchMoved = false;
 
             },
             { passive: true }
         );
 
 
+        // ------------------------------------------
+        // 指を動かしている
+        // ------------------------------------------
+
+        viewer.addEventListener(
+            "touchmove",
+            (e) => {
+
+                // 2本指になったら無効
+                if (e.touches.length !== 1) {
+
+                    pamphletTouchMoved = false;
+
+                    return;
+
+                }
+
+
+                const touch =
+                    e.touches[0];
+
+                const dx =
+                    touch.clientX -
+                    pamphletTouchStartX;
+
+                const dy =
+                    touch.clientY -
+                    pamphletTouchStartY;
+
+
+                /*
+                 * 縦方向に動いた場合は
+                 * ページめくり対象外
+                 */
+
+                if (Math.abs(dy) > Math.abs(dx)) {
+
+                    pamphletTouchMoved = false;
+
+                    return;
+
+                }
+
+
+                /*
+                 * 横方向に50px以上動いたら
+                 * スワイプとして扱う
+                 */
+
+                if (Math.abs(dx) >= 50) {
+
+                    pamphletTouchMoved = true;
+
+                }
+
+            },
+            { passive: true }
+        );
+
+
+        // ------------------------------------------
+        // 指を離した
+        // ------------------------------------------
+
         viewer.addEventListener(
             "touchend",
             (e) => {
 
-                pamphletTouchEndX =
-                    e.changedTouches[0].screenX;
+                // スワイプ判定されていなければ何もしない
+                if (!pamphletTouchMoved) {
 
-                const distance =
-                    pamphletTouchEndX -
-                    pamphletTouchStartX;
+                    return;
+
+                }
 
 
-                // 50px未満は無視
+                // 2本指操作は無視
                 if (
-                    Math.abs(distance) < 50
+                    e.changedTouches.length !== 1
                 ) {
 
                     return;
@@ -1977,28 +2065,60 @@ document.addEventListener(
                 }
 
 
-                // 左スワイプ
-                if (distance < 0) {
+                const touch =
+                    e.changedTouches[0];
+
+                const distance =
+                    touch.clientX -
+                    pamphletTouchStartX;
+
+
+                // 念のため横方向だけ判定
+
+                const verticalDistance =
+                    touch.clientY -
+                    pamphletTouchStartY;
+
+
+                if (
+                    Math.abs(verticalDistance) >
+                    Math.abs(distance)
+                ) {
+
+                    return;
+
+                }
+
+
+                // ----------------------------------
+                // 左スワイプ → 次へ
+                // ----------------------------------
+
+                if (distance < -50) {
 
                     nextPamphletPage();
 
                 }
 
 
-                // 右スワイプ
-                else {
+                // ----------------------------------
+                // 右スワイプ → 前へ
+                // ----------------------------------
+
+                else if (distance > 50) {
 
                     previousPamphletPage();
 
                 }
 
+
+                pamphletTouchMoved = false;
+
             },
             { passive: true }
         );
 
-
-        // 初期表示
-        updatePamphletPage();
-
+    }
+);
     }
 );
