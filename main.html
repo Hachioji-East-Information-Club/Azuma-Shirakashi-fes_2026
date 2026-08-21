@@ -520,7 +520,9 @@
             </div>
 
 
-            <div class="menuCard">
+            <div
+    class="menuCard"
+    onclick="showPamphletPage()">
 
                 <span class="material-icons">
                     description
@@ -580,7 +582,72 @@
 
 </section>
 
+<!-- ==========================
+     パンフレット
+=========================== -->
 
+<section id="pamphletPage" class="page">
+
+    <div class="pageTitle">
+        パンフレット
+    </div>
+
+    <div class="pamphletViewer">
+
+        <!-- PDF表示 -->
+
+        <div class="pamphletPdfBox">
+
+            <iframe
+                id="pamphletPdf"
+                src="pamphlet/1.pdf"
+                title="パンフレット">
+
+            </iframe>
+
+        </div>
+
+
+        <!-- ページ番号 -->
+
+        <div
+            id="pamphletPageNumber"
+            class="pamphletPageNumber">
+
+            1 / 10
+
+        </div>
+
+
+        <!-- ページ操作 -->
+
+        <div class="pamphletControls">
+
+            <button
+                id="pamphletPrev"
+                class="pamphletNavButton"
+                onclick="previousPamphletPage()">
+
+                ← 前へ
+
+            </button>
+
+
+            <button
+                id="pamphletNext"
+                class="pamphletNavButton"
+                onclick="nextPamphletPage()">
+
+                次へ →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+    
     <!-- ==========================
          路線図
     =========================== -->
