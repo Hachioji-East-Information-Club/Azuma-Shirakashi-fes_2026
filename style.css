@@ -1218,3 +1218,36 @@ body {
     }
 
 }
+
+/* ==========================================
+   パンフレット
+========================================== */
+
+.pamphletViewer {
+    text-align: center;
+}
+
+.pamphletPdfBox {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+
+    background: #eee;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+#pamphletImage {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-height: 75vh;
+
+    object-fit: contain;
+
+    margin: 0 auto;
+
+    border-radius: 8px;
+}
