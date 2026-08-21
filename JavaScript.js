@@ -1760,3 +1760,106 @@ function filterFavorite(onlyFavorite) {
 
     updateList();
 }
+
+/* ==========================================
+   パンフレット
+========================================== */
+
+// パンフレットの総ページ数
+const pamphletTotalPages = 10;
+
+// 現在のページ
+let currentPamphletPage = 1;
+
+
+// パンフレットページを開く
+function showPamphletPage() {
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document
+        .getElementById("pamphletPage")
+        .classList.add("active");
+
+    currentPamphletPage = 1;
+
+    updatePamphletPage();
+
+}
+
+
+// パンフレットのページを更新
+function updatePamphletPage() {
+
+    const pdf =
+        document.getElementById("pamphletPdf");
+
+    const pageNumber =
+        document.getElementById("pamphletPageNumber");
+
+    const prevButton =
+        document.getElementById("pamphletPrev");
+
+    const nextButton =
+        document.getElementById("pamphletNext");
+
+
+    // PDFを変更
+
+    pdf.src =
+        `pamphlet/${currentPamphletPage}.pdf`;
+
+
+    // ページ番号
+
+    pageNumber.textContent =
+        `${currentPamphletPage} / ${pamphletTotalPages}`;
+
+
+    // 前へボタン
+
+    prevButton.disabled =
+        currentPamphletPage === 1;
+
+
+    // 次へボタン
+
+    nextButton.disabled =
+        currentPamphletPage === pamphletTotalPages;
+
+}
+
+
+// 次のページ
+function nextPamphletPage() {
+
+    if (
+        currentPamphletPage <
+        pamphletTotalPages
+    ) {
+
+        currentPamphletPage++;
+
+        updatePamphletPage();
+
+    }
+
+}
+
+
+// 前のページ
+function previousPamphletPage() {
+
+    if (
+        currentPamphletPage > 1
+    ) {
+
+        currentPamphletPage--;
+
+        updatePamphletPage();
+
+    }
+
+}
