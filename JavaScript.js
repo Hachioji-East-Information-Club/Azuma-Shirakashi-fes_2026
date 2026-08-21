@@ -2120,3 +2120,43 @@ document.addEventListener(
 
     }
 );
+
+// ==========================================
+// タイムテーブルページ
+// ==========================================
+
+function showSchedulePage(button) {
+
+    // 現在のページを保存
+    localStorage.setItem(
+        "azumaCurrentPage",
+        "timetablePage"
+    );
+
+    // すべてのページを非表示
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
+
+    // タイムテーブルを表示
+    const timetablePage =
+        document.getElementById("timetablePage");
+
+    if (timetablePage) {
+        timetablePage.classList.add("active");
+    }
+
+    // ナビボタンのactiveをリセット
+    document
+        .querySelectorAll(".navBtn")
+        .forEach(btn => {
+            btn.classList.remove("activeNav");
+        });
+
+    // タイムテーブルを更新
+    if (typeof updateTimetable === "function") {
+        updateTimetable();
+    }
+}
