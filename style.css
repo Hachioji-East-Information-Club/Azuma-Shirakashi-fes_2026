@@ -1085,3 +1085,136 @@ body {
     background: #8B1E3F;
     color: white;
 }
+
+/* ==========================================
+   パンフレット
+========================================== */
+
+.pamphletViewer {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* PDF表示部分 */
+
+.pamphletPdfBox {
+    width: 100%;
+
+    height: 70vh;
+    min-height: 500px;
+
+    background: #ddd;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow: 0 3px 12px rgba(0,0,0,.15);
+}
+
+
+.pamphletPdfBox iframe {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+
+    display: block;
+}
+
+
+/* ページ番号 */
+
+.pamphletPageNumber {
+    margin-top: 12px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    color: #555;
+}
+
+
+/* 操作ボタン */
+
+.pamphletControls {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+
+.pamphletNavButton {
+    flex: 1;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #8B1E3F;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+
+    transition: .2s;
+}
+
+
+.pamphletNavButton:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 4px 10px rgba(0,0,0,.2);
+}
+
+
+/* 押せない状態 */
+
+.pamphletNavButton:disabled {
+    background: #ddd;
+
+    color: #999;
+
+    box-shadow: none;
+
+    cursor: default;
+
+    transform: none;
+}
+
+
+/* スマホ */
+
+@media screen and (max-width: 600px) {
+
+    .pamphletPdfBox {
+        height: 65vh;
+
+        min-height: 400px;
+
+        border-radius: 12px;
+    }
+
+    .pamphletNavButton {
+        height: 45px;
+
+        font-size: 14px;
+    }
+
+}
