@@ -1015,9 +1015,6 @@ body {
 
 /* お知らせメニュー */
 
-.noticeMenuCard {
-    position: relative;
-}
 
 .noticeMenuCard {
     position: relative;
@@ -1037,9 +1034,7 @@ body {
     display: none;
 }
 
-.noticeMenuCard .newNoticeDot.showNewNoticeDot {
-    display: block;
-}
+
 /* 新しいお知らせがあるときだけ表示 */
 .noticeMenuCard .newNoticeDot.showNewNoticeDot {
     display: block;
