@@ -1761,45 +1761,91 @@ function filterFavorite(onlyFavorite) {
     updateList();
 }
 
-/* ==========================================
-   パンフレット
-========================================== */
+// ==========================================
+// パンフレット
+// ==========================================
 
 let currentPamphletPage = 1;
 
-// パンフレットのページ数
 const pamphletTotalPages = 30;
 
 
-// パンフレットページを表示
+// ==========================================
+// パンフレットページ表示
+// ==========================================
+
 function updatePamphletPage() {
 
-    const image = document.getElementById("pamphletImage");
-    const pageNumber = document.getElementById("pamphletPageNumber");
+    const image =
+        document.getElementById("pamphletImage");
 
-    const prevButton = document.getElementById("pamphletPrev");
-    const nextButton = document.getElementById("pamphletNext");
+    const pageNumber =
+        document.getElementById("pamphletPageNumber");
 
-    // 画像を変更
-    image.src = "pamphlet/" + currentPamphletPage + ".jpg";
+    const prevButton =
+        document.getElementById("pamphletPrev");
+
+    const nextButton =
+        document.getElementById("pamphletNext");
+
+
+    if (!image) return;
+
+
+    // 画像変更
+    image.src =
+        "pamphlet/" +
+        currentPamphletPage +
+        ".jpg";
+
+
+    image.alt =
+        "パンフレット " +
+        currentPamphletPage +
+        "ページ目";
+
 
     // ページ番号
-    pageNumber.textContent =
-        currentPamphletPage + " / " + pamphletTotalPages;
+    if (pageNumber) {
 
-    // 最初のページなら「前へ」を無効
-    prevButton.disabled = currentPamphletPage === 1;
+        pageNumber.textContent =
+            currentPamphletPage +
+            " / " +
+            pamphletTotalPages;
 
-    // 最後のページなら「次へ」を無効
-    nextButton.disabled =
-        currentPamphletPage === pamphletTotalPages;
+    }
+
+
+    // 前へボタン
+    if (prevButton) {
+
+        prevButton.disabled =
+            currentPamphletPage === 1;
+
+    }
+
+
+    // 次へボタン
+    if (nextButton) {
+
+        nextButton.disabled =
+            currentPamphletPage === pamphletTotalPages;
+
+    }
+
 }
 
 
+// ==========================================
 // 次のページ
+// ==========================================
+
 function nextPamphletPage() {
 
-    if (currentPamphletPage < pamphletTotalPages) {
+    if (
+        currentPamphletPage <
+        pamphletTotalPages
+    ) {
 
         currentPamphletPage++;
 
@@ -1810,10 +1856,15 @@ function nextPamphletPage() {
 }
 
 
+// ==========================================
 // 前のページ
+// ==========================================
+
 function previousPamphletPage() {
 
-    if (currentPamphletPage > 1) {
+    if (
+        currentPamphletPage > 1
+    ) {
 
         currentPamphletPage--;
 
@@ -1823,72 +1874,131 @@ function previousPamphletPage() {
 
 }
 
+
 // ==========================================
-// パンフレット スワイプ操作
+// パンフレットページを開く
+// ==========================================
+
+function showPamphletPage() {
+
+    localStorage.setItem(
+        "azumaCurrentPage",
+        "pamphletPage"
+    );
+
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+
+            page.classList.remove("active");
+
+        });
+
+
+    const pamphletPage =
+        document.getElementById("pamphletPage");
+
+
+    if (pamphletPage) {
+
+        pamphletPage.classList.add("active");
+
+    }
+
+
+    document
+        .querySelectorAll(".navBtn")
+        .forEach(btn => {
+
+            btn.classList.remove("activeNav");
+
+        });
+
+
+    // ページを開いたら現在のページを表示
+    updatePamphletPage();
+
+}
+
+
+// ==========================================
+// スワイプ
 // ==========================================
 
 let pamphletTouchStartX = 0;
 let pamphletTouchEndX = 0;
 
-const pamphletViewer =
-    document.querySelector(".pamphletViewer");
 
-if (pamphletViewer) {
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    pamphletViewer.addEventListener(
-        "touchstart",
-        (e) => {
-
-            pamphletTouchStartX =
-                e.changedTouches[0].screenX;
-
-        },
-        { passive: true }
-    );
+        const viewer =
+            document.querySelector(
+                ".pamphletViewer"
+            );
 
 
-    pamphletViewer.addEventListener(
-        "touchend",
-        (e) => {
-
-            pamphletTouchEndX =
-                e.changedTouches[0].screenX;
-
-            handlePamphletSwipe();
-
-        },
-        { passive: true }
-    );
-
-}
+        if (!viewer) return;
 
 
-function handlePamphletSwipe() {
+        viewer.addEventListener(
+            "touchstart",
+            (e) => {
 
-    const distance =
-        pamphletTouchEndX -
-        pamphletTouchStartX;
+                pamphletTouchStartX =
+                    e.changedTouches[0].screenX;
+
+            },
+            { passive: true }
+        );
 
 
-    // スワイプが小さすぎる場合は無視
-    if (Math.abs(distance) < 50) {
-        return;
+        viewer.addEventListener(
+            "touchend",
+            (e) => {
+
+                pamphletTouchEndX =
+                    e.changedTouches[0].screenX;
+
+                const distance =
+                    pamphletTouchEndX -
+                    pamphletTouchStartX;
+
+
+                // 50px未満は無視
+                if (
+                    Math.abs(distance) < 50
+                ) {
+
+                    return;
+
+                }
+
+
+                // 左スワイプ
+                if (distance < 0) {
+
+                    nextPamphletPage();
+
+                }
+
+
+                // 右スワイプ
+                else {
+
+                    previousPamphletPage();
+
+                }
+
+            },
+            { passive: true }
+        );
+
+
+        // 初期表示
+        updatePamphletPage();
+
     }
-
-
-    // 左スワイプ → 次のページ
-    if (distance < 0) {
-
-        nextPamphletPage();
-
-    }
-
-
-    // 右スワイプ → 前のページ
-    else {
-
-        previousPamphletPage();
-
-    }
-
-}
+);
