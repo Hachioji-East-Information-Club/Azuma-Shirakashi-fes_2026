@@ -1166,77 +1166,9 @@ const trainTimes = {
 };
 
 
-// ==========================================
-// 電車ページ表示
-// ==========================================
-
-function showTrainPage() {
-
-    document.querySelectorAll(".page").forEach(page => {
-        page.classList.remove("active");
-    });
-
-    const trainPage =
-        document.getElementById("trainPage");
-
-    if (trainPage) {
-        trainPage.classList.add("active");
-    }
-
-    document.querySelectorAll(".navBtn").forEach(btn => {
-        btn.classList.remove("activeNav");
-    });
-
-    updateTrainTime();
-}
 
 
-// ==========================================
-// 上り・下り切り替え
-// ==========================================
 
-function selectTrainDirection(direction) {
-
-    currentTrainDirection = direction;
-
-    const upButton =
-        document.getElementById("upButton");
-
-    const downButton =
-        document.getElementById("downButton");
-
-    if (upButton) {
-        upButton.classList.remove(
-            "activeTrainDirection"
-        );
-    }
-
-    if (downButton) {
-        downButton.classList.remove(
-            "activeTrainDirection"
-        );
-    }
-
-    if (direction === "up") {
-
-        if (upButton) {
-            upButton.classList.add(
-                "activeTrainDirection"
-            );
-        }
-
-    } else {
-
-        if (downButton) {
-            downButton.classList.add(
-                "activeTrainDirection"
-            );
-        }
-
-    }
-
-    updateTrainTime();
-}
 
 
 // ==========================================
@@ -1476,7 +1408,7 @@ document.addEventListener("DOMContentLoaded", () => {
 setInterval(() => {
 
     updateTrainTime();
-　
+
 }, 1000);
 
 setInterval(() => {
