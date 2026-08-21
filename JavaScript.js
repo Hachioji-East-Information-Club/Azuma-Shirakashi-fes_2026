@@ -1822,3 +1822,73 @@ function previousPamphletPage() {
     }
 
 }
+
+// ==========================================
+// パンフレット スワイプ操作
+// ==========================================
+
+let pamphletTouchStartX = 0;
+let pamphletTouchEndX = 0;
+
+const pamphletViewer =
+    document.querySelector(".pamphletViewer");
+
+if (pamphletViewer) {
+
+    pamphletViewer.addEventListener(
+        "touchstart",
+        (e) => {
+
+            pamphletTouchStartX =
+                e.changedTouches[0].screenX;
+
+        },
+        { passive: true }
+    );
+
+
+    pamphletViewer.addEventListener(
+        "touchend",
+        (e) => {
+
+            pamphletTouchEndX =
+                e.changedTouches[0].screenX;
+
+            handlePamphletSwipe();
+
+        },
+        { passive: true }
+    );
+
+}
+
+
+function handlePamphletSwipe() {
+
+    const distance =
+        pamphletTouchEndX -
+        pamphletTouchStartX;
+
+
+    // スワイプが小さすぎる場合は無視
+    if (Math.abs(distance) < 50) {
+        return;
+    }
+
+
+    // 左スワイプ → 次のページ
+    if (distance < 0) {
+
+        nextPamphletPage();
+
+    }
+
+
+    // 右スワイプ → 前のページ
+    else {
+
+        previousPamphletPage();
+
+    }
+
+}
