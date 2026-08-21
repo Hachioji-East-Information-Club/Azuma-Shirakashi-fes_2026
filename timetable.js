@@ -847,7 +847,7 @@ function renderTimetable() {
                     }
 
                     // 一覧ページへ
-                    showPage("boothPage");
+                    showPage("listPage");
 
                     // 検索欄があれば検索
                     const searchBox =
