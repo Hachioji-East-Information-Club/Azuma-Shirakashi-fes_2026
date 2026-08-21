@@ -1158,3 +1158,37 @@ setInterval(
     updateTimetableCurrentTime,
     1000
 );
+function showSchedulePage(button) {
+
+    localStorage.setItem(
+        "azumaCurrentPage",
+        "schedulePage"
+    );
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
+
+    const schedulePage =
+        document.getElementById("schedulePage");
+
+    if (schedulePage) {
+        schedulePage.classList.add("active");
+    }
+
+    // ナビボタンの選択状態
+    document
+        .querySelectorAll(".navBtn")
+        .forEach(btn => {
+            btn.classList.remove("activeNav");
+        });
+
+    if (button) {
+        button.classList.add("activeNav");
+    }
+
+    // タイムテーブルを表示
+    updateSchedule();
+}
