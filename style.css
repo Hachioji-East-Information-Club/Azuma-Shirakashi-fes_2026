@@ -1016,19 +1016,27 @@ body {
 /* お知らせメニュー */
 
 .noticeMenuCard {
-
     position: relative;
-
 }
 
-
-.noticeMenuCard > .newNoticeDot {
-
+.noticeMenuCard .newNoticeDot {
     position: absolute;
 
     top: 10px;
     right: 10px;
 
+    width: 10px;
+    height: 10px;
+
+    background-color: red;
+    border-radius: 50%;
+
+    display: none;
+}
+
+/* 新しいお知らせがあるときだけ表示 */
+.noticeMenuCard .newNoticeDot.showNewNoticeDot {
+    display: block;
 }
 
 
