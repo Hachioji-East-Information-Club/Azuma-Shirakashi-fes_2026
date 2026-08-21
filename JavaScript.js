@@ -2120,5 +2120,3 @@ document.addEventListener(
 
     }
 );
-    }
-);
