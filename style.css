@@ -1224,26 +1224,31 @@ body {
 ========================================== */
 
 .pamphletViewer {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .pamphletPdfBox {
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
 
     background: #eee;
     border-radius: 12px;
     padding: 10px;
+
+    overflow: hidden;
 }
 
 #pamphletImage {
     display: block;
 
     width: 100%;
-    height: auto;
+    max-width: 600px;
 
-    max-height: 75vh;
+    max-height: calc(100vh - 240px);
+
+    height: auto;
 
     object-fit: contain;
 
