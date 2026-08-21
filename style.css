@@ -1019,21 +1019,27 @@ body {
     position: relative;
 }
 
+.noticeMenuCard {
+    position: relative;
+}
+
 .noticeMenuCard .newNoticeDot {
     position: absolute;
-
-    top: 10px;
-    right: 10px;
+    top: 8px;
+    right: 8px;
 
     width: 10px;
     height: 10px;
 
-    background-color: red;
+    background-color: #ff3b30;
     border-radius: 50%;
 
     display: none;
 }
 
+.noticeMenuCard .newNoticeDot.showNewNoticeDot {
+    display: block;
+}
 /* 新しいお知らせがあるときだけ表示 */
 .noticeMenuCard .newNoticeDot.showNewNoticeDot {
     display: block;
