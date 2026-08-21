@@ -575,8 +575,15 @@ function showPage(pageId, button) {
             btn.classList.remove("activeNav");
         });
 
-    button.classList.add("activeNav");
+   if (button) {
+        button.classList.add("activeNav");
+    }
 
+    // ★ 追加：現在のページを保存
+    localStorage.setItem(
+        "azumaCurrentPage",
+        pageId
+    );
 }
 
 
@@ -686,8 +693,30 @@ window.onload = () => {
 
     loadWaitData();
 
-};
+    // ★ 保存されていたページを復元
+    const savedPage =
+        localStorage.getItem("azumaCurrentPage");
 
+    if (savedPage) {
+
+        const page =
+            document.getElementById(savedPage);
+
+        if (page) {
+
+            document
+                .querySelectorAll(".page")
+                .forEach(p => {
+                    p.classList.remove("active");
+                });
+
+            page.classList.add("active");
+
+        }
+
+    }
+
+};
 
 // ==========================================
 // 校内図切り替え
@@ -1314,6 +1343,11 @@ function updateTrainTime() {
 
 function showTrainPage() {
 
+   localStorage.setItem(
+        "azumaCurrentPage",
+        "trainPage"
+    );
+  
   if (
     document
         .getElementById("noticePage")
@@ -1457,6 +1491,11 @@ setInterval(() => {
 // ==========================================
 
 function showNoticePage() {
+
+  localStorage.setItem(
+    "azumaCurrentPage",
+    "noticePage"
+);
 
     document
         .querySelectorAll(".page")
