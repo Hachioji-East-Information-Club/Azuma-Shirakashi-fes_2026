@@ -1766,7 +1766,7 @@ function filterFavorite(onlyFavorite) {
 ========================================== */
 
 // パンフレットの総ページ数
-const pamphletTotalPages = 10;
+const pamphletTotalPages = 30;
 
 // 現在のページ
 let currentPamphletPage = 1;
