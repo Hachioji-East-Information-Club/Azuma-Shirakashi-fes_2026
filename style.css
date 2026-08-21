@@ -1220,39 +1220,128 @@ body {
 }
 
 /* ==========================================
-   パンフレット
+   パンフレット JPG表示
 ========================================== */
 
 .pamphletViewer {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto;
+
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.pamphletPdfBox {
-    width: 100%;
-    max-width: 600px;
 
-    background: #eee;
-    border-radius: 12px;
-    padding: 10px;
+/* 画像エリア */
+
+.pamphletImageBox {
+    width: 100%;
+
+    height: calc(100vh - 250px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     overflow: hidden;
 }
 
+
+/* パンフレット画像 */
+
 #pamphletImage {
     display: block;
 
-    width: 100%;
-    max-width: 600px;
+    max-width: 100%;
+    max-height: 100%;
 
-    max-height: calc(100vh - 240px);
-
+    width: auto;
     height: auto;
 
     object-fit: contain;
 
-    margin: 0 auto;
-
     border-radius: 8px;
+}
+
+
+/* ページ番号 */
+
+.pamphletPageNumber {
+    margin-top: 8px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    color: #555;
+}
+
+
+/* 前へ・次へ */
+
+.pamphletControls {
+    width: 100%;
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 8px;
+}
+
+
+.pamphletNavButton {
+    flex: 1;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #8B1E3F;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+
+
+.pamphletNavButton:disabled {
+    background: #ddd;
+
+    color: #999;
+
+    box-shadow: none;
+
+    cursor: default;
+}
+
+
+/* スマホ */
+
+@media screen and (max-width: 600px) {
+
+    .pamphletViewer {
+        max-width: 100%;
+    }
+
+    .pamphletImageBox {
+        height: calc(100vh - 245px);
+    }
+
+    .pamphletNavButton {
+        height: 42px;
+
+        font-size: 14px;
+    }
+
 }
