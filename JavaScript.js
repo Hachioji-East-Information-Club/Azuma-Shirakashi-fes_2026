@@ -693,28 +693,66 @@ window.onload = () => {
 
     loadWaitData();
 
-    // ★ 保存されていたページを復元
-    const savedPage =
-        localStorage.getItem("azumaCurrentPage");
+  // ==========================================
+// 保存されていたページを復元
+// ==========================================
 
-    if (savedPage) {
+const savedPage =
+    localStorage.getItem("azumaCurrentPage");
 
-        const page =
-            document.getElementById(savedPage);
+if (savedPage) {
 
-        if (page) {
+    const page =
+        document.getElementById(savedPage);
 
-            document
-                .querySelectorAll(".page")
-                .forEach(p => {
-                    p.classList.remove("active");
-                });
+    if (page) {
 
-            page.classList.add("active");
+        // ページを復元
+        document
+            .querySelectorAll(".page")
+            .forEach(p => {
+                p.classList.remove("active");
+            });
 
-        }
+        page.classList.add("active");
+
+
+        // ==========================================
+        // ナビゲーションボタンも復元
+        // ==========================================
+
+        document
+            .querySelectorAll(".navBtn")
+            .forEach(btn => {
+
+                btn.classList.remove("activeNav");
+
+            });
+
+
+        // 保存されたページに対応するボタンを探す
+        document
+            .querySelectorAll(".navBtn")
+            .forEach(btn => {
+
+                const onclick =
+                    btn.getAttribute("onclick") || "";
+
+                if (
+                    onclick.includes(savedPage)
+                ) {
+
+                    btn.classList.add(
+                        "activeNav"
+                    );
+
+                }
+
+            });
 
     }
+
+}
 
 };
 
