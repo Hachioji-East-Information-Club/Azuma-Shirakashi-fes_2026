@@ -547,30 +547,33 @@ searchBox.addEventListener(
 
 function showPage(pageId, button) {
 
+    // お知らせページを離れるとき
+    const noticePage =
+        document.getElementById("noticePage");
+
+    if (
+        noticePage &&
+        noticePage.classList.contains("active") &&
+        pageId !== "noticePage"
+    ) {
+        markNoticesAsRead();
+    }
+
     document
         .querySelectorAll(".page")
         .forEach(page => {
-
             page.classList.remove("active");
-
         });
-
 
     document
         .getElementById(pageId)
         .classList.add("active");
 
-
     document
         .querySelectorAll(".navBtn")
         .forEach(btn => {
-
-            btn.classList.remove(
-                "activeNav"
-            );
-
+            btn.classList.remove("activeNav");
         });
-
 
     button.classList.add("activeNav");
 
@@ -1311,6 +1314,16 @@ function updateTrainTime() {
 
 function showTrainPage() {
 
+  if (
+    document
+        .getElementById("noticePage")
+        ?.classList.contains("active")
+) {
+
+    markNoticesAsRead();
+
+}
+
     document
         .querySelectorAll(".page")
         .forEach(page => {
@@ -1438,7 +1451,8 @@ setInterval(() => {
 
 }, 10000);
 
-// ==========================================
+
+    // ==========================================
 // お知らせページ
 // ==========================================
 
@@ -1472,43 +1486,56 @@ function showNoticePage() {
 
         });
 
+    // ★ここでは確認済みにしない
+    // お知らせページを開いている間は赤丸を残す
 
-    // ==========================================
-    // お知らせを確認済みにする
-    // ==========================================
+}
 
-    fetch(
-        "notice.json?time=" + Date.now()
-    )
-    .then(response => response.json())
-    .then(notices => {
+// ==========================================
+// お知らせを確認済みにする
+// お知らせページを離れたときに実行
+// ==========================================
+
+async function markNoticesAsRead() {
+
+    try {
+
+        const response = await fetch(
+            "notice.json?time=" + Date.now()
+        );
+
+        if (!response.ok) {
+            return;
+        }
+
+        const notices = await response.json();
 
         if (
             notices &&
             notices.length > 0
         ) {
 
-            // 最新のお知らせを確認済みにする
+            // 最新のお知らせIDを保存
             localStorage.setItem(
                 NOTICE_READ_KEY,
                 notices[0].id
             );
-
 
             // 赤丸を消す
             updateNoticeBadges(notices);
 
         }
 
-    })
-    .catch(error => {
+    }
+
+    catch (error) {
 
         console.log(
             "お知らせ確認状態の更新失敗",
             error
         );
 
-    });
+    }
 
 }
 // ==========================================
