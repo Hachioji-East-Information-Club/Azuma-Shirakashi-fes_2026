@@ -690,47 +690,41 @@ setInterval(() => {
 window.onload = () => {
 
     updateList();
-
     loadWaitData();
 
-  // ==========================================
-// 保存されていたページを復元
-// ==========================================
+    // 保存されていたページを復元
+    const savedPage =
+        localStorage.getItem("azumaCurrentPage");
 
-const savedPage =
-    localStorage.getItem("azumaCurrentPage");
-
-if (savedPage) {
+    // 保存されているページがあればそれを表示
+    // なければ校内図を表示
+    const pageId = savedPage || "mapPage";
 
     const page =
-        document.getElementById(savedPage);
+        document.getElementById(pageId);
 
     if (page) {
 
-        // ページを復元
+        // すべてのページを非表示
         document
             .querySelectorAll(".page")
             .forEach(p => {
                 p.classList.remove("active");
             });
 
+        // 対象ページを表示
         page.classList.add("active");
 
 
-        // ==========================================
-        // ナビゲーションボタンも復元
-        // ==========================================
-
+        // ナビゲーションボタンを全部リセット
         document
             .querySelectorAll(".navBtn")
             .forEach(btn => {
-
                 btn.classList.remove("activeNav");
-
             });
 
 
-        // 保存されたページに対応するボタンを探す
+        // 対応するナビボタンを探す
         document
             .querySelectorAll(".navBtn")
             .forEach(btn => {
@@ -739,23 +733,18 @@ if (savedPage) {
                     btn.getAttribute("onclick") || "";
 
                 if (
-                    onclick.includes(savedPage)
+                    onclick.includes(
+                        "'" + pageId + "'"
+                    )
                 ) {
-
-                    btn.classList.add(
-                        "activeNav"
-                    );
-
+                    btn.classList.add("activeNav");
                 }
 
             });
 
     }
 
-}
-
 };
-
 // ==========================================
 // 校内図切り替え
 // ==========================================
