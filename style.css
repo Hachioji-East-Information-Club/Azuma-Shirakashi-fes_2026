@@ -1351,79 +1351,193 @@ body {
 ========================================== */
 
 #pamphletPage {
-    height: calc(100vh - 120px);
-    overflow: hidden;
+    position: fixed;
+
+    /*
+      ヘッダーの下から
+      下メニューの上まで
+    */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding-top: 80px;
+    padding-bottom: 70px;
+
     box-sizing: border-box;
+
+    overflow: hidden;
 }
 
-.pamphletViewer {
+
+/* パンフレット全体 */
+
+#pamphletPage .pamphletViewer {
+
+    width: 100%;
     height: 100%;
+
+    box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
 
-    padding: 10px 10px 80px;
+    overflow: hidden;
+
+    padding: 5px 10px;
 }
 
-.pamphletImageBox {
-    flex: 1;
-    min-height: 0;
+
+/* パンフレット画像部分 */
+
+#pamphletPage .pamphletImageBox {
 
     width: 100%;
 
+    flex: 1 1 auto;
+
+    min-height: 0;
+
     display: flex;
-    justify-content: center;
+
     align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
 }
 
-#pamphletImage {
-    max-width: 100%;
-    max-height: 100%;
+
+/* パンフレット画像 */
+
+#pamphletPage #pamphletImage {
+
+    display: block;
 
     width: auto;
     height: auto;
 
+    max-width: 100%;
+    max-height: 100%;
+
     object-fit: contain;
 }
 
-.pamphletPageNumber {
-    flex-shrink: 0;
 
-    margin: 6px 0;
+/* ページ番号 */
+
+#pamphletPage .pamphletPageNumber {
+
+    flex: 0 0 auto;
+
+    margin: 4px 0;
 
     font-size: 14px;
-    font-weight: bold;
+    line-height: 20px;
 }
 
-.pamphletControls {
-    flex-shrink: 0;
 
-    display: flex;
-    justify-content: center;
-    gap: 12px;
+/* ボタン */
+
+#pamphletPage .pamphletControls {
+
+    flex: 0 0 auto;
 
     width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin: 4px 0;
 }
 
-.pamphletNavButton {
-    padding: 10px 20px;
+
+/* 前へ・次へ */
+
+#pamphletPage .pamphletNavButton {
+
+    height: 42px;
+
+    padding: 0 18px;
 
     border: none;
     border-radius: 10px;
 
     background: #333;
-    color: white;
+    color: #fff;
 
     font-size: 15px;
     font-weight: bold;
 
-    cursor: pointer;
+    white-space: nowrap;
 }
 
-.pamphletNavButton:disabled {
+
+/* 無効 */
+
+#pamphletPage .pamphletNavButton:disabled {
+
     background: #ccc;
     color: #888;
-    cursor: default;
+
+}
+
+
+/* ==========================================
+   スマホ
+========================================== */
+
+@media (max-width: 600px) {
+
+    #pamphletPage {
+
+        padding-top: 65px;
+        padding-bottom: 65px;
+
+    }
+
+
+    #pamphletPage .pamphletViewer {
+
+        padding: 3px 6px;
+
+    }
+
+
+    #pamphletPage .pamphletPageNumber {
+
+        margin: 2px 0;
+
+        font-size: 13px;
+
+        line-height: 18px;
+
+    }
+
+
+    #pamphletPage .pamphletControls {
+
+        margin: 2px 0;
+
+        gap: 8px;
+
+    }
+
+
+    #pamphletPage .pamphletNavButton {
+
+        height: 38px;
+
+        padding: 0 15px;
+
+        font-size: 14px;
+
+    }
+
 }
