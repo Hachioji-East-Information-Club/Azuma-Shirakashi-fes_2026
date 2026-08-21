@@ -1765,80 +1765,41 @@ function filterFavorite(onlyFavorite) {
    パンフレット
 ========================================== */
 
-// パンフレットの総ページ数
-const pamphletTotalPages = 30;
-
-// 現在のページ
 let currentPamphletPage = 1;
 
-
-// パンフレットページを開く
-function showPamphletPage() {
-
-    document.querySelectorAll(".page").forEach(page => {
-        page.classList.remove("active");
-    });
-
-    document
-        .getElementById("pamphletPage")
-        .classList.add("active");
-
-    currentPamphletPage = 1;
-
-    updatePamphletPage();
-
-}
+// パンフレットのページ数
+const pamphletTotalPages = 30;
 
 
-// パンフレットのページを更新
+// パンフレットページを表示
 function updatePamphletPage() {
 
-    const pdf =
-        document.getElementById("pamphletPdf");
+    const image = document.getElementById("pamphletImage");
+    const pageNumber = document.getElementById("pamphletPageNumber");
 
-    const pageNumber =
-        document.getElementById("pamphletPageNumber");
+    const prevButton = document.getElementById("pamphletPrev");
+    const nextButton = document.getElementById("pamphletNext");
 
-    const prevButton =
-        document.getElementById("pamphletPrev");
-
-    const nextButton =
-        document.getElementById("pamphletNext");
-
-
-    // PDFを変更
-
-    pdf.src =
-        `pamphlet/${currentPamphletPage}.pdf`;
-
+    // 画像を変更
+    image.src = "pamphlet/" + currentPamphletPage + ".jpg";
 
     // ページ番号
-
     pageNumber.textContent =
-        `${currentPamphletPage} / ${pamphletTotalPages}`;
+        currentPamphletPage + " / " + pamphletTotalPages;
 
+    // 最初のページなら「前へ」を無効
+    prevButton.disabled = currentPamphletPage === 1;
 
-    // 前へボタン
-
-    prevButton.disabled =
-        currentPamphletPage === 1;
-
-
-    // 次へボタン
-
+    // 最後のページなら「次へ」を無効
     nextButton.disabled =
         currentPamphletPage === pamphletTotalPages;
-
 }
 
 
 // 次のページ
 function nextPamphletPage() {
 
-    if (
-        currentPamphletPage <
-        pamphletTotalPages
-    ) {
+    if (currentPamphletPage < pamphletTotalPages) {
 
         currentPamphletPage++;
 
@@ -1852,9 +1813,7 @@ function nextPamphletPage() {
 // 前のページ
 function previousPamphletPage() {
 
-    if (
-        currentPamphletPage > 1
-    ) {
+    if (currentPamphletPage > 1) {
 
         currentPamphletPage--;
 
