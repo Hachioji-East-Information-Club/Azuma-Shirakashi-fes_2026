@@ -610,11 +610,11 @@ function renderTimetable() {
     // 全体
     // ==========================================
 
-    const timetable =
-        document.createElement("div");
+const timetableElement =
+    document.createElement("div");
 
-    timetable.className =
-        "timetable";
+timetableElement.className =
+    "timetable";
 
 
     // ==========================================
@@ -657,7 +657,7 @@ function renderTimetable() {
     });
 
 
-    timetable.appendChild(header);
+    timetableElement.appendChild(header);
 
 
     // ==========================================
@@ -754,7 +754,7 @@ function renderTimetable() {
         // ------------------------------------------
 
         const events =
-            timetable[currentTimetableDate]
+            timetableData[currentTimetableDate]
                 ?.filter(event =>
                     event.place === place
                 ) || [];
@@ -894,7 +894,7 @@ function renderTimetable() {
     );
 
 
-    timetable.appendChild(body);
+    timetableElement.appendChild(body);
 
     grid.appendChild(timetable);
 
