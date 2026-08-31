@@ -1541,3 +1541,217 @@ body {
     }
 
 }
+
+/* ==========================================
+   タイムテーブル
+========================================== */
+
+.timetableWrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.timetable {
+    position: relative;
+    min-width: 900px;
+    font-size: 14px;
+}
+
+
+/* ------------------------------------------
+   ヘッダー
+------------------------------------------ */
+
+.timetableHeaderRow {
+    display: grid;
+    grid-template-columns: 70px repeat(7, 1fr);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 30;
+    background: white;
+}
+
+.timetableTimeHeader {
+    padding: 8px 4px;
+    text-align: center;
+    font-weight: bold;
+
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #555;
+
+    box-sizing: border-box;
+}
+
+.timetablePlaceHeader {
+    padding: 8px 4px;
+    text-align: center;
+    font-weight: bold;
+
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #555;
+
+    box-sizing: border-box;
+
+    white-space: nowrap;
+}
+
+
+/* ------------------------------------------
+   本体
+------------------------------------------ */
+
+.timetableBody {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 70px repeat(7, 1fr);
+
+    height: 780px;
+}
+
+
+/* ------------------------------------------
+   時間列
+------------------------------------------ */
+
+.timetableTimeColumn {
+    position: relative;
+
+    border-right: 2px solid #555;
+
+    background: #fafafa;
+}
+
+.timetableTime {
+    position: absolute;
+
+    left: 4px;
+
+    transform: translateY(-50%);
+
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+
+/* ------------------------------------------
+   会場列
+------------------------------------------ */
+
+.timetableColumn {
+    position: relative;
+
+    height: 780px;
+
+    border-right: 1px solid #ccc;
+
+    background: white;
+
+    box-sizing: border-box;
+}
+
+
+/* ------------------------------------------
+   30分ごとの横線
+------------------------------------------ */
+
+.timetableHorizontalLine {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    border-top: 1px solid #ddd;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* ------------------------------------------
+   出し物
+------------------------------------------ */
+
+.timetableEvent {
+    position: absolute;
+
+    left: 3px;
+    right: 3px;
+
+    background: #4f8cff;
+    color: white;
+
+    border-radius: 6px;
+
+    padding: 4px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    z-index: 5;
+
+    cursor: pointer;
+
+    border: 1px solid rgba(0,0,0,0.15);
+}
+
+.timetableEventName {
+    font-weight: bold;
+
+    font-size: 13px;
+
+    line-height: 1.2;
+
+    word-break: break-word;
+}
+
+.timetableEventTime {
+    font-size: 10px;
+
+    margin-top: 3px;
+
+    opacity: 0.9;
+
+    white-space: nowrap;
+}
+
+
+/* ------------------------------------------
+   現在時刻線
+------------------------------------------ */
+
+#timetableCurrentLine {
+    position: absolute;
+
+    left: 70px;
+    right: 0;
+
+    height: 3px;
+
+    background: #ff3333;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+#timetableCurrentLine::before {
+    content: "";
+
+    position: absolute;
+
+    left: -5px;
+    top: -4px;
+
+    width: 11px;
+    height: 11px;
+
+    border-radius: 50%;
+
+    background: #ff3333;
+}
