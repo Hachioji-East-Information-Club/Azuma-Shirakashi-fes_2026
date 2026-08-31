@@ -1160,33 +1160,20 @@ setInterval(
 );
 function showSchedulePage(button) {
 
-    // 現在のページを保存
-    localStorage.setItem(
-        "azumaCurrentPage",
-        "timetablePage"
-    );
-
     // 全ページを非表示
-    document
-        .querySelectorAll(".page")
-        .forEach(page => {
-            page.classList.remove("active");
-        });
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
 
-    // タイムテーブルページを表示
-    const timetablePage =
-        document.getElementById("timetablePage");
+    // タイムテーブルを表示
+    const timetablePage = document.getElementById("timetablePage");
 
-    if (timetablePage) {
-        timetablePage.classList.add("active");
+    if (!timetablePage) {
+        console.error("timetablePage が見つかりません");
+        return;
     }
 
-    // 下メニューの選択状態を解除
-    document
-        .querySelectorAll(".navBtn")
-        .forEach(btn => {
-            btn.classList.remove("activeNav");
-        });
+    timetablePage.classList.add("active");
 
     // タイムテーブルを描画
     renderTimetable();
