@@ -1755,3 +1755,47 @@ body {
 
     background: #ff3333;
 }
+/* タイムテーブル 出し物強制表示 */
+.timetableColumn {
+    position: relative !important;
+    height: 780px !important;
+    min-width: 110px;
+}
+
+.timetableEvent {
+    position: absolute !important;
+
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    left: 4px !important;
+    right: 4px !important;
+
+    min-height: 20px;
+
+    background: #4f8cff !important;
+    color: #fff !important;
+
+    border: 1px solid #2864d7;
+    border-radius: 6px;
+
+    padding: 4px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    z-index: 100 !important;
+}
+
+.timetableEventName {
+    display: block !important;
+    color: #fff !important;
+    font-weight: bold;
+}
+
+.timetableEventTime {
+    display: block !important;
+    color: #fff !important;
+}
