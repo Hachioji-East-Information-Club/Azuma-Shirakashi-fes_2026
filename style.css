@@ -2513,13 +2513,14 @@ body:has(#timetablePage.active) {
 ========================================== */
 
 #timetablePage {
-    height: calc(100vh - 75px);
+    height: calc(100vh - 150px);
     overflow: hidden;
     padding: 15px;
+    box-sizing: border-box;
 }
 
 #timetablePage .timetableWrapper {
-    height: calc(100vh - 155px);
+    height: 100%;
     overflow-x: auto;
     overflow-y: auto;
 
