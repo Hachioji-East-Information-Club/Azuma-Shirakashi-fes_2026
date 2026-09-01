@@ -2127,6 +2127,14 @@ body {
 html,
 body {
     height: 100%;
+}
+
+/* タイムテーブル表示中だけページ全体を固定 */
+body:has(#timetablePage.active) {
+    overflow: hidden;
+}
+
+#timetablePage.active {
     overflow: hidden;
 }
 
