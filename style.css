@@ -2119,3 +2119,123 @@ body {
     }
 
 }
+/* ==========================================
+   タイムテーブル 最終設定
+========================================== */
+
+/* ページ全体はスクロールさせない */
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* タイムテーブルページ */
+#timetablePage {
+    height: calc(100vh - 75px);
+    overflow: hidden;
+
+    padding: 15px;
+}
+
+/* タイムテーブルのスクロール領域 */
+#timetablePage .timetableWrapper {
+    width: 100%;
+    height: calc(100vh - 190px);
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+
+    position: relative;
+}
+
+/* タイムテーブル */
+#timetablePage .timetable {
+    position: relative;
+
+    width: max-content;
+    min-width: 910px;
+
+    margin: 0;
+}
+
+/* ヘッダー */
+#timetablePage .timetableHeaderRow {
+    position: sticky;
+    top: 0;
+
+    z-index: 30;
+
+    height: 42px;
+
+    display: grid;
+    grid-template-columns: 70px repeat(7, 120px);
+
+    background: white;
+}
+
+/* 本体 */
+#timetablePage .timetableBody {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 70px repeat(7, 120px);
+
+    height: 780px;
+
+    overflow: visible;
+}
+
+/* 会場 */
+#timetablePage .timetableColumn {
+    position: relative;
+
+    height: 780px;
+
+    min-width: 120px;
+
+    overflow: visible;
+}
+
+/* 出し物 */
+#timetablePage .timetableEvent {
+    position: absolute !important;
+
+    left: 4px !important;
+    right: 4px !important;
+
+    z-index: 10 !important;
+}
+
+/* 下メニュー */
+.bottomNav {
+    z-index: 1000 !important;
+}
+
+
+/* ==========================================
+   スマホ
+========================================== */
+
+@media screen and (max-width: 600px) {
+
+    #timetablePage {
+        height: calc(100vh - 75px);
+        padding: 10px;
+        overflow: hidden;
+    }
+
+    #timetablePage .timetableWrapper {
+        height: calc(100vh - 175px);
+
+        overflow-x: auto;
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+
+}
