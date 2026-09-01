@@ -2155,3 +2155,104 @@ body:has(#timetablePage.active) {
    タイムテーブルを下メニューまで広げる
 ========================================== */
 
+/* ==========================================
+   タイムテーブル 最終修正版
+   ※この部分はCSSの一番最後に追加
+========================================== */
+
+/* タイムテーブルページ */
+#timetablePage {
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* タイムテーブルをスクロールする箱 */
+#timetablePage .timetableWrapper {
+    width: 100%;
+    height: calc(100vh - 175px);
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+/* タイムテーブル本体 */
+#timetablePage .timetable {
+    position: relative;
+
+    width: max-content;
+    min-width: 910px;
+}
+
+/* 時間・会場部分 */
+#timetablePage .timetableBody {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 70px repeat(7, 120px);
+
+    width: max-content;
+
+    height: 780px;
+    min-height: 780px;
+
+    background: white;
+
+    overflow: visible;
+}
+
+/* 時間列 */
+#timetablePage .timetableTimeColumn {
+    position: relative;
+
+    height: 780px;
+}
+
+/* 会場列 */
+#timetablePage .timetableColumn {
+    position: relative;
+
+    width: 120px;
+    min-width: 120px;
+
+    height: 780px;
+}
+
+/* スマホ */
+@media screen and (max-width: 600px) {
+
+    #timetablePage {
+        padding: 10px;
+    }
+
+    #timetablePage .timetableWrapper {
+        width: 100%;
+        height: calc(100vh - 175px);
+
+        overflow-x: auto;
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #timetablePage .timetable {
+        min-width: 910px;
+    }
+
+    #timetablePage .timetableBody {
+        height: 780px;
+        min-height: 780px;
+    }
+
+    #timetablePage .timetableTimeColumn {
+        height: 780px;
+    }
+
+    #timetablePage .timetableColumn {
+        height: 780px;
+        min-height: 780px;
+    }
+}
