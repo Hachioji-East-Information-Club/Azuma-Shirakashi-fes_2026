@@ -2557,21 +2557,7 @@ body:has(#timetablePage.active) {
     overscroll-behavior: contain;
 }
 
-.timetable {
-    min-width: 900px;
-    width: max-content;
-    min-height: 1200px;
-}
 
-.timetableBody {
-    height: 1200px !important;
-    min-height: 1200px !important;
-}
-
-.timetableColumn {
-    height: 1200px !important;
-    min-height: 1200px !important;
-}
 #timetablePage {
     overflow: hidden;
     padding: 15px;
@@ -2586,4 +2572,118 @@ body:has(#timetablePage.active) {
 
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
+}
+/* ==========================================
+   タイムテーブル 最終修正版
+========================================== */
+
+/* タイムテーブルページ */
+#timetablePage {
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* スクロール領域 */
+
+
+/* タイムテーブル全体 */
+#timetablePage .timetable {
+    position: relative;
+
+    width: max-content;
+    min-width: 910px;
+
+    min-height: 0;
+}
+
+/* 上部ヘッダー */
+#timetablePage .timetableHeaderRow {
+    position: sticky;
+    top: 0;
+
+    z-index: 30;
+
+    height: 42px;
+
+    display: grid;
+    grid-template-columns: 70px repeat(7, 120px);
+
+    background: white;
+}
+
+/* 本体 */
+#timetablePage .timetableBody {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 70px repeat(7, 120px);
+
+    /*
+       14:00～15:30程度なら
+       まずこのくらいで十分
+    */
+    height: 360px !important;
+    min-height: 360px !important;
+
+    overflow: visible;
+}
+
+/* 会場列 */
+#timetablePage .timetableColumn {
+    position: relative;
+
+    height: 360px !important;
+    min-height: 360px !important;
+
+    min-width: 120px;
+
+    overflow: visible;
+}
+
+/* イベント */
+#timetablePage .timetableEvent {
+    position: absolute !important;
+
+    left: 4px !important;
+    right: 4px !important;
+
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    z-index: 10 !important;
+
+    box-sizing: border-box;
+}
+
+/* 現在時刻線 */
+#timetablePage #timetableCurrentLine {
+    z-index: 20 !important;
+}
+
+/* スマホ */
+@media screen and (max-width: 600px) {
+
+    #timetablePage {
+        height: calc(100vh - 75px);
+        padding: 8px;
+        overflow: hidden;
+    }
+
+    #timetablePage .timetableWrapper {
+        height: calc(100vh - 150px);
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+
+    #timetablePage .timetableBody {
+        height: 360px !important;
+        min-height: 360px !important;
+    }
+
+    #timetablePage .timetableColumn {
+        height: 360px !important;
+        min-height: 360px !important;
+    }
 }
