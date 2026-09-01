@@ -2505,3 +2505,21 @@ body:has(#timetablePage.active) {
 #timetablePage.active {
     overflow: hidden;
 }
+       /* ==========================================
+   タイムテーブルを下メニューまで広げる
+========================================== */
+
+#timetablePage {
+    height: calc(100vh - 75px);
+    overflow: hidden;
+    padding: 15px;
+}
+
+#timetablePage .timetableWrapper {
+    height: calc(100vh - 155px);
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
