@@ -48,7 +48,7 @@ const booths = [
   { id:"たをやめ", name:"たをやめ", title:"虹色のハーモニー♬ たをやめ公演2026", category:"公演", place:"5ホール", building:"校舎棟", group:"有志", wait:0, image:"" },
   { id:"ますたを", name:"ますたを", title:"ますたを公演2026", category:"公演", place:"憩いの広場", building:"校舎棟", group:"有志", wait:0, image:"" },
 
-  { id:"有志写真同好会pH", name:"有志写真同好会pH", title:"空想写真キャンバス", category:"展示", place:"ラーコモ", building:"校舎棟", group:"同好会", wait:0, image:"" },
+  { id:"有志写真愛好会pH", name:"有志写真同好会pH", title:"空想写真キャンバス", category:"展示", place:"ラーコモ", building:"校舎棟", group:"同好会", wait:0, image:"" },
   { id:"ネイチャー同好会", name:"ネイチャー同好会", title:"ネイチャーがええんちゃー！？", category:"展示", place:"生物室", building:"校舎棟", group:"同好会", wait:0, image:"" },
 
   { id:"図書委員会", name:"図書委員会", title:"晴東雨読", category:"展示", place:"図書室", building:"校舎棟", group:"委員会", wait:0, image:"" },
