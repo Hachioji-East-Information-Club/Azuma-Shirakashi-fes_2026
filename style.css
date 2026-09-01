@@ -1546,10 +1546,26 @@ body {
    タイムテーブル
 ========================================== */
 
+/* ==========================================
+   タイムテーブル スクロール
+========================================== */
+
+/* ==========================================
+   タイムテーブル スクロール
+========================================== */
+
 .timetableWrapper {
     width: 100%;
+    height: calc(100vh - 180px);
+    min-height: 400px;
+
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: auto;
+
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-x pan-y;
 }
 
 .timetable {
@@ -1617,13 +1633,6 @@ body {
    時間列
 ------------------------------------------ */
 
-.timetableTimeColumn {
-    position: relative;
-
-    border-right: 2px solid #555;
-
-    background: #fafafa;
-}
 
 .timetableTime {
     position: absolute;
@@ -1676,29 +1685,6 @@ body {
    出し物
 ------------------------------------------ */
 
-.timetableEvent {
-    position: absolute;
-
-    left: 3px;
-    right: 3px;
-
-    background: #4f8cff;
-    color: white;
-
-    border-radius: 6px;
-
-    padding: 4px;
-
-    box-sizing: border-box;
-
-    overflow: hidden;
-
-    z-index: 5;
-
-    cursor: pointer;
-
-    border: 1px solid rgba(0,0,0,0.15);
-}
 
 .timetableEventName {
     font-weight: bold;
