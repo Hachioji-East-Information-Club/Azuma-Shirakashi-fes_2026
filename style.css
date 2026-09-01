@@ -2103,20 +2103,25 @@ body {
 @media screen and (max-width: 600px) {
 
     #timetablePage {
-        height: calc(100vh - 140px);
-        padding: 10px;
-        overflow: hidden;
-    }
+    height: calc(100vh - 75px);
+    overflow: hidden;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
 
-    #timetablePage .timetableWrapper {
-        height: calc(100vh - 220px);
+#timetablePage .timetableWrapper {
+    flex: 1;
+    min-height: 0;
 
-        overflow-x: auto;
-        overflow-y: auto;
+    width: 100%;
 
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior: contain;
-    }
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
 
 }
 /* ==========================================
