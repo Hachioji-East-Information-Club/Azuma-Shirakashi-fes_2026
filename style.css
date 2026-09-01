@@ -1554,19 +1554,6 @@ body {
    タイムテーブル スクロール
 ========================================== */
 
-.timetableWrapper {
-    width: 100%;
-    height: calc(100vh - 180px);
-    min-height: 400px;
-
-    overflow-x: auto;
-    overflow-y: auto;
-
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-
-    touch-action: pan-x pan-y;
-}
 
 .timetable {
     position: relative;
@@ -1789,11 +1776,7 @@ body {
    タイムテーブル
 ========================================== */
 
-.timetableWrapper {
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: auto;
-}
+
 
 .timetable {
     position: relative;
@@ -2094,12 +2077,7 @@ body {
 .bottomNav {
     z-index: 1000 !important;
 }
-           {
-        "id": "2026090108",
-        "date": "2026/09/01",
-        "title": "課題のお知らせ",
-        "text": "思考の論理スイッチは無事提出しました。あぶないあぶない"
-        },
+          
 @media screen and (max-width: 600px) {
 
 #timetablePage {
@@ -2239,6 +2217,8 @@ body:has(#timetablePage.active) {
 
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
+    }
+}
 /* ==========================================
    八高線 時刻表
 ========================================== */
