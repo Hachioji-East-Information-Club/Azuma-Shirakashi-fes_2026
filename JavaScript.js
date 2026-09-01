@@ -1208,7 +1208,15 @@ function updateTrainTime() {
     const currentHour = now.getHours();
     const currentMinute = now.getMinutes();
 
-    // 現在時刻
+    // 現在時刻を「分」に変換
+    const nowMinutes =
+        currentHour * 60 + currentMinute;
+
+
+    // ==========================================
+    // 現在時刻表示
+    // ==========================================
+
     const currentTimeElement =
         document.getElementById("trainCurrentTime");
 
@@ -1224,26 +1232,30 @@ function updateTrainTime() {
     }
 
 
-    // 現在選択されている方向
+    // ==========================================
+    // 現在の方向の時刻表
+    // ==========================================
+
     const times =
         trainTimes[currentTrainDirection];
 
 
-    // 現在時刻以降の電車だけ残す
-    const remainingTrains = times.filter(train => {
+    // ==========================================
+    // 発車していない電車だけ残す
+    // ==========================================
 
-        const [hour, minute] =
-            train.time.split(":").map(Number);
+    const remainingTrains =
+        times.filter(train => {
 
-        const trainMinutes =
-            hour * 60 + minute;
+            const [hour, minute] =
+                train.time.split(":").map(Number);
 
-        const nowMinutes =
-            currentHour * 60 + currentMinute;
+            const trainMinutes =
+                hour * 60 + minute;
 
-        return trainMinutes > nowMinutes;
+            return trainMinutes > nowMinutes;
 
-    });
+        });
 
 
     // ==========================================
@@ -1252,6 +1264,7 @@ function updateTrainTime() {
 
     const nextTrainElement =
         document.getElementById("nextTrainTime");
+
 
     if (nextTrainElement) {
 
@@ -1266,7 +1279,9 @@ function updateTrainTime() {
                 nextTrain.destination +
                 "行";
 
-        } else {
+        }
+
+        else {
 
             nextTrainElement.textContent =
                 "--:--";
@@ -1283,11 +1298,15 @@ function updateTrainTime() {
     const scheduleElement =
         document.getElementById("trainSchedule");
 
+
     if (!scheduleElement) {
+
         return;
+
     }
 
 
+    // 本日の電車が終了した場合
     if (remainingTrains.length === 0) {
 
         scheduleElement.innerHTML = `
@@ -1301,34 +1320,48 @@ function updateTrainTime() {
     }
 
 
+    // ==========================================
+    // 残りの電車を全部表示
+    // ==========================================
+
     scheduleElement.innerHTML =
-        remainingTrains.map((train, index) => {
+        remainingTrains
+            .map((train, index) => {
 
-            return `
-                <div class="trainScheduleRow">
+                return `
 
-                    <div class="trainScheduleTime">
-                        ${train.time}
+                    <div
+                        class="
+                            trainScheduleRow
+                            ${index === 0
+                                ? "nextTrainRow"
+                                : ""}
+                        ">
+
+                        <div class="trainScheduleTime">
+                            ${train.time}
+                        </div>
+
+                        <div class="trainScheduleDestination">
+                            ${train.destination}行
+                        </div>
+
+                        ${
+                            index === 0
+                            ? `
+                                <div class="nextTrainBadge">
+                                    次の電車
+                                </div>
+                              `
+                            : ""
+                        }
+
                     </div>
 
-                    <div class="trainScheduleDestination">
-                        ${train.destination}行
-                    </div>
+                `;
 
-                    ${
-                        index === 0
-                        ? `
-                            <div class="nextTrainBadge">
-                                次の電車
-                            </div>
-                          `
-                        : ""
-                    }
-
-                </div>
-            `;
-
-        }).join("");
+            })
+            .join("");
 
 }
 
