@@ -1201,7 +1201,6 @@ const trainTimes = {
 // ==========================================
 // 電車機能 初期化・毎秒更新
 // ==========================================
-
 function updateTrainTime() {
 
     const now = new Date();
@@ -1212,19 +1211,6 @@ function updateTrainTime() {
     // 現在時刻
     const currentTimeElement =
         document.getElementById("trainCurrentTime");
-
-    // 次の電車
-    const nextTrainElement =
-        document.getElementById("nextTrainTime");
-
-    // 時刻表
-    const scheduleElement =
-        document.getElementById("trainSchedule");
-
-
-    // ==========================================
-    // 現在時刻を表示
-    // ==========================================
 
     if (currentTimeElement) {
 
@@ -1238,30 +1224,24 @@ function updateTrainTime() {
     }
 
 
-    // ==========================================
-    // 現在選択されている方向の時刻表
-    // ==========================================
-
+    // 現在選択されている方向
     const times =
         trainTimes[currentTrainDirection];
 
 
-    // ==========================================
-    // 現在時刻より後の電車だけ取得
-    // ==========================================
-
+    // 現在時刻以降の電車だけ残す
     const remainingTrains = times.filter(train => {
 
         const [hour, minute] =
             train.time.split(":").map(Number);
 
-        return (
-            hour > currentHour ||
-            (
-                hour === currentHour &&
-                minute > currentMinute
-            )
-        );
+        const trainMinutes =
+            hour * 60 + minute;
+
+        const nowMinutes =
+            currentHour * 60 + currentMinute;
+
+        return trainMinutes > nowMinutes;
 
     });
 
@@ -1270,19 +1250,15 @@ function updateTrainTime() {
     // 次の電車
     // ==========================================
 
-    const nextTrain =
-        remainingTrains.length > 0
-            ? remainingTrains[0]
-            : null;
-
-
-    // ==========================================
-    // 次の電車を表示
-    // ==========================================
+    const nextTrainElement =
+        document.getElementById("nextTrainTime");
 
     if (nextTrainElement) {
 
-        if (nextTrain) {
+        if (remainingTrains.length > 0) {
+
+            const nextTrain =
+                remainingTrains[0];
 
             nextTrainElement.textContent =
                 nextTrain.time +
@@ -1301,59 +1277,58 @@ function updateTrainTime() {
 
 
     // ==========================================
-    // 時刻表を表示
+    // 時刻表
     // ==========================================
 
-    if (scheduleElement) {
+    const scheduleElement =
+        document.getElementById("trainSchedule");
 
-        if (remainingTrains.length === 0) {
+    if (!scheduleElement) {
+        return;
+    }
 
-            scheduleElement.innerHTML = `
-                <div class="noTrain">
-                    本日の電車は終了しました
+
+    if (remainingTrains.length === 0) {
+
+        scheduleElement.innerHTML = `
+            <div class="noTrain">
+                本日の電車は終了しました
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    scheduleElement.innerHTML =
+        remainingTrains.map((train, index) => {
+
+            return `
+                <div class="trainScheduleRow">
+
+                    <div class="trainScheduleTime">
+                        ${train.time}
+                    </div>
+
+                    <div class="trainScheduleDestination">
+                        ${train.destination}行
+                    </div>
+
+                    ${
+                        index === 0
+                        ? `
+                            <div class="nextTrainBadge">
+                                次の電車
+                            </div>
+                          `
+                        : ""
+                    }
+
                 </div>
             `;
 
-            return;
-
-        }
-
-
-        scheduleElement.innerHTML =
-            remainingTrains.map((train, index) => {
-
-                const isNext =
-                    index === 0;
-
-                return `
-
-                    <div
-                        class="trainScheduleRow
-                        ${isNext ? "nextTrainRow" : ""}">
-
-                        <div class="trainScheduleTime">
-                            ${train.time}
-                        </div>
-
-                        <div class="trainScheduleDestination">
-                            ${train.destination}行
-                        </div>
-
-                        ${
-                            isNext
-                            ? `<div class="nextTrainBadge">
-                                    次の電車
-                               </div>`
-                            : ""
-                        }
-
-                    </div>
-
-                `;
-
-            }).join("");
-
-    }
+        }).join("");
 
 }
 
