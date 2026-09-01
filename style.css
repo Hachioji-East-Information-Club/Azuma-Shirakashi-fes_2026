@@ -2094,3 +2094,28 @@ body {
 .bottomNav {
     z-index: 1000 !important;
 }
+           {
+        "id": "2026090108",
+        "date": "2026/09/01",
+        "title": "課題のお知らせ",
+        "text": "思考の論理スイッチは無事提出しました。あぶないあぶない"
+        },
+@media screen and (max-width: 600px) {
+
+    #timetablePage {
+        height: calc(100vh - 140px);
+        padding: 10px;
+        overflow: hidden;
+    }
+
+    #timetablePage .timetableWrapper {
+        height: calc(100vh - 220px);
+
+        overflow-x: auto;
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+
+}
