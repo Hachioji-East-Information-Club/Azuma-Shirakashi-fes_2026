@@ -1549,7 +1549,7 @@ body {
 .timetableWrapper {
     width: 100%;
     overflow-x: auto;
-    overflow-y: auto;
+    overflow-y: visible;
 }
 
 .timetable {
@@ -1565,12 +1565,12 @@ body {
 
 .timetableHeaderRow {
     display: grid;
-    grid-template-columns: 70px repeat(7, 1fr);
+    grid-template-columns: 70px repeat(7, 120px);
+    height: 42px;
 
-    position: sticky;
-    top: 0;
+    position: relative;
 
-    z-index: 30;
+    z-index: 20;
     background: white;
 }
 
