@@ -2102,20 +2102,14 @@ body {
         },
 @media screen and (max-width: 600px) {
 
-    #timetablePage {
+#timetablePage {
     height: calc(100vh - 75px);
     overflow: hidden;
     padding: 15px;
-    display: flex;
-    flex-direction: column;
 }
 
 #timetablePage .timetableWrapper {
-    flex: 1;
-    min-height: 0;
-
-    width: 100%;
-
+    height: calc(100vh - 210px);
     overflow-x: auto;
     overflow-y: auto;
 
