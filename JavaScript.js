@@ -1292,7 +1292,71 @@ function updateTrainTime() {
         }
 
     }
+// ==========================================
+// 全時刻表を表示
+// ==========================================
 
+if (trainTimetableList) {
+
+    trainTimetableList.innerHTML = "";
+
+    times.forEach(train => {
+
+        const [hour, minute] =
+            train.time.split(":").map(Number);
+
+        const trainMinutes =
+            hour * 60 + minute;
+
+        const currentMinutes =
+            currentHour * 60 + currentMinute;
+
+        const row =
+            document.createElement("div");
+
+        row.className = "trainTimetableRow";
+
+
+        // 次の電車
+        if (
+            nextTrain &&
+            train.time === nextTrain.time &&
+            train.destination === nextTrain.destination
+        ) {
+
+            row.classList.add("nextTrainRow");
+
+        }
+
+
+        // すでに発車した電車
+        else if (
+            trainMinutes < currentMinutes
+        ) {
+
+            row.classList.add("passedTrainRow");
+
+        }
+
+
+        row.innerHTML = `
+
+            <span class="trainTime">
+                ${train.time}
+            </span>
+
+            <span class="trainDestination">
+                ${train.destination}行
+            </span>
+
+        `;
+
+
+        trainTimetableList.appendChild(row);
+
+    });
+
+}
 }
 
 
