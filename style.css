@@ -2526,3 +2526,20 @@ body:has(#timetablePage.active) {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
 }
+       /* ==========================================
+   タイムテーブルのスクロール領域
+========================================== */
+
+#timetablePage.active {
+    overflow: hidden;
+}
+
+#timetablePage .timetableWrapper {
+    height: calc(100vh - 180px);
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
