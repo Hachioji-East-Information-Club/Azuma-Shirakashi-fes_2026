@@ -2072,3 +2072,39 @@ body {
 
     font-size: 15px;
 }
+/* ==========================================
+   タイムテーブルがヘッダーに被らないようにする
+========================================== */
+
+/* ヘッダーを最前面 */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000 !important;
+}
+
+/* タイムテーブル本体はヘッダーより下 */
+.timetable {
+    position: relative;
+    z-index: 1;
+}
+
+/* 出し物 */
+.timetableEvent {
+    z-index: 10 !important;
+}
+
+/* 現在時刻線 */
+#timetableCurrentLine {
+    z-index: 20 !important;
+}
+
+/* タイムテーブルのヘッダー */
+.timetableHeaderRow {
+    z-index: 30 !important;
+}
+
+/* 下メニューも最前面 */
+.bottomNav {
+    z-index: 1000 !important;
+}
