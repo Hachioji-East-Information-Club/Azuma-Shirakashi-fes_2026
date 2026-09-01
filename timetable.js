@@ -896,7 +896,7 @@ timetableElement.className =
 
     timetableElement.appendChild(body);
 
-    grid.appendChild(timetable);
+    grid.appendChild(timetableElement);
 
 
     updateTimetableCurrentTime();
@@ -1173,5 +1173,10 @@ function showSchedulePage(button) {
 
     // タイムテーブルを描画
     renderTimetable();
+    timetableElement.appendChild(body);
+
+grid.appendChild(timetableElement);
+
+updateTimetableCurrentTime();
 
 }
