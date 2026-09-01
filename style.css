@@ -2493,3 +2493,15 @@ body {
 
     border-radius: 12px;
 }
+html,
+body {
+    height: 100%;
+}
+
+body:has(#timetablePage.active) {
+    overflow: hidden;
+}
+
+#timetablePage.active {
+    overflow: hidden;
+}
