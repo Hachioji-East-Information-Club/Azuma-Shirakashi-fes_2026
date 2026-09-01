@@ -1217,6 +1217,10 @@ function updateTrainTime() {
     const nextTrainElement =
         document.getElementById("nextTrainTime");
 
+    // 時刻表
+    const scheduleElement =
+        document.getElementById("trainSchedule");
+
 
     // ==========================================
     // 現在時刻を表示
@@ -1235,39 +1239,41 @@ function updateTrainTime() {
 
 
     // ==========================================
-    // 時刻表
+    // 現在選択されている方向の時刻表
     // ==========================================
 
     const times =
         trainTimes[currentTrainDirection];
 
-    let nextTrain = null;
-
 
     // ==========================================
-    // 次の電車を探す
+    // 現在時刻より後の電車だけ取得
     // ==========================================
 
-    for (let i = 0; i < times.length; i++) {
+    const remainingTrains = times.filter(train => {
 
         const [hour, minute] =
-            times[i].time.split(":").map(Number);
+            train.time.split(":").map(Number);
 
-        if (
+        return (
             hour > currentHour ||
             (
                 hour === currentHour &&
                 minute > currentMinute
             )
-        ) {
+        );
 
-            nextTrain = times[i];
+    });
 
-            break;
 
-        }
+    // ==========================================
+    // 次の電車
+    // ==========================================
 
-    }
+    const nextTrain =
+        remainingTrains.length > 0
+            ? remainingTrains[0]
+            : null;
 
 
     // ==========================================
@@ -1292,73 +1298,64 @@ function updateTrainTime() {
         }
 
     }
-// ==========================================
-// 全時刻表を表示
-// ==========================================
-
-if (trainTimetableList) {
-
-    trainTimetableList.innerHTML = "";
-
-    times.forEach(train => {
-
-        const [hour, minute] =
-            train.time.split(":").map(Number);
-
-        const trainMinutes =
-            hour * 60 + minute;
-
-        const currentMinutes =
-            currentHour * 60 + currentMinute;
-
-        const row =
-            document.createElement("div");
-
-        row.className = "trainTimetableRow";
 
 
-        // 次の電車
-        if (
-            nextTrain &&
-            train.time === nextTrain.time &&
-            train.destination === nextTrain.destination
-        ) {
+    // ==========================================
+    // 時刻表を表示
+    // ==========================================
 
-            row.classList.add("nextTrainRow");
+    if (scheduleElement) {
+
+        if (remainingTrains.length === 0) {
+
+            scheduleElement.innerHTML = `
+                <div class="noTrain">
+                    本日の電車は終了しました
+                </div>
+            `;
+
+            return;
 
         }
 
 
-        // すでに発車した電車
-        else if (
-            trainMinutes < currentMinutes
-        ) {
+        scheduleElement.innerHTML =
+            remainingTrains.map((train, index) => {
 
-            row.classList.add("passedTrainRow");
+                const isNext =
+                    index === 0;
 
-        }
+                return `
 
+                    <div
+                        class="trainScheduleRow
+                        ${isNext ? "nextTrainRow" : ""}">
 
-        row.innerHTML = `
+                        <div class="trainScheduleTime">
+                            ${train.time}
+                        </div>
 
-            <span class="trainTime">
-                ${train.time}
-            </span>
+                        <div class="trainScheduleDestination">
+                            ${train.destination}行
+                        </div>
 
-            <span class="trainDestination">
-                ${train.destination}行
-            </span>
+                        ${
+                            isNext
+                            ? `<div class="nextTrainBadge">
+                                    次の電車
+                               </div>`
+                            : ""
+                        }
 
-        `;
+                    </div>
 
+                `;
 
-        trainTimetableList.appendChild(row);
+            }).join("");
 
-    });
+    }
 
 }
-}
-
 
 // ==========================================
 // 電車ページを開いたとき
