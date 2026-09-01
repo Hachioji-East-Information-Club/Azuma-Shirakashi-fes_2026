@@ -1162,7 +1162,8 @@ function showSchedulePage(button) {
     });
 
     // タイムテーブルを表示
-    const timetablePage = document.getElementById("timetablePage");
+    const timetablePage =
+        document.getElementById("timetablePage");
 
     if (!timetablePage) {
         console.error("timetablePage が見つかりません");
@@ -1173,10 +1174,7 @@ function showSchedulePage(button) {
 
     // タイムテーブルを描画
     renderTimetable();
-    timetableElement.appendChild(body);
 
-grid.appendChild(timetableElement);
-
-updateTimetableCurrentTime();
-
+    // 現在時刻を更新
+    updateTimetableCurrentTime();
 }
