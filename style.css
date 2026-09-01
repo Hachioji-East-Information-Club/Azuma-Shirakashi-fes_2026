@@ -2544,3 +2544,31 @@ body:has(#timetablePage.active) {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
 }
+/* ==========================================
+   タイムテーブルの縦方向を15:30まで確保
+========================================== */
+
+.timetableWrapper {
+    height: calc(100vh - 170px);
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+.timetable {
+    min-width: 900px;
+    width: max-content;
+    min-height: 1200px;
+}
+
+.timetableBody {
+    height: 1200px !important;
+    min-height: 1200px !important;
+}
+
+.timetableColumn {
+    height: 1200px !important;
+    min-height: 1200px !important;
+}
