@@ -2256,3 +2256,109 @@ body:has(#timetablePage.active) {
         min-height: 780px;
     }
 }
+/* ==========================================
+   タイムテーブル 最終上書き
+========================================== */
+
+#timetablePage {
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#timetablePage .timetableWrapper {
+    width: 100%;
+    height: calc(100vh - 175px);
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+#timetablePage .timetable {
+    position: relative;
+
+    width: max-content;
+    min-width: 910px;
+
+    margin: 0;
+}
+
+#timetablePage .timetableBody {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 70px repeat(7, 120px);
+
+    width: max-content;
+
+    height: 780px;
+    min-height: 780px;
+
+    background: white;
+
+    overflow: visible;
+}
+
+#timetablePage .timetableTimeColumn {
+    position: relative;
+
+    height: 780px;
+
+    border-right: 1px solid #555;
+    background: white;
+}
+
+#timetablePage .timetableColumn {
+    position: relative;
+
+    width: 120px;
+    min-width: 120px;
+
+    height: 780px;
+
+    border-right: 1px solid #aaa;
+    background: #fafafa;
+
+    overflow: visible;
+}
+
+/* スマホ */
+@media screen and (max-width: 600px) {
+
+    #timetablePage {
+        padding: 10px;
+    }
+
+    #timetablePage .timetableWrapper {
+        width: 100%;
+        height: calc(100vh - 175px);
+
+        overflow-x: auto;
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+
+    #timetablePage .timetable {
+        min-width: 910px;
+    }
+
+    #timetablePage .timetableBody {
+        height: 780px;
+        min-height: 780px;
+    }
+
+    #timetablePage .timetableTimeColumn {
+        height: 780px;
+    }
+
+    #timetablePage .timetableColumn {
+        height: 780px;
+        min-height: 780px;
+    }
+}
