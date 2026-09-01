@@ -1543,306 +1543,105 @@ body {
 }
 
 /* ==========================================
-   タイムテーブル
+   タイムテーブル 完全版
 ========================================== */
 
-/* ==========================================
-   タイムテーブル スクロール
-========================================== */
-
-/* ==========================================
-   タイムテーブル スクロール
-========================================== */
-
-
-.timetable {
-    position: relative;
-    min-width: 900px;
-    font-size: 14px;
-}
-
-
-/* ------------------------------------------
-   ヘッダー
------------------------------------------- */
-
-.timetableHeaderRow {
-    display: grid;
-    grid-template-columns: 70px repeat(7, 120px);
-    height: 42px;
-
-    position: relative;
-
-    z-index: 20;
-    background: white;
-}
-
-.timetableTimeHeader {
-    padding: 8px 4px;
-    text-align: center;
-    font-weight: bold;
-
-    border-right: 1px solid #ccc;
-    border-bottom: 2px solid #555;
-
+#timetablePage {
+    padding: 15px;
     box-sizing: border-box;
-}
-
-.timetablePlaceHeader {
-    padding: 8px 4px;
-    text-align: center;
-    font-weight: bold;
-
-    border-right: 1px solid #ccc;
-    border-bottom: 2px solid #555;
-
-    box-sizing: border-box;
-
-    white-space: nowrap;
-}
-
-
-/* ------------------------------------------
-   本体
------------------------------------------- */
-
-.timetableBody {
-    position: relative;
-
-    display: grid;
-    grid-template-columns: 70px repeat(7, 1fr);
-
-    height: 780px;
-}
-
-
-/* ------------------------------------------
-   時間列
------------------------------------------- */
-
-
-.timetableTime {
-    position: absolute;
-
-    left: 4px;
-
-    transform: translateY(-50%);
-
-    font-size: 13px;
-    white-space: nowrap;
-}
-
-
-/* ------------------------------------------
-   会場列
------------------------------------------- */
-
-.timetableColumn {
-    position: relative;
-
-    height: 780px;
-
-    border-right: 1px solid #ccc;
-
-    background: white;
-
-    box-sizing: border-box;
-}
-
-
-/* ------------------------------------------
-   30分ごとの横線
------------------------------------------- */
-
-.timetableHorizontalLine {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-
-    border-top: 1px solid #ddd;
-
-    z-index: 1;
-
-    pointer-events: none;
-}
-
-
-/* ------------------------------------------
-   出し物
------------------------------------------- */
-
-
-.timetableEventName {
-    font-weight: bold;
-
-    font-size: 13px;
-
-    line-height: 1.2;
-
-    word-break: break-word;
-}
-
-.timetableEventTime {
-    font-size: 10px;
-
-    margin-top: 3px;
-
-    opacity: 0.9;
-
-    white-space: nowrap;
-}
-
-
-/* ------------------------------------------
-   現在時刻線
------------------------------------------- */
-
-#timetableCurrentLine {
-    position: absolute;
-
-    left: 70px;
-    right: 0;
-
-    height: 3px;
-
-    background: #ff3333;
-
-    z-index: 20;
-
-    pointer-events: none;
-}
-
-#timetableCurrentLine::before {
-    content: "";
-
-    position: absolute;
-
-    left: -5px;
-    top: -4px;
-
-    width: 11px;
-    height: 11px;
-
-    border-radius: 50%;
-
-    background: #ff3333;
-}
-/* タイムテーブル 出し物強制表示 */
-.timetableColumn {
-    position: relative !important;
-    height: 780px !important;
-    min-width: 110px;
-}
-
-.timetableEvent {
-    position: absolute !important;
-
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-
-    left: 4px !important;
-    right: 4px !important;
-
-    min-height: 20px;
-
-    background: #4f8cff !important;
-    color: #fff !important;
-
-    border: 1px solid #2864d7;
-    border-radius: 6px;
-
-    padding: 4px;
-
-    box-sizing: border-box;
-
     overflow: hidden;
-
-    z-index: 100 !important;
 }
 
-.timetableEventName {
-    display: block !important;
-    color: #fff !important;
-    font-weight: bold;
+/* タイムテーブルのスクロール部分 */
+#timetablePage .timetableWrapper {
+    width: 100%;
+    height: calc(100vh - 180px);
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
 }
 
-.timetableEventTime {
-    display: block !important;
-    color: #fff !important;
-}
-/* ==========================================
-   タイムテーブル
-========================================== */
-
-
-
-.timetable {
+/* タイムテーブル全体 */
+#timetablePage .timetable {
     position: relative;
-    min-width: 900px;
-    width: max-content;
-    font-family: sans-serif;
-}
 
+    width: max-content;
+    min-width: 910px;
+
+    margin: 0;
+}
 
 /* ==========================================
    ヘッダー
 ========================================== */
 
-.timetableHeaderRow {
+#timetablePage .timetableHeaderRow {
     display: grid;
+
     grid-template-columns: 70px repeat(7, 120px);
+
     height: 42px;
+
     position: sticky;
     top: 0;
-    z-index: 20;
+
+    z-index: 30;
+
     background: white;
 }
 
-.timetableTimeHeader,
-.timetablePlaceHeader {
-    box-sizing: border-box;
-    border-right: 1px solid #999;
-    border-bottom: 1px solid #999;
-
+#timetablePage .timetableTimeHeader,
+#timetablePage .timetablePlaceHeader {
     display: flex;
     align-items: center;
     justify-content: center;
 
+    box-sizing: border-box;
+
+    border-right: 1px solid #999;
+    border-bottom: 1px solid #999;
+
+    background: white;
+
     font-size: 13px;
     font-weight: bold;
 
-    background: white;
-}
-
-.timetablePlaceHeader {
     white-space: nowrap;
 }
-
 
 /* ==========================================
    本体
 ========================================== */
 
-.timetableBody {
+#timetablePage .timetableBody {
     position: relative;
 
     display: grid;
 
     grid-template-columns: 70px repeat(7, 120px);
 
+    /*
+      9:00 → 15:30
+      6.5時間 × 120px
+      = 780px
+    */
     height: 780px;
 
-    background: #fff;
+    min-height: 780px;
+
+    background: white;
+
+    overflow: visible;
 }
 
-
 /* ==========================================
-   時間軸
+   時間列
 ========================================== */
 
-.timetableTimeColumn {
+#timetablePage .timetableTimeColumn {
     position: relative;
 
     height: 780px;
@@ -1854,7 +1653,7 @@ body {
     z-index: 5;
 }
 
-.timetableTime {
+#timetablePage .timetableTime {
     position: absolute;
 
     left: 0;
@@ -1872,27 +1671,31 @@ body {
     z-index: 10;
 }
 
-
 /* ==========================================
-   各会場
+   会場列
 ========================================== */
 
-.timetableColumn {
+#timetablePage .timetableColumn {
     position: relative;
+
+    width: 120px;
+
+    min-width: 120px;
 
     height: 780px;
 
     border-right: 1px solid #aaa;
 
     background: #fafafa;
-}
 
+    overflow: visible;
+}
 
 /* ==========================================
    30分ごとの横線
 ========================================== */
 
-.timetableHorizontalLine {
+#timetablePage .timetableHorizontalLine {
     position: absolute;
 
     left: 0;
@@ -1903,14 +1706,15 @@ body {
     background: #ddd;
 
     pointer-events: none;
-}
 
+    z-index: 1;
+}
 
 /* ==========================================
    出し物
 ========================================== */
 
-.timetableEvent {
+#timetablePage .timetableEvent {
     position: absolute;
 
     left: 4px;
@@ -1933,15 +1737,15 @@ body {
     z-index: 10;
 }
 
-.timetableEvent:hover {
+#timetablePage .timetableEvent:hover {
     background: #c5dcff;
 }
 
+#timetablePage .timetableEventName {
+    display: block;
 
-/* 出し物名 */
-
-.timetableEventName {
     font-size: 12px;
+
     font-weight: bold;
 
     line-height: 1.25;
@@ -1951,10 +1755,9 @@ body {
     text-align: center;
 }
 
+#timetablePage .timetableEventTime {
+    display: block;
 
-/* 時間 */
-
-.timetableEventTime {
     margin-top: 2px;
 
     font-size: 9px;
@@ -1966,12 +1769,11 @@ body {
     text-align: center;
 }
 
-
 /* ==========================================
    現在時刻線
 ========================================== */
 
-#timetableCurrentLine {
+#timetablePage #timetableCurrentLine {
     position: absolute;
 
     left: 70px;
@@ -1986,7 +1788,7 @@ body {
     pointer-events: none;
 }
 
-#timetableCurrentLine::before {
+#timetablePage #timetableCurrentLine::before {
     content: "";
 
     position: absolute;
@@ -2001,7 +1803,6 @@ body {
 
     background: #e53935;
 }
-
 
 /* ==========================================
    日付ボタン
@@ -2031,7 +1832,6 @@ body {
     border-color: #6b123c;
 }
 
-
 /* ==========================================
    現在時刻
 ========================================== */
@@ -2041,161 +1841,6 @@ body {
 
     font-size: 15px;
 }
-/* ==========================================
-   タイムテーブルがヘッダーに被らないようにする
-========================================== */
-
-/* ヘッダーを最前面 */
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 1000 !important;
-}
-
-/* タイムテーブル本体はヘッダーより下 */
-.timetable {
-    position: relative;
-    z-index: 1;
-}
-
-/* 出し物 */
-.timetableEvent {
-    z-index: 10 !important;
-}
-
-/* 現在時刻線 */
-#timetableCurrentLine {
-    z-index: 20 !important;
-}
-
-/* タイムテーブルのヘッダー */
-.timetableHeaderRow {
-    z-index: 30 !important;
-}
-
-/* 下メニューも最前面 */
-.bottomNav {
-    z-index: 1000 !important;
-}
-          
-@media screen and (max-width: 600px) {
-
-#timetablePage {
-    overflow: hidden;
-    padding: 15px;
-}
-
-#timetablePage .timetableWrapper {
-    width: 100%;
-    height: 500px;
-
-    overflow-x: auto;
-    overflow-y: auto;
-
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-}
-
-}
-/* ==========================================
-   タイムテーブル 最終設定
-========================================== */
-
-/* ページ全体はスクロールさせない */
-html,
-body {
-    height: 100%;
-}
-
-/* タイムテーブル表示中だけページ全体を固定 */
-body:has(#timetablePage.active) {
-    overflow: hidden;
-}
-
-#timetablePage.active {
-    overflow: hidden;
-}
-
-/* タイムテーブルページ */
-
-
-/* タイムテーブルのスクロール領域 */
-#timetablePage .timetableWrapper {
-    width: 100%;
-    height: calc(100vh - 190px);
-
-    overflow-x: auto;
-    overflow-y: auto;
-
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-
-    position: relative;
-}
-
-/* タイムテーブル */
-#timetablePage .timetable {
-    position: relative;
-
-    width: max-content;
-    min-width: 910px;
-
-    margin: 0;
-}
-
-/* ヘッダー */
-#timetablePage .timetableHeaderRow {
-    position: sticky;
-    top: 0;
-
-    z-index: 30;
-
-    height: 42px;
-
-    display: grid;
-    grid-template-columns: 70px repeat(7, 120px);
-
-    background: white;
-}
-
-/* 本体 */
-#timetablePage .timetableBody {
-    position: relative;
-
-    display: grid;
-    grid-template-columns: 70px repeat(7, 120px);
-
-    height: 780px;
-
-    overflow: visible;
-}
-
-/* 会場 */
-#timetablePage .timetableColumn {
-    position: relative;
-
-    height: 780px;
-
-    min-width: 120px;
-
-    overflow: visible;
-}
-
-/* 出し物 */
-#timetablePage .timetableEvent {
-    position: absolute !important;
-
-    left: 4px !important;
-    right: 4px !important;
-
-    z-index: 10 !important;
-}
-
-/* 下メニュー */
-.bottomNav {
-    z-index: 1000 !important;
-}
-
 
 /* ==========================================
    スマホ
@@ -2204,12 +1849,16 @@ body:has(#timetablePage.active) {
 @media screen and (max-width: 600px) {
 
     #timetablePage {
-        height: calc(100vh - 75px);
         padding: 10px;
         overflow: hidden;
     }
 
     #timetablePage .timetableWrapper {
+        width: 100%;
+
+        /*
+          下メニューに隠れない高さ
+        */
         height: calc(100vh - 175px);
 
         overflow-x: auto;
@@ -2217,6 +1866,20 @@ body:has(#timetablePage.active) {
 
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
+    }
+
+    #timetablePage .timetable {
+        min-width: 910px;
+    }
+
+    #timetablePage .timetableBody {
+        height: 780px;
+        min-height: 780px;
+    }
+
+    #timetablePage .timetableColumn {
+        height: 780px;
+        min-height: 780px;
     }
 }
 /* ==========================================
@@ -2515,27 +2178,12 @@ body:has(#timetablePage.active) {
     overflow: hidden;
 }
 
-#timetablePage .timetableWrapper {
-    height: calc(100vh - 180px);
 
-    overflow-x: auto;
-    overflow-y: auto;
-
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-}
 /* ==========================================
    タイムテーブルの縦方向を15:30まで確保
 ========================================== */
 
-.timetableWrapper {
-    height: calc(100vh - 170px);
-    overflow-x: auto;
-    overflow-y: auto;
 
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-}
 
 
 #timetablePage {
@@ -2543,16 +2191,7 @@ body:has(#timetablePage.active) {
     padding: 15px;
 }
 
-#timetablePage .timetableWrapper {
-    width: 100%;
-    height: 500px;
 
-    overflow-x: auto;
-    overflow-y: auto;
-
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-}
 /* ==========================================
    タイムテーブル 最終修正版
 ========================================== */
