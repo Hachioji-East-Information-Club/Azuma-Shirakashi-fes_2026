@@ -2139,12 +2139,7 @@ body:has(#timetablePage.active) {
 }
 
 /* タイムテーブルページ */
-#timetablePage {
-    height: calc(100vh - 75px);
-    overflow: hidden;
 
-    padding: 15px;
-}
 
 /* タイムテーブルのスクロール領域 */
 #timetablePage .timetableWrapper {
