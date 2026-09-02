@@ -1883,6 +1883,1890 @@ body {
     }
 }
 /* ==========================================
+   AZUMA Ver.3
+   style.css
+========================================== */
+
+
+/* ==========================================
+   基本設定
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Yu Gothic UI", "Meiryo", sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    color: #333;
+    padding-bottom: 90px;
+}
+
+
+/* ==========================================
+   Header
+========================================== */
+
+.header {
+    background: #8B1E3F;
+    color: white;
+    text-align: center;
+    padding: 18px 10px;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,.15);
+}
+
+.header h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.subTitle {
+    margin-top: 5px;
+    font-size: 13px;
+    opacity: .9;
+}
+
+
+/* ==========================================
+   Page
+========================================== */
+
+.page {
+    display: none;
+    padding: 15px;
+}
+
+.page.active {
+    display: block;
+}
+
+.pageTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+
+/* ==========================================
+   校内図
+========================================== */
+
+.mapBox {
+    background: white;
+    border-radius: 15px;
+    padding: 16px;
+
+    min-height: 400px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+
+/* ==========================================
+   校舎棟 / 体育館棟 切り替え
+========================================== */
+
+.mapTabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.mapTab {
+    flex: 1;
+    min-width: 0;
+
+    padding: 10px 8px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #e0e0e0;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+    text-align: center;
+    white-space: nowrap;
+}
+
+.mapTab:hover {
+    transform: translateY(-1px);
+}
+
+.mapTab.activeMapTab {
+    background: #8B1E3F;
+    color: white;
+}
+
+
+/* ==========================================
+   地図エリア
+========================================== */
+
+.mapArea {
+    display: none;
+
+    position: relative;
+
+    width: 100%;
+
+    border-radius: 12px;
+}
+
+.mapArea.activeMap {
+    display: block;
+}
+
+
+/* ==========================================
+   地図画像エリア
+========================================== */
+
+.floorMap {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    display: block;
+}
+
+
+/* ==========================================
+   地図画像
+========================================== */
+
+.schoolMapImage {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    height: auto;
+
+    border-radius: 12px;
+
+    object-fit: contain;
+}
+
+
+/* ==========================================
+   階数ボタン
+========================================== */
+
+.floorButtons {
+    position: static !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+
+    width: 100%;
+
+    gap: 8px;
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    z-index: 20;
+}
+
+.floorBtn {
+    flex: 1;
+
+    width: auto;
+    height: 42px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #f0f0f0;
+    color: #555;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.floorBtn:hover {
+    transform: translateY(-2px);
+}
+
+.floorBtn.activeFloor {
+    background: #8B1E3F;
+    color: white;
+}
+
+
+/* ==========================================
+   スマホ用 階数ボタン
+========================================== */
+
+@media screen and (max-width: 600px) {
+
+    .floorButtons {
+        position: static !important;
+
+        display: flex !important;
+        flex-direction: row !important;
+
+        width: 100%;
+
+        gap: 6px;
+
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .floorBtn {
+        flex: 1;
+
+        width: auto;
+        height: 40px;
+
+        font-size: 13px;
+    }
+}
+
+
+/* ==========================================
+   小さいスマホ
+========================================== */
+
+@media screen and (max-width: 380px) {
+
+    .floorButtons {
+        gap: 4px;
+    }
+
+    .floorBtn {
+        height: 38px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* ==========================================
+   地図プレースホルダー
+========================================== */
+
+.mapPlaceholder {
+    width: 100%;
+    min-height: 420px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    color: #888;
+
+    font-size: 16px;
+
+    background: #fafafa;
+
+    border-radius: 12px;
+}
+
+
+/* ==========================================
+   検索
+========================================== */
+
+.searchArea {
+    margin-bottom: 15px;
+}
+
+#searchBox {
+    width: 100%;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    border: 1px solid #ccc;
+
+    font-size: 16px;
+
+    background: white;
+
+    outline: none;
+}
+
+#searchBox:focus {
+    border-color: #8B1E3F;
+}
+
+
+/* ==========================================
+   絞り込み
+========================================== */
+
+.filterArea,
+.groupFilter,
+.buildingFilter {
+    display: flex;
+
+    gap: 8px;
+
+    overflow-x: auto;
+
+    margin-bottom: 12px;
+
+    padding-bottom: 5px;
+}
+
+
+/* スクロールバー */
+
+.filterArea::-webkit-scrollbar,
+.groupFilter::-webkit-scrollbar,
+.buildingFilter::-webkit-scrollbar {
+    height: 5px;
+}
+
+.filterArea::-webkit-scrollbar-thumb,
+.groupFilter::-webkit-scrollbar-thumb,
+.buildingFilter::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+
+/* ==========================================
+   絞り込みボタン
+========================================== */
+
+.filterBtn,
+.groupBtn,
+.buildingBtn {
+    flex-shrink: 0;
+
+    border: none;
+
+    background: white;
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+    box-shadow: 0 1px 5px rgba(0,0,0,.15);
+}
+
+.filterBtn:hover,
+.groupBtn:hover,
+.buildingBtn:hover {
+    transform: translateY(-2px);
+}
+
+.filterBtn.activeFilter,
+.groupBtn.activeGroup,
+.buildingBtn.activeBuilding {
+    background: #8B1E3F;
+    color: white;
+}
+
+
+/* ==========================================
+   団体一覧
+========================================== */
+
+#boothList {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    padding-bottom: 20px;
+}
+
+
+/* ==========================================
+   団体カード
+========================================== */
+
+.boothCard {
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 16px;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,.12);
+
+    transition: .2s;
+}
+
+.boothCard:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   カード上部
+========================================== */
+
+.cardHeader {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 16px;
+
+    margin-bottom: 8px;
+}
+
+.titleArea {
+    flex: 1;
+}
+
+.boothName {
+    font-size: 20px;
+
+    font-weight: bold;
+
+    line-height: 1.4;
+
+    color: #222;
+}
+
+.boothTitle {
+    margin-top: 4px;
+
+    color: #666;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   団体タグ
+========================================== */
+
+.groupTag {
+    display: inline-block;
+
+    background: #8B1E3F;
+
+    color: white;
+
+    font-size: 12px;
+
+    padding: 4px 10px;
+
+    border-radius: 20px;
+
+    margin-bottom: 10px;
+}
+
+
+/* ==========================================
+   写真
+========================================== */
+
+.boothImage {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    border-radius: 12px;
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+
+/* ==========================================
+   情報
+========================================== */
+
+.infoRow {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+.infoChip {
+    background: #f0f0f0;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   待ち時間
+========================================== */
+
+.waitRow {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 12px;
+}
+
+.waitTime {
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+.status {
+    padding: 6px 14px;
+
+    border-radius: 20px;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   混雑状態
+========================================== */
+
+.green {
+    background: #2ecc71;
+}
+
+.yellow {
+    background: #f1c40f;
+    color: #333;
+}
+
+.red {
+    background: #e74c3c;
+}
+
+
+/* ==========================================
+   お気に入り
+========================================== */
+
+.favoriteBtn {
+    background: none;
+
+    border: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    color: #c7c7c7;
+
+    transition: .2s;
+
+    flex-shrink: 0;
+}
+
+.favoriteBtn:hover {
+    color: #ff6b9d;
+
+    transform: scale(1.15);
+}
+
+
+/* ==========================================
+   その他
+========================================== */
+
+.otherMenu {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.menuCard {
+    background: white;
+
+    border-radius: 15px;
+
+    padding: 16px;
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+.menuCard .material-icons {
+    font-size: 34px;
+
+    color: #8B1E3F;
+}
+
+.menuCard h3 {
+    margin-bottom: 4px;
+}
+
+.menuCard p {
+    font-size: 14px;
+
+    color: #666;
+}
+
+
+/* ==========================================
+   電車ページ
+========================================== */
+
+.trainPageContent {
+    text-align: center;
+}
+
+.trainTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.trainDirectionButtons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.trainDirectionGroup {
+    flex: 1;
+}
+
+.trainDirection {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    background: #e0e0e0;
+    padding: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.trainDirection.activeTrainDirection {
+    background: #8B1E3F;
+    color: white;
+}
+
+.trainDirectionInfo {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+.nextTrainText {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.nextTrainTime {
+    margin-top: 10px;
+    font-size: 48px;
+    font-weight: bold;
+    color: #8B1E3F;
+}
+
+.trainCurrentTime {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.trainBottomMenu {
+    margin-top: 30px;
+}
+
+
+/* ==========================================
+   下メニュー
+========================================== */
+
+.bottomNav {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 75px;
+
+    background: white;
+
+    display: flex;
+
+    border-top: 1px solid #ccc;
+
+    box-shadow: 0 -2px 10px rgba(0,0,0,.15);
+
+    z-index: 100;
+}
+
+.navBtn {
+    flex: 1;
+
+    border: none;
+
+    background: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 4px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.navBtn:not(:last-child) {
+    border-right: 1px solid #ddd;
+}
+
+.navBtn .material-icons {
+    font-size: 28px;
+}
+
+.navBtn span:last-child {
+    font-size: 12px;
+}
+
+.navBtn.activeNav {
+    color: #8B1E3F;
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   スマホ
+========================================== */
+
+@media screen and (max-width: 600px) {
+
+    .page {
+        padding: 12px;
+    }
+
+    .pageTitle {
+        font-size: 22px;
+    }
+
+    .boothName {
+        font-size: 18px;
+    }
+
+    .waitTime {
+        font-size: 20px;
+    }
+
+    .mapBox {
+        padding: 12px;
+    }
+
+    .mapTabs {
+        gap: 8px;
+    }
+
+    .mapTab {
+        font-size: 14px;
+        padding: 9px 6px;
+    }
+
+    .floorButtons {
+        gap: 5px;
+    }
+
+    .floorBtn {
+        width: auto;
+        height: 36px;
+
+        font-size: 12px;
+    }
+
+    .schoolMapImage {
+        width: 100%;
+        height: auto;
+    }
+
+    .trainDirectionButtons {
+        gap: 8px;
+    }
+
+    .nextTrainTime {
+        font-size: 40px;
+    }
+}
+
+
+/* ==========================================
+   小さいスマホ
+========================================== */
+
+@media screen and (max-width: 380px) {
+
+    .floorButtons {
+        gap: 4px;
+    }
+
+    .floorBtn {
+        height: 34px;
+
+        font-size: 11px;
+    }
+
+    .mapBox {
+        padding: 10px;
+    }
+}
+
+
+/* ==========================================
+   マップ上の待ち時間
+========================================== */
+
+.mapWaitTime {
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    background: #8B1E3F;
+    color: white;
+
+    padding: 10px 16px;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,.25);
+
+    z-index: 10;
+}
+
+
+/* スマホ */
+
+@media screen and (max-width: 600px) {
+
+    .mapWaitTime {
+        top: 10px;
+        left: 10px;
+
+        padding: 8px 12px;
+
+        font-size: 15px;
+    }
+
+}
+
+/* ==========================================
+   お知らせ
+========================================== */
+
+#noticeList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+}
+
+
+.noticeCard {
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.08);
+
+    border-left: 5px solid #8B1E3F;
+
+}
+
+
+.noticeDate {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 6px;
+}
+
+
+.noticeTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+
+.noticeText {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+}
+
+/* ==========================================
+   新規お知らせ赤丸
+========================================== */
+
+.newNoticeDot {
+
+    display: none;
+
+    width: 9px;
+    height: 9px;
+
+    background: #ff3b30;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+
+}
+
+
+.newNoticeDot.showNewNoticeDot {
+
+    display: block;
+
+}
+
+
+/* お知らせカード */
+
+.noticeCardHeader {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+/* お知らせメニュー */
+
+
+.noticeMenuCard {
+    position: relative;
+}
+
+.noticeMenuCard .newNoticeDot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    width: 10px;
+    height: 10px;
+
+    background-color: #ff3b30;
+    border-radius: 50%;
+
+    display: none;
+}
+
+
+/* 新しいお知らせがあるときだけ表示 */
+.noticeMenuCard .newNoticeDot.showNewNoticeDot {
+    display: block;
+}
+
+
+/* その他ボタン */
+
+.navBtn {
+
+    position: relative;
+
+}
+
+
+.navBtn > .newNoticeDot {
+
+    position: absolute;
+
+    top: 7px;
+    right: 7px;
+
+}
+
+.favoriteFilter {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.favoriteFilterBtn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    cursor: pointer;
+
+    box-shadow: 0 1px 5px rgba(0,0,0,.15);
+
+    transition: .2s;
+}
+
+.favoriteFilterBtn:hover {
+    transform: translateY(-2px);
+}
+
+.favoriteFilterBtn.activeFavoriteFilter {
+    background: #8B1E3F;
+    color: white;
+}
+
+/* ==========================================
+   パンフレット
+========================================== */
+
+.pamphletViewer {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* PDF表示部分 */
+
+.pamphletPdfBox {
+    width: 100%;
+
+    height: 70vh;
+    min-height: 500px;
+
+    background: #ddd;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow: 0 3px 12px rgba(0,0,0,.15);
+}
+
+
+.pamphletPdfBox iframe {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+
+    display: block;
+}
+
+
+/* ページ番号 */
+
+.pamphletPageNumber {
+    margin-top: 12px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    color: #555;
+}
+
+
+/* 操作ボタン */
+
+.pamphletControls {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+
+.pamphletNavButton {
+    flex: 1;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #8B1E3F;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+
+    transition: .2s;
+}
+
+
+.pamphletNavButton:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 4px 10px rgba(0,0,0,.2);
+}
+
+
+/* 押せない状態 */
+
+.pamphletNavButton:disabled {
+    background: #ddd;
+
+    color: #999;
+
+    box-shadow: none;
+
+    cursor: default;
+
+    transform: none;
+}
+
+
+/* スマホ */
+
+@media screen and (max-width: 600px) {
+
+    .pamphletPdfBox {
+        height: 65vh;
+
+        min-height: 400px;
+
+        border-radius: 12px;
+    }
+
+    .pamphletNavButton {
+        height: 45px;
+
+        font-size: 14px;
+    }
+
+}
+
+/* ==========================================
+   パンフレット JPG表示
+========================================== */
+
+.pamphletViewer {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* 画像エリア */
+
+.pamphletImageBox {
+    width: 100%;
+
+    height: calc(100vh - 250px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+/* パンフレット画像 */
+
+#pamphletImage {
+    display: block;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+}
+
+
+/* ページ番号 */
+
+.pamphletPageNumber {
+    margin-top: 8px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    color: #555;
+}
+
+
+/* 前へ・次へ */
+
+.pamphletControls {
+    width: 100%;
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: -30px;
+}
+
+
+.pamphletNavButton {
+    flex: 1;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #8B1E3F;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+
+
+.pamphletNavButton:disabled {
+    background: #ddd;
+
+    color: #999;
+
+    box-shadow: none;
+
+    cursor: default;
+}
+
+
+/* スマホ */
+
+@media screen and (max-width: 600px) {
+
+    .pamphletViewer {
+        max-width: 100%;
+    }
+
+    .pamphletImageBox {
+        height: calc(100vh - 245px);
+    }
+
+    .pamphletNavButton {
+        height: 42px;
+
+        font-size: 14px;
+    }
+
+}
+
+/* ==========================================
+   パンフレット
+========================================== */
+
+#pamphletPage {
+    position: fixed;
+
+    /*
+      ヘッダーの下から
+      下メニューの上まで
+    */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding-top: 80px;
+    padding-bottom: 70px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+
+/* パンフレット全体 */
+
+#pamphletPage .pamphletViewer {
+
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 5px 10px;
+}
+
+
+/* パンフレット画像部分 */
+
+#pamphletPage .pamphletImageBox {
+
+    width: 100%;
+
+    flex: 1 1 auto;
+
+    min-height: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* パンフレット画像 */
+
+#pamphletPage #pamphletImage {
+
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* ページ番号 */
+
+#pamphletPage .pamphletPageNumber {
+
+    flex: 0 0 auto;
+
+    margin: 4px 0;
+
+    font-size: 14px;
+    line-height: 20px;
+}
+
+
+/* ボタン */
+
+#pamphletPage .pamphletControls {
+
+    flex: 0 0 auto;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin: 4px 0;
+}
+
+
+/* 前へ・次へ */
+
+#pamphletPage .pamphletNavButton {
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #333;
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+
+/* 無効 */
+
+#pamphletPage .pamphletNavButton:disabled {
+
+    background: #ccc;
+    color: #888;
+
+}
+
+
+/* ==========================================
+   スマホ
+========================================== */
+
+@media (max-width: 600px) {
+
+    #pamphletPage {
+
+        padding-top: 65px;
+        padding-bottom: 65px;
+
+    }
+
+
+    #pamphletPage .pamphletViewer {
+
+        padding: 3px 6px;
+
+    }
+
+
+    #pamphletPage .pamphletPageNumber {
+
+        margin: 2px 0;
+
+        font-size: 13px;
+
+        line-height: 18px;
+
+    }
+
+
+    #pamphletPage .pamphletControls {
+
+        margin: 2px 0;
+
+        gap: 8px;
+
+    }
+
+
+    #pamphletPage .pamphletNavButton {
+
+        height: 38px;
+
+        padding: 0 15px;
+
+        font-size: 14px;
+
+    }
+
+}
+
+/* ==========================================
+   タイムテーブル 完全版
+========================================== */
+
+#timetablePage {
+    padding: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* タイムテーブルのスクロール部分 */
+#timetablePage .timetableWrapper {
+    width: 100%;
+    height: calc(100vh - 180px);
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+/* タイムテーブル全体 */
+#timetablePage .timetable {
+    position: relative;
+
+    width: max-content;
+    min-width: 910px;
+
+    margin: 0;
+}
+
+/* ==========================================
+   ヘッダー
+========================================== */
+
+#timetablePage .timetableHeaderRow {
+    display: grid;
+
+    grid-template-columns: 70px repeat(7, 120px);
+
+    height: 42px;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 30;
+
+    background: white;
+}
+
+#timetablePage .timetableTimeHeader,
+#timetablePage .timetablePlaceHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    border-right: 1px solid #999;
+    border-bottom: 1px solid #999;
+
+    background: white;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+/* ==========================================
+   本体
+========================================== */
+
+#timetablePage .timetableBody {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 70px repeat(7, 120px);
+
+    /*
+      9:00 → 15:30
+      6.5時間 × 120px
+      = 780px
+    */
+    height: 780px;
+
+    min-height: 780px;
+
+    background: white;
+
+    overflow: visible;
+}
+
+/* ==========================================
+   時間列
+========================================== */
+
+#timetablePage .timetableTimeColumn {
+    position: relative;
+
+    height: 780px;
+
+    border-right: 1px solid #555;
+
+    background: white;
+
+    z-index: 5;
+}
+
+#timetablePage .timetableTime {
+    position: absolute;
+
+    left: 0;
+
+    width: 100%;
+
+    transform: translateY(-50%);
+
+    text-align: center;
+
+    font-size: 12px;
+
+    color: #333;
+
+    z-index: 10;
+}
+
+/* ==========================================
+   会場列
+========================================== */
+
+#timetablePage .timetableColumn {
+    position: relative;
+
+    width: 120px;
+
+    min-width: 120px;
+
+    height: 780px;
+
+    border-right: 1px solid #aaa;
+
+    background: #fafafa;
+
+    overflow: visible;
+}
+
+/* ==========================================
+   30分ごとの横線
+========================================== */
+
+#timetablePage .timetableHorizontalLine {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    height: 1px;
+
+    background: #ddd;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+/* ==========================================
+   出し物
+========================================== */
+
+#timetablePage .timetableEvent {
+    position: absolute;
+
+    left: 4px;
+    right: 4px;
+
+    box-sizing: border-box;
+
+    background: #d9e8ff;
+
+    border: 1px solid #4d79b8;
+
+    border-radius: 5px;
+
+    padding: 3px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+#timetablePage .timetableEvent:hover {
+    background: #c5dcff;
+}
+
+#timetablePage .timetableEventName {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    line-height: 1.25;
+
+    color: #172b4d;
+
+    text-align: center;
+}
+
+#timetablePage .timetableEventTime {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 9px;
+
+    line-height: 1.1;
+
+    color: #456;
+
+    text-align: center;
+}
+
+/* ==========================================
+   現在時刻線
+========================================== */
+
+#timetablePage #timetableCurrentLine {
+    position: absolute;
+
+    left: 70px;
+    right: 0;
+
+    height: 2px;
+
+    background: #e53935;
+
+    z-index: 30;
+
+    pointer-events: none;
+}
+
+#timetablePage #timetableCurrentLine::before {
+    content: "";
+
+    position: absolute;
+
+    left: -5px;
+    top: -4px;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #e53935;
+}
+
+/* ==========================================
+   日付ボタン
+========================================== */
+
+.timetableDateButtons {
+    display: flex;
+    gap: 6px;
+}
+
+.timetableDateButtons button {
+    padding: 5px 10px;
+
+    border: 1px solid #999;
+
+    background: white;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+.timetableDateButtons button.activeTimetableDate {
+    background: #6b123c;
+    color: white;
+
+    border-color: #6b123c;
+}
+
+/* ==========================================
+   現在時刻
+========================================== */
+
+.timetableCurrentTime {
+    margin: 6px 0;
+
+    font-size: 15px;
+}
+
+/* ==========================================
+   スマホ
+========================================== */
+
+@media screen and (max-width: 600px) {
+
+    #timetablePage {
+        padding: 10px;
+        overflow: hidden;
+    }
+
+    #timetablePage .timetableWrapper {
+        width: 100%;
+
+        /*
+          下メニューに隠れない高さ
+        */
+        height: calc(100vh - 175px);
+
+        overflow-x: auto;
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+
+    #timetablePage .timetable {
+        min-width: 910px;
+    }
+
+    #timetablePage .timetableBody {
+        height: 780px;
+        min-height: 780px;
+    }
+
+    #timetablePage .timetableColumn {
+        height: 780px;
+        min-height: 780px;
+    }
+}
+/* ==========================================
    八高線 時刻表
 ========================================== */
 
@@ -2138,6 +4022,229 @@ body {
     background: white;
 
     border-radius: 12px;
+}
+html,
+body {
+    height: 100%;
+}
+
+body:has(#timetablePage.active) {
+    overflow: hidden;
+}
+
+#timetablePage.active {
+    overflow: hidden;
+}
+       /* ==========================================
+   タイムテーブルを下メニューまで広げる
+========================================== */
+
+/* ==========================================
+   タイムテーブル 最終修正版
+   ※この部分はCSSの一番最後に追加
+========================================== */
+
+/* タイムテーブルページ */
+#timetablePage {
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* タイムテーブルをスクロールする箱 */
+#timetablePage .timetableWrapper {
+    width: 100%;
+    height: calc(100vh - 175px);
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+/* タイムテーブル本体 */
+#timetablePage .timetable {
+    position: relative;
+
+    width: max-content;
+    min-width: 910px;
+}
+
+/* 時間・会場部分 */
+#timetablePage .timetableBody {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 70px repeat(7, 120px);
+
+    width: max-content;
+
+    height: 780px;
+    min-height: 780px;
+
+    background: white;
+
+    overflow: visible;
+}
+
+/* 時間列 */
+#timetablePage .timetableTimeColumn {
+    position: relative;
+
+    height: 780px;
+}
+
+/* 会場列 */
+#timetablePage .timetableColumn {
+    position: relative;
+
+    width: 120px;
+    min-width: 120px;
+
+    height: 780px;
+}
+
+/* スマホ */
+@media screen and (max-width: 600px) {
+
+    #timetablePage {
+        padding: 10px;
+    }
+
+    #timetablePage .timetableWrapper {
+        width: 100%;
+        height: calc(100vh - 175px);
+
+        overflow-x: auto;
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #timetablePage .timetable {
+        min-width: 910px;
+    }
+
+    #timetablePage .timetableBody {
+        height: 780px;
+        min-height: 780px;
+    }
+
+    #timetablePage .timetableTimeColumn {
+        height: 780px;
+    }
+
+    #timetablePage .timetableColumn {
+        height: 780px;
+        min-height: 780px;
+    }
+}
+/* ==========================================
+   タイムテーブル 最終上書き
+========================================== */
+
+#timetablePage {
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#timetablePage .timetableWrapper {
+    width: 100%;
+    height: calc(100vh - 175px);
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+#timetablePage .timetable {
+    position: relative;
+
+    width: max-content;
+    min-width: 910px;
+
+    margin: 0;
+}
+
+#timetablePage .timetableBody {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 70px repeat(7, 120px);
+
+    width: max-content;
+
+    height: 780px;
+    min-height: 780px;
+
+    background: white;
+
+    overflow: visible;
+}
+
+#timetablePage .timetableTimeColumn {
+    position: relative;
+
+    height: 780px;
+
+    border-right: 1px solid #555;
+    background: white;
+}
+
+#timetablePage .timetableColumn {
+    position: relative;
+
+    width: 120px;
+    min-width: 120px;
+
+    height: 780px;
+
+    border-right: 1px solid #aaa;
+    background: #fafafa;
+
+    overflow: visible;
+}
+
+/* スマホ */
+@media screen and (max-width: 600px) {
+
+    #timetablePage {
+        padding: 10px;
+    }
+
+    #timetablePage .timetableWrapper {
+        width: 100%;
+        height: calc(100vh - 175px);
+
+        overflow-x: auto;
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+
+    #timetablePage .timetable {
+        min-width: 910px;
+    }
+
+    #timetablePage .timetableBody {
+        height: 780px;
+        min-height: 780px;
+    }
+
+    #timetablePage .timetableTimeColumn {
+        height: 780px;
+    }
+
+    #timetablePage .timetableColumn {
+        height: 780px;
+        min-height: 780px;
+    }
 }
 html,
 body {
