@@ -4469,3 +4469,18 @@ body:has(#timetablePage.active) {
         min-height: 780px;
     }
 }
+/* 次の電車：青色をえんじ色に統一 */
+
+#trainPage .trainScheduleRow.nextTrainRow {
+    border-color: #8B1E3F;
+    background: #fff1f4;
+}
+
+#trainPage .trainScheduleRow.nextTrainRow .trainScheduleTime,
+#trainPage .trainScheduleRow.nextTrainRow .trainScheduleDestination {
+    color: #8B1E3F;
+}
+
+#trainPage .nextTrainBadge {
+    background: #8B1E3F;
+}
