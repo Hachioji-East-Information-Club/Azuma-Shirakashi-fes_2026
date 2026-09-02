@@ -4476,3 +4476,46 @@ body:has(#timetablePage.active) {
 #trainPage .nextTrainBadge {
     background: #8B1E3F;
 }
+/* ===== タイムテーブル最終設定 ===== */
+
+#timetablePage {
+    overflow: visible !important;
+}
+
+#timetablePage.active {
+    overflow: visible !important;
+}
+
+#timetablePage .timetableWrapper {
+    width: 100%;
+    height: calc(100vh - 175px);
+
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+#timetablePage .timetable {
+    width: max-content;
+    min-width: 910px;
+    height: 822px !important;
+}
+
+#timetablePage .timetableBody {
+    width: max-content;
+
+    height: 780px !important;
+    min-height: 780px !important;
+
+    overflow: visible !important;
+}
+
+#timetablePage .timetableTimeColumn {
+    height: 780px !important;
+}
+
+#timetablePage .timetableColumn {
+    height: 780px !important;
+    min-height: 780px !important;
+}
