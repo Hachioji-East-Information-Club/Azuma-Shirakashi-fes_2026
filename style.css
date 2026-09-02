@@ -1547,31 +1547,22 @@ body {
 ========================================== */
 
 #timetablePage {
-    padding: 15px;
+    padding: 10px;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: visible;
 }
 
-/* タイムテーブルのスクロール部分 */
 #timetablePage .timetableWrapper {
     width: 100%;
-    height: calc(100vh - 180px);
-
+    height: calc(100vh - 175px);
     overflow-x: auto;
     overflow-y: auto;
-
     -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
 }
 
-/* タイムテーブル全体 */
 #timetablePage .timetable {
-    position: relative;
-
     width: max-content;
     min-width: 910px;
-
-    margin: 0;
 }
 
 /* ==========================================
@@ -4437,28 +4428,29 @@ body:has(#timetablePage.active) {
 @media screen and (max-width: 600px) {
 
     #timetablePage {
-        padding: 10px;
-    }
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: visible;
+}
 
-    #timetablePage .timetableWrapper {
-        width: 100%;
-        height: calc(100vh - 175px);
+#timetablePage .timetableWrapper {
+    width: 100%;
+    height: calc(100vh - 175px);
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
 
-        overflow-x: auto;
-        overflow-y: auto;
+#timetablePage .timetable {
+    width: max-content;
+    min-width: 910px;
+}
 
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior: contain;
-    }
-
-    #timetablePage .timetable {
-        min-width: 910px;
-    }
-
-    #timetablePage .timetableBody {
-        height: 780px;
-        min-height: 780px;
-    }
+#timetablePage .timetableBody {
+    height: 780px;
+    min-height: 780px;
+    overflow: visible;
+}
 
     #timetablePage .timetableTimeColumn {
         height: 780px;
