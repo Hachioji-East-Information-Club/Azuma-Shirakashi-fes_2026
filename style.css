@@ -4025,7 +4025,7 @@ body {
 }
 html,
 body {
-    height: 100%;
+    min-height: 100%;
 }
 
 body:has(#timetablePage.active) {
@@ -4033,7 +4033,7 @@ body:has(#timetablePage.active) {
 }
 
 #timetablePage.active {
-    overflow: hidden;
+    overflow: visible;
 }
        /* ==========================================
    タイムテーブルを下メニューまで広げる
