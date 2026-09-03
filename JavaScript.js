@@ -173,6 +173,7 @@ function getStatus(wait) {
 }
 
 
+```javascript
 // ==========================================
 // カード生成
 // ==========================================
@@ -180,6 +181,44 @@ function getStatus(wait) {
 function createCard(booth) {
 
     const status = getStatus(booth.wait);
+
+    // 食品販売かどうか
+    const isFoodSales =
+        booth.category === "食品販売";
+
+    // 食券表示
+    let foodTicketStatus = "";
+
+    if (isFoodSales) {
+
+        const now = new Date();
+
+        const currentMinutes =
+            now.getHours() * 60 +
+            now.getMinutes();
+
+        const ticketSwitchTime = 14 * 60;
+
+        if (currentMinutes < ticketSwitchTime) {
+
+            foodTicketStatus = `
+                <div class="foodTicketStatus required">
+                    🎫 要食券
+                </div>
+            `;
+
+        } else {
+
+            foodTicketStatus = `
+                <div class="foodTicketStatus notRequired">
+                    ✓ 食券不要
+                </div>
+            `;
+
+        }
+
+    }
+
 
     return `
 
@@ -247,6 +286,7 @@ function createCard(booth) {
             ${status.text}
         </div>
 
+        ${foodTicketStatus}
 
         <div class="waitTime">
 
@@ -265,6 +305,8 @@ function createCard(booth) {
 `;
 
 }
+```
+
 
 
 // ==========================================
@@ -672,6 +714,7 @@ async function loadWaitData() {
 }
 
 
+```javascript
 // ==========================================
 // 自動更新
 // ==========================================
@@ -680,7 +723,11 @@ setInterval(() => {
 
     loadWaitData();
 
+    // 食券表示を14:00に切り替えるため
+    updateList();
+
 }, 10000);
+```
 
 
 // ==========================================
