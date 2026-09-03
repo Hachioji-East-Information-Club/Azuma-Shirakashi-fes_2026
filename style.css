@@ -4586,3 +4586,70 @@ body:has(#timetablePage.active) {
     height: 780px !important;
     min-height: 780px !important;
 }
+/* ==========================================
+   タイムテーブル スクロール修正版
+========================================== */
+
+#timetablePage {
+    height: 100dvh !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+/* タイムテーブルページが選択されている時だけ表示 */
+#timetablePage.active {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* ヘッダー部分 */
+#timetablePage .timetableHeader {
+    flex-shrink: 0 !important;
+}
+
+/* 現在時刻 */
+#timetablePage .timetableCurrentTime {
+    flex-shrink: 0 !important;
+}
+
+/* タイムテーブルのスクロール部分 */
+#timetablePage .timetableWrapper {
+    width: 100% !important;
+
+    height: auto !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+
+    box-sizing: border-box !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* タイムテーブル全体 */
+#timetablePage .timetable {
+    width: max-content !important;
+    min-width: 910px !important;
+
+    height: 822px !important;
+    min-height: 822px !important;
+}
+
+/* 9:00〜15:30 */
+#timetablePage .timetableBody {
+    height: 780px !important;
+    min-height: 780px !important;
+}
+
+/* 時刻列 */
+#timetablePage .timetableTimeColumn {
+    height: 780px !important;
+    min-height: 780px !important;
+}
+
+/* 各会場列 */
+#timetablePage .timetableColumn {
+    height: 780px !important;
+    min-height: 780px !important;
+}
