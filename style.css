@@ -4519,3 +4519,57 @@ body:has(#timetablePage.active) {
     height: 780px !important;
     min-height: 780px !important;
 }
+/* ==========================================
+   タイムテーブル スクロール最終修正版
+========================================== */
+
+#timetablePage {
+    height: 100dvh !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+#timetablePage .timetableHeader {
+    flex-shrink: 0 !important;
+}
+
+#timetablePage .timetableCurrentTime {
+    flex-shrink: 0 !important;
+}
+
+#timetablePage .timetableWrapper {
+    width: 100% !important;
+
+    /* ここが重要 */
+    height: auto !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+
+    box-sizing: border-box !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+#timetablePage .timetable {
+    width: max-content !important;
+    min-width: 910px !important;
+
+    height: 822px !important;
+    min-height: 822px !important;
+}
+
+#timetablePage .timetableBody {
+    height: 780px !important;
+    min-height: 780px !important;
+}
+
+#timetablePage .timetableTimeColumn,
+#timetablePage .timetableColumn {
+    height: 780px !important;
+    min-height: 780px !important;
+}
