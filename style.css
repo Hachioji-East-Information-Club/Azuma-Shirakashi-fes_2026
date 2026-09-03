@@ -4654,7 +4654,7 @@ body:has(#timetablePage.active) {
     min-height: 780px !important;
 }
 
-```css
+
 /* ==========================================
    食券表示
    ========================================== */
@@ -4680,4 +4680,16 @@ body:has(#timetablePage.active) {
     color: #0f5132;
     border: 1px solid #a3cfbb;
 }
-```
+
+
+/* ==========================================
+   おまけ
+========================================== */
+
+#omakeList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+}
+
