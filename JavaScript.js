@@ -741,8 +741,6 @@ window.onload = () => {
     const savedPage =
         localStorage.getItem("azumaCurrentPage");
 
-    // 保存されているページがあればそれを表示
-    // なければ校内図を表示
     const pageId = savedPage || "mapPage";
 
     const page =
@@ -750,47 +748,43 @@ window.onload = () => {
 
     if (page) {
 
-    // すべてのページを非表示
-    document
-        .querySelectorAll(".page")
-        .forEach(p => {
-            p.classList.remove("active");
-        });
+        document
+            .querySelectorAll(".page")
+            .forEach(p => {
+                p.classList.remove("active");
+            });
 
-    // 対象ページを表示
-    page.classList.add("active");
+        page.classList.add("active");
 
-    // ★ここに追加
+        document
+            .querySelectorAll(".navBtn")
+            .forEach(btn => {
+                btn.classList.remove("activeNav");
+            });
+
+        document
+            .querySelectorAll(".navBtn")
+            .forEach(btn => {
+
+                const onclick =
+                    btn.getAttribute("onclick") || "";
+
+                if (
+                    onclick.includes(
+                        "'" + pageId + "'"
+                    )
+                ) {
+                    btn.classList.add("activeNav");
+                }
+
+            });
+
+    }
+
+    // ★★★ ここに追加 ★★★
     if (pageId === "omakePage") {
         loadOmake();
     }
-
-    // ナビゲーションボタンを全部リセット
-    document
-        .querySelectorAll(".navBtn")
-        .forEach(btn => {
-            btn.classList.remove("activeNav");
-        });
-
-    // 対応するナビボタンを探す
-    document
-        .querySelectorAll(".navBtn")
-        .forEach(btn => {
-
-            const onclick =
-                btn.getAttribute("onclick") || "";
-
-            if (
-                onclick.includes(
-                    "'" + pageId + "'"
-                )
-            ) {
-                btn.classList.add("activeNav");
-            }
-
-        });
-
-}
 
 };
 // ==========================================
