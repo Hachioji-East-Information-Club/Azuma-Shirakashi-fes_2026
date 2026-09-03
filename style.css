@@ -4632,14 +4632,14 @@ body:has(#timetablePage.active) {
     width: max-content !important;
     min-width: 910px !important;
 
-    height: 822px !important;
-    min-height: 822px !important;
+    height: 900px !important;
+    min-height: 900px !important;
 }
 
 /* 9:00〜15:30 */
 #timetablePage .timetableBody {
-    height: 780px !important;
-    min-height: 780px !important;
+    height: 900px !important;
+    min-height: 900px !important;
 }
 
 /* 時刻列 */
