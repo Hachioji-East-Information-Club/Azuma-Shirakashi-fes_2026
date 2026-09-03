@@ -1847,6 +1847,106 @@ function updateNoticeBadges(notices) {
     }
 
 }
+// ==========================================
+// おまけページ
+// ==========================================
+
+function showOmakePage() {
+
+    localStorage.setItem(
+        "azumaCurrentPage",
+        "omakePage"
+    );
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
+
+    const omakePage =
+        document.getElementById("omakePage");
+
+    if (omakePage) {
+        omakePage.classList.add("active");
+    }
+
+    document
+        .querySelectorAll(".navBtn")
+        .forEach(btn => {
+            btn.classList.remove("activeNav");
+        });
+
+    loadOmake();
+
+}
+// ==========================================
+// おまけ読み込み
+// ==========================================
+
+async function loadOmake() {
+
+    try {
+
+        const response = await fetch(
+            "omake.json?time=" + Date.now()
+        );
+
+        if (!response.ok) {
+            return;
+        }
+
+        const omakes = await response.json();
+
+        const omakeList =
+            document.getElementById("omakeList");
+
+        if (!omakeList) {
+            return;
+        }
+
+        omakeList.innerHTML = "";
+
+        omakes.forEach(item => {
+
+            omakeList.innerHTML += `
+
+                <div class="noticeCard">
+
+                    <div class="noticeCardHeader">
+
+                        <div class="noticeDate">
+                            ${item.date}
+                        </div>
+
+                    </div>
+
+                    <div class="noticeTitle">
+                        ${item.title}
+                    </div>
+
+                    <div class="noticeText">
+                        ${item.text}
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.log(
+            "おまけデータ取得失敗",
+            error
+        );
+
+    }
+
+}
 
 // ==========================================
 // お気に入り絞り込み
