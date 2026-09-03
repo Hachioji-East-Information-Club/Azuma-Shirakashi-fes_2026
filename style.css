@@ -4697,5 +4697,30 @@ body:has(#timetablePage.active) {
     padding: 15px !important;
 }
 
+/* ==========================================
+   固定下部メニューによる見切れ防止
+========================================== */
+
+/* お知らせ */
+#noticeList {
+    padding-bottom: 100px;
+}
+
+/* おまけページなど、縦にカードが並ぶ場所 */
+.otherMenu {
+    padding-bottom: 100px;
+}
+
+/* 一覧 */
+#boothList {
+    padding-bottom: 100px;
+}
+
+/* パンフレット・電車などページ全体 */
+#pamphletPage,
+#trainPage,
+#timetablePage {
+    padding-bottom: 100px;
+}
 
 
