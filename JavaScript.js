@@ -750,44 +750,47 @@ window.onload = () => {
 
     if (page) {
 
-        // すべてのページを非表示
-        document
-            .querySelectorAll(".page")
-            .forEach(p => {
-                p.classList.remove("active");
-            });
+    // すべてのページを非表示
+    document
+        .querySelectorAll(".page")
+        .forEach(p => {
+            p.classList.remove("active");
+        });
 
-        // 対象ページを表示
-        page.classList.add("active");
+    // 対象ページを表示
+    page.classList.add("active");
 
-
-        // ナビゲーションボタンを全部リセット
-        document
-            .querySelectorAll(".navBtn")
-            .forEach(btn => {
-                btn.classList.remove("activeNav");
-            });
-
-
-        // 対応するナビボタンを探す
-        document
-            .querySelectorAll(".navBtn")
-            .forEach(btn => {
-
-                const onclick =
-                    btn.getAttribute("onclick") || "";
-
-                if (
-                    onclick.includes(
-                        "'" + pageId + "'"
-                    )
-                ) {
-                    btn.classList.add("activeNav");
-                }
-
-            });
-
+    // ★ここに追加
+    if (pageId === "omakePage") {
+        loadOmake();
     }
+
+    // ナビゲーションボタンを全部リセット
+    document
+        .querySelectorAll(".navBtn")
+        .forEach(btn => {
+            btn.classList.remove("activeNav");
+        });
+
+    // 対応するナビボタンを探す
+    document
+        .querySelectorAll(".navBtn")
+        .forEach(btn => {
+
+            const onclick =
+                btn.getAttribute("onclick") || "";
+
+            if (
+                onclick.includes(
+                    "'" + pageId + "'"
+                )
+            ) {
+                btn.classList.add("activeNav");
+            }
+
+        });
+
+}
 
 };
 // ==========================================
