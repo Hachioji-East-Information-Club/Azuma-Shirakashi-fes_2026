@@ -4653,3 +4653,31 @@ body:has(#timetablePage.active) {
     height: 780px !important;
     min-height: 780px !important;
 }
+
+```css
+/* ==========================================
+   食券表示
+   ========================================== */
+
+.foodTicketStatus {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* 14:00より前 */
+.foodTicketStatus.required {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffe69c;
+}
+
+/* 14:00以降 */
+.foodTicketStatus.notRequired {
+    background: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #a3cfbb;
+}
+```
