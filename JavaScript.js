@@ -60,7 +60,6 @@ const booths = [
   { id:"PTA山歩きの会", name:"PTA山歩きの会", title:"PTA山歩きの会", category:"その他", place:"物理室", building:"校舎棟", group:"PTA", wait:0, image:"" },
 
   { id:"Adel 1000％", name:"Adel 1000％", title:"Adel 1000％", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
-  { id:"ちょりっすー", name:"ちょりっすー", title:"ちょりっすー", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
   { id:"505号室", name:"505号室", title:"505号室", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
   { id:"FOUR-TUNE", name:"FOUR-TUNE", title:"FOUR-TUNE", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
   { id:"Love Berry", name:"Love Berry", title:"Love Berry", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
