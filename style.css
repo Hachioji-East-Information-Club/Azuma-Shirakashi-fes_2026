@@ -4682,14 +4682,17 @@ body:has(#timetablePage.active) {
 }
 
 
+
 /* ==========================================
-   おまけ
+   おまけ：カード間隔
 ========================================== */
 
 #omakeList {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    padding: 15px !important;
 }
+
+
 
