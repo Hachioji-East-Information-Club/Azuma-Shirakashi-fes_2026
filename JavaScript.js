@@ -54,10 +54,11 @@ const booths = [
   { id:"図書委員会", name:"図書委員会", title:"晴東雨読", category:"展示", place:"図書室", building:"校舎棟", group:"委員会", wait:0, image:"" },
   { id:"体育委員会", name:"体育委員会", title:"体育祭団旗展示", category:"展示", place:"体育館", building:"体育館棟", group:"委員会", wait:0, image:"" },
 
-  { id:"ヒガシ連合", name:"ヒガシ連合", title:"ヒガシ連合", category:"展示", place:"3年7組", building:"校舎棟", group:"生徒会", wait:0, image:"" },
-
-  { id:"PTA役員会", name:"PTA役員会", title:"51年目のハチヒガ休憩室", category:"その他", place:"2年8組", building:"校舎棟", group:"PTA", wait:0, image:"" },
-  { id:"PTA山歩きの会", name:"PTA山歩きの会", title:"PTA山歩きの会", category:"その他", place:"物理室", building:"校舎棟", group:"PTA", wait:0, image:"" },
+  { id:"ヒガシ連合", name:"ヒガシ連合", title:"ヒガシ連合", category:"展示", place:"3年7組", building:"校舎棟", group:"有志", wait:0, image:"" },
+  
+  { id:"進路相談会", name:"進路相談会", title:"進路相談会", category:"その他", place:"進路相談室", building:"校舎棟", group:"その他", wait:0, image:"" },
+  { id:"PTA役員会", name:"PTA役員会", title:"51年目のハチヒガ休憩室", category:"その他", place:"2年8組", building:"校舎棟", group:"その他", wait:0, image:"" },
+  { id:"PTA山歩きの会", name:"PTA山歩きの会", title:"PTA山歩きの会", category:"その他", place:"物理室", building:"校舎棟", group:"その他", wait:0, image:"" },
 
   { id:"Adel 1000％", name:"Adel 1000％", title:"Adel 1000％", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
   { id:"505号室", name:"505号室", title:"505号室", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
