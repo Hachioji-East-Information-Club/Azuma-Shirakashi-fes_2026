@@ -56,7 +56,7 @@ const booths = [
 
   { id:"ヒガシ連合", name:"ヒガシ連合", title:"ヒガシ連合", category:"展示", place:"3年7組", building:"校舎棟", group:"有志", wait:0, image:"" },
   
-  { id:"進路相談会", name:"進路相談会", title:"進路相談会", category:"その他", place:"進路相談室", building:"校舎棟", group:"その他", wait:0, image:"" },
+  { id:"進路指導部", name:"進路相談会", title:"進路相談会", category:"その他", place:"進路相談室", building:"校舎棟", group:"その他", wait:0, image:"" },
   { id:"PTA役員会", name:"PTA役員会", title:"51年目のハチヒガ休憩室", category:"その他", place:"2年8組", building:"校舎棟", group:"その他", wait:0, image:"" },
   { id:"PTA山歩きの会", name:"PTA山歩きの会", title:"PTA山歩きの会", category:"その他", place:"物理室", building:"校舎棟", group:"その他", wait:0, image:"" },
 
