@@ -4723,45 +4723,4 @@ body:has(#timetablePage.active) {
     padding-bottom: 100px;
 }
 
-/* ==========================================
-   タイムテーブル 日付ボタン
-========================================== */
 
-#timetablePage .timetableDateButtons button {
-    background: #f5f5f5;
-    color: #555;
-    border: 1px solid #ccc;
-}
-
-/* 選択中の日付 */
-#timetablePage .timetableDateButtons button.active {
-    background: #b85c5c;
-    color: white;
-    border-color: #b85c5c;
-}
-
-/* ==========================================
-   タイムテーブル 日付ボタン
-========================================== */
-
-#timetablePage .timetableDateButtons button {
-    background: #f5f5f5;
-    color: #555;
-    border: 1px solid #ccc;
-}
-
-/* 選択中 */
-#timetablePage .timetableDateButtons button.activeTimetableDate {
-    background: #b85c5c !important;
-    color: #fff !important;
-    border-color: #b85c5c !important;
-}
-/* タイムテーブル日付ボタン */
-#timetablePage .timetableDateButtons button.activeTimetableDate,
-#timetablePage .timetableDateButtons button.activeTimetableDate:hover,
-#timetablePage .timetableDateButtons button.activeTimetableDate:focus {
-    background-color: #b85c5c !important;
-    color: #ffffff !important;
-    border-color: #b85c5c !important;
-    opacity: 1 !important;
-}
