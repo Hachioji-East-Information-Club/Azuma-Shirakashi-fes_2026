@@ -121,7 +121,7 @@ const timetableData = {
             start: "11:15",
             end: "12:15",
             name: "ますらを",
-            boothId: "ますらを黙事録"
+            boothId: "ますらを黙示録"
         },
 
         {
@@ -230,19 +230,13 @@ const timetableData = {
 
         {
             place: "視聴覚室",
-            start: "14:15",
-            end: "14:40",
-            name: "けしつか",
-            boothId: "けしつか"
-        },
-
-        {
-            place: "視聴覚室",
             start: "14:50",
             end: "15:15",
-            name: "Love Berry",
-            boothId: "Love Berry"
+            name: "けしつか",
+            boothId: "けしつか"
         }
+
+
 
     ],
 
@@ -369,7 +363,7 @@ const timetableData = {
             start: "11:15",
             end: "12:15",
             name: "ますらを",
-            boothId: "ますらを黙事録"
+            boothId: "ますらを黙示録"
         },
 
         {
