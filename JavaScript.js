@@ -801,7 +801,7 @@ window.onload = () => {
     const savedPage =
         localStorage.getItem("azumaCurrentPage");
 
-    const pageId = savedPage || "mapPage";
+    const pageId = savedPage || "listPage";
 
     const page =
         document.getElementById(pageId);
