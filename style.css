@@ -3704,10 +3704,10 @@ body {
 }
 
 .timetableDateButtons button.activeTimetableDate {
-    background: #8B1E3F;
+    background:#8B1E3F;
     color: white;
 
-    border-color: #8B1E3F;
+    border-color:#8B1E3F;
 }
 
 /* ==========================================
