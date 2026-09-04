@@ -1716,9 +1716,9 @@ body {
 
     box-sizing: border-box;
 
-    background: #8B1E3F;
+    background: #8a6b75;
 
-    border: 1px solid #4d79b8;
+    border: 1px solid #8B1E3F;
 
     border-radius: 5px;
 
@@ -1732,7 +1732,7 @@ body {
 }
 
 #timetablePage .timetableEvent:hover {
-    background: #8B1E3F;
+    background: #8a6b75;
 }
 
 #timetablePage .timetableEventName {
