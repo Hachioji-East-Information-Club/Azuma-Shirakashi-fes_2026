@@ -1128,7 +1128,8 @@ document.addEventListener(
     "DOMContentLoaded",
     () => {
 
-        renderTimetable();
+        // 最初は9月5日を選択状態にする
+        selectTimetableDate("9月5日");
 
     }
 );
