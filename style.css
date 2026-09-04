@@ -4756,3 +4756,12 @@ body:has(#timetablePage.active) {
     color: #fff !important;
     border-color: #b85c5c !important;
 }
+/* タイムテーブル日付ボタン */
+#timetablePage .timetableDateButtons button.activeTimetableDate,
+#timetablePage .timetableDateButtons button.activeTimetableDate:hover,
+#timetablePage .timetableDateButtons button.activeTimetableDate:focus {
+    background-color: #b85c5c !important;
+    color: #ffffff !important;
+    border-color: #b85c5c !important;
+    opacity: 1 !important;
+}
