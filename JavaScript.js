@@ -17,19 +17,19 @@ const booths = [
   { id:"2年7組", name:"2年7組", title:"エビスガスカジノ", category:"アトラクション", place:"3年5組", building:"校舎棟", group:"クラス", wait:0, image:"" },
   { id:"2年8組", name:"2年8組", title:"桃の転校生", category:"演劇", place:"5ホール", building:"校舎棟", group:"クラス", wait:0, image:"" },
 
-  { id:"3年1組", name:"3年1組", title:"Thirty One Café", category:"喫茶", place:"3年1組", building:"校舎棟", group:"クラス", wait:0, image:"" },
+  { id:"3年1組", name:"3年1組", title:"Thirty One Café", category:"食品", place:"3年1組", building:"校舎棟", group:"クラス", wait:0, image:"" },
   { id:"3年2組", name:"3年2組", title:"TSUKAR WARS", category:"アトラクション", place:"3年2組", building:"校舎棟", group:"クラス", wait:0, image:"" },
   { id:"3年3組", name:"3年3組", title:"神原くんは宇宙人", category:"演劇", place:"5ホール", building:"校舎棟", group:"クラス", wait:0, image:"" },
   { id:"3年4組", name:"3年4組", title:"【閲覧注意】天狗の棲家、のぞいてみた", category:"アトラクション", place:"3年4組", building:"校舎棟", group:"クラス", wait:0, image:"" },
-  { id:"3年5組", name:"3年5組", title:"和風喫茶めぐみ", category:"喫茶", place:"3年3組", building:"校舎棟", group:"クラス", wait:0, image:"" },
-  { id:"3年6組", name:"3年6組", title:"チュロスチュロQ", category:"食品販売", place:"2年7組", building:"校舎棟", group:"クラス", wait:0, image:"" },
-  { id:"3年7組", name:"3年7組", title:"AMIGO TOURAI", category:"食品販売", place:"2年6組", building:"校舎棟", group:"クラス", wait:0, image:"" },
+  { id:"3年5組", name:"3年5組", title:"和風喫茶めぐみ", category:"食品", place:"3年3組", building:"校舎棟", group:"クラス", wait:0, image:"" },
+  { id:"3年6組", name:"3年6組", title:"チュロスチュロQ", category:"食品", place:"2年7組", building:"校舎棟", group:"クラス", wait:0, image:"" },
+  { id:"3年7組", name:"3年7組", title:"AMIGO TOURAI", category:"食品", place:"2年6組", building:"校舎棟", group:"クラス", wait:0, image:"" },
   { id:"3年8組", name:"3年8組", title:"人外探偵結社 ～本日開業の段～", category:"演劇", place:"5ホール", building:"校舎棟", group:"クラス", wait:0, image:"" },
 
   { id:"室内楽部", name:"室内楽部", title:"室内楽部文化祭公演 - Trabel with HESTring -", category:"公演", place:"5ホール", building:"校舎棟", group:"部活動", wait:0, image:"" },
   { id:"美術部", name:"美術部", title:"昭和レトロ横町", category:"展示", place:"美術室", building:"校舎棟", group:"部活動", wait:0, image:"" },
   { id:"コーラス部", name:"コーラス部", title:"ウィキッド", category:"公演", place:"体育館", building:"体育館棟", group:"部活動", wait:0, image:"" },
-  { id:"調理部", name:"調理部", title:"Higashi's Kitchen Club", category:"食品販売", place:"被服室", building:"校舎棟", group:"部活動", wait:0, image:"" },
+  { id:"調理部", name:"調理部", title:"Higashi's Kitchen Club", category:"食品", place:"被服室", building:"校舎棟", group:"部活動", wait:0, image:"" },
   { id:"吹奏楽部", name:"吹奏楽部", title:"とびこめ！HEWOCEAN！", category:"公演", place:"体育館", building:"体育館棟", group:"部活動", wait:0, image:"" },
   { id:"華道部", name:"華道部", title:"青春謳華", category:"展示", place:"2年1組", building:"校舎棟", group:"部活動", wait:0, image:"" },
   { id:"自然科学部", name:"自然科学部", title:"この素晴らしいヒガシに実験を！", category:"展示", place:"化学室・生物室", building:"校舎棟", group:"部活動", wait:0, image:"" },
@@ -68,10 +68,10 @@ const booths = [
   { id:"けしつか", name:"けしつか", title:"けしつか", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
   { id:"百聞不如一聴", name:"百聞不如一聴", title:"百聞不如一聴", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
    
-  { id:"L's kitchen", name:"L's kitchen", title:"L's kitchen", category:"キッチンカー", place:"正面玄関前", building:"校舎棟", group:"その他", wait:0, image:"" },
-   { id:"irodori", name:"irodori", title:"irodori", category:"キッチンカー", place:"正面玄関前", building:"校舎棟", group:"その他", wait:0, image:"" },
-   { id:"TAKAOCOFFEE", name:"TAKAOCOFFEE", title:"TAKAOCOFFEE", category:"キッチンカー", place:"正面玄関前", building:"校舎棟", group:"その他", wait:0, image:"" },
-   { id:"ダルチアーノ", name:"ダルチアーノ", title:"ダルチアーノ", category:"キッチンカー", place:"正面玄関前", building:"校舎棟", group:"その他", wait:0, image:"" }
+  { id:"L's kitchen", name:"L's kitchen", title:"L's kitchen", category:"食品", place:"正面玄関前", building:"校舎棟", group:"その他", wait:0, image:"" },
+   { id:"irodori", name:"irodori", title:"irodori", category:"食品", place:"正面玄関前", building:"校舎棟", group:"その他", wait:0, image:"" },
+   { id:"TAKAOCOFFEE", name:"TAKAOCOFFEE", title:"TAKAOCOFFEE", category:"食品", place:"正面玄関前", building:"校舎棟", group:"その他", wait:0, image:"" },
+   { id:"ダルチアーノ", name:"ダルチアーノ", title:"ダルチアーノ", category:"食品", place:"正面玄関前", building:"校舎棟", group:"その他", wait:0, image:"" }
 ];
 
 
