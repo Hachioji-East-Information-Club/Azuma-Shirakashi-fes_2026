@@ -319,6 +319,7 @@ function createCard(booth) {
 
 
 
+
 <div class="waitRow">
 
     <div class="status ${status.color}">
@@ -327,31 +328,32 @@ function createCard(booth) {
 
     ${foodTicketStatus}
 
-    <div class="waitTime">
+    <div class="waitTimeArea">
+
+        <div class="waitTime">
+
+            ${
+                !isNaN(Number(booth.wait))
+                    ? booth.wait + "分"
+                    : booth.wait
+            }
+
+        </div>
 
         ${
-            !isNaN(Number(booth.wait))
-                ? booth.wait + "分"
-                : booth.wait
+            booth.updatedAt
+                ? `
+                    <div class="lastUpdated">
+                        ${getElapsedMinutes(booth.updatedAt)}
+                    </div>
+                  `
+                : ""
         }
 
     </div>
 
-    ${
-        booth.updatedAt
-            ? `
-                <div class="lastUpdated">
-                    ${getElapsedMinutes(booth.updatedAt)}
-                </div>
-              `
-            : ""
-    }
-
 </div>
 
-
-
-</div>
 
 `;
 
