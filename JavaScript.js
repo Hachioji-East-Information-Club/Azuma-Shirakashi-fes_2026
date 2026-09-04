@@ -177,6 +177,40 @@ function getStatus(wait) {
 
 }
 
+// ==========================================
+// 最終更新からの経過時間
+// ==========================================
+
+function getElapsedMinutes(updatedAt) {
+
+    // timeがない場合
+    if (!updatedAt) {
+        return "";
+    }
+
+    // Excel / Power Automateから来たUTC時刻をDateに変換
+    const updatedTime =
+        new Date(updatedAt).getTime();
+
+    // 日時として認識できない場合
+    if (isNaN(updatedTime)) {
+        return "";
+    }
+
+    // 現在時刻との差を分に変換
+    const elapsedMinutes =
+        Math.floor(
+            (Date.now() - updatedTime) / 60000
+        );
+
+    // 将来の日時だった場合
+    if (elapsedMinutes < 0) {
+        return "最終更新 0分前";
+    }
+
+    return `最終更新 ${elapsedMinutes}分前`;
+
+}
 
 // ==========================================
 // カード生成
@@ -284,25 +318,38 @@ function createCard(booth) {
     </div>
 
 
-    <div class="waitRow">
 
-        <div class="status ${status.color}">
-            ${status.text}
-        </div>
+<div class="waitRow">
 
-        ${foodTicketStatus}
+    <div class="status ${status.color}">
+        ${status.text}
+    </div>
 
-        <div class="waitTime">
+    ${foodTicketStatus}
 
-            ${
-                !isNaN(Number(booth.wait))
-                    ? booth.wait + "分"
-                    : booth.wait
-            }
+    <div class="waitTime">
 
-        </div>
+        ${
+            !isNaN(Number(booth.wait))
+                ? booth.wait + "分"
+                : booth.wait
+        }
 
     </div>
+
+    ${
+        booth.updatedAt
+            ? `
+                <div class="lastUpdated">
+                    ${getElapsedMinutes(booth.updatedAt)}
+                </div>
+              `
+            : ""
+    }
+
+</div>
+
+
 
 </div>
 
@@ -739,9 +786,10 @@ async function loadWaitData() {
 
             if (booth) {
 
-                booth.wait = item.wait;
+    booth.wait = item.wait;
+    booth.updatedAt = item.time;
 
-            }
+}
 
         });
 
