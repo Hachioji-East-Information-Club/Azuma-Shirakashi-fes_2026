@@ -4739,3 +4739,20 @@ body:has(#timetablePage.active) {
     color: white;
     border-color: #b85c5c;
 }
+
+/* ==========================================
+   タイムテーブル 日付ボタン
+========================================== */
+
+#timetablePage .timetableDateButtons button {
+    background: #f5f5f5;
+    color: #555;
+    border: 1px solid #ccc;
+}
+
+/* 選択中 */
+#timetablePage .timetableDateButtons button.activeTimetableDate {
+    background: #b85c5c !important;
+    color: #fff !important;
+    border-color: #b85c5c !important;
+}
