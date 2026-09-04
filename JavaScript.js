@@ -66,7 +66,12 @@ const booths = [
   { id:"Love Berry", name:"Love Berry", title:"Love Berry", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
   { id:"∅くーしゅーごー", name:"∅くーしゅーごー", title:"∅くーしゅーごー", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
   { id:"けしつか", name:"けしつか", title:"けしつか", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
-  { id:"百聞不如一聴", name:"百聞不如一聴", title:"百聞不如一聴", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" }
+  { id:"百聞不如一聴", name:"百聞不如一聴", title:"百聞不如一聴", category:"バンド", place:"視聴覚室", building:"校舎棟", group:"バンド", wait:0, image:"" },
+   
+  { id:"L's kitchen", name:"L's kitchen", title:"L's kitchen", category:"キッチンカー", place:"正面玄関前", building:"校舎棟", group:"その他", wait:0, image:"" },
+   { id:"irodori", name:"irodori", title:"irodori", category:"キッチンカー", place:"正面玄関前", building:"校舎棟", group:"その他", wait:0, image:"" },
+   { id:"TAKAOCOFFEE", name:"TAKAOCOFFEE", title:"TAKAOCOFFEE", category:"キッチンカー", place:"正面玄関前", building:"校舎棟", group:"その他", wait:0, image:"" },
+   { id:"ダルチアーノ", name:"ダルチアーノ", title:"ダルチアーノ", category:"キッチンカー", place:"正面玄関前", building:"校舎棟", group:"その他", wait:0, image:"" }
 ];
 
 
