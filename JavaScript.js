@@ -41,7 +41,7 @@ const booths = [
   { id:"有志情報研究", name:"有志情報研究", title:"しらかし祭待ち時間表示アプリ『Azuma』", category:"その他", place:"PC教室", building:"校舎棟", group:"有志", wait:0, image:"" },
   { id:"有志書道・競技かるた", name:"有志書道・競技かるた", title:"東書展", category:"展示", place:"3年8組", building:"校舎棟", group:"有志", wait:0, image:"" },
   { id:"ますらを中庭公演", name:"ますらを", title:"有志男声合唱団ますらを 中庭公演", category:"公演", place:"中庭", building:"校舎棟", group:"有志", wait:0, image:"" },
-  { id:"ますらを黙事録", name:"ますらを", title:"合唱黙事録マスラヲ", category:"演劇", place:"剣道場", building:"体育館棟", group:"有志", wait:0, image:"" },
+  { id:"ますらを黙示録", name:"ますらを", title:"合唱黙示録マスラヲ", category:"演劇", place:"剣道場", building:"体育館棟", group:"有志", wait:0, image:"" },
   { id:"有志熱気球", name:"有志熱気球", title:"熱気球Laboratory", category:"展示", place:"物理室", building:"校舎棟", group:"有志", wait:0, image:"" },
 
   { id:"わざをき", name:"わざをき", title:"有志混声合唱団わざをき", category:"公演", place:"5ホール", building:"校舎棟", group:"有志", wait:0, image:"" },
