@@ -4724,3 +4724,18 @@ body:has(#timetablePage.active) {
 }
 
 
+.waitTimeArea {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.lastUpdated {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+
