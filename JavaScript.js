@@ -369,16 +369,7 @@ if (isFoodSales) {
 
         </div>
 
-        ${
-            booth.updatedAt
-                ? `
-                    <div class="lastUpdated">
-                        ${getElapsedMinutes(booth.updatedAt)}
-                    </div>
-                  `
-                : ""
-        }
-
+      
     </div>
 
 </div>
