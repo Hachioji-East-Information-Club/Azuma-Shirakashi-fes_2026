@@ -184,26 +184,37 @@ function getStatus(wait) {
 function getElapsedMinutes(updatedAt) {
 
     // timeがない場合
-    if (!updatedAt) {
+    if (!updatedAt || String(updatedAt).trim() === "") {
         return "";
     }
 
-    // Excel / Power Automateから来たUTC時刻をDateに変換
+    // Excel / Power Automate の
+    // "2026-09-04 18:24:13Z"
+    // を明示的にISO形式へ変換
+    const normalizedTime =
+        String(updatedAt).trim().replace(" ", "T");
+
     const updatedTime =
-        new Date(updatedAt).getTime();
+        Date.parse(normalizedTime);
 
     // 日時として認識できない場合
     if (isNaN(updatedTime)) {
+        console.log(
+            "日時を認識できません:",
+            updatedAt
+        );
         return "";
     }
 
-    // 現在時刻との差を分に変換
+    const elapsedMilliseconds =
+        Date.now() - updatedTime;
+
     const elapsedMinutes =
         Math.floor(
-            (Date.now() - updatedTime) / 60000
+            elapsedMilliseconds / 60000
         );
 
-    // 将来の日時だった場合
+    // 念のため未来の日時は0分前
     if (elapsedMinutes < 0) {
         return "最終更新 0分前";
     }
