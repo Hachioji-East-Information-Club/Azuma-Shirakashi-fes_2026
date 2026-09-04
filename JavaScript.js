@@ -609,15 +609,16 @@ function resetSearch() {
 
 function showPage(pageId, button) {
 
-    // ==========================================
-    // 校内図・その他を開いたら検索欄をリセット
-    // ==========================================
+    // 一覧以外へ移動したら検索条件をリセット
+    if (pageId !== "listPage") {
+        currentKeyword = "";
 
-    if (
-        pageId === "mapPage" ||
-        pageId === "otherPage"
-    ) {
-        resetSearch();
+        const searchBox =
+            document.getElementById("searchBox");
+
+        if (searchBox) {
+            searchBox.value = "";
+        }
     }
 
 
@@ -633,15 +634,18 @@ function showPage(pageId, button) {
         markNoticesAsRead();
     }
 
+
     document
         .querySelectorAll(".page")
         .forEach(page => {
             page.classList.remove("active");
         });
 
+
     document
         .getElementById(pageId)
         .classList.add("active");
+
 
     document
         .querySelectorAll(".navBtn")
@@ -649,16 +653,26 @@ function showPage(pageId, button) {
             btn.classList.remove("activeNav");
         });
 
+
     if (button) {
         button.classList.add("activeNav");
     }
 
-    // 現在のページを保存
+
     localStorage.setItem(
         "azumaCurrentPage",
         pageId
     );
+
+
+    // 一覧ページを開いたときは必ず最新の条件で表示
+    if (pageId === "listPage") {
+        updateList();
+    }
+
 }
+
+
 
 
 
