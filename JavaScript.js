@@ -188,7 +188,7 @@ function createCard(booth) {
 
     // 食品販売かどうか
     const isFoodSales =
-        booth.category === "食品販売";
+        booth.category === "食品";
 
     // 食券表示
     let foodTicketStatus = "";
