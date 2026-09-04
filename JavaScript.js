@@ -738,7 +738,18 @@ setInterval(() => {
 // 初期表示
 // ==========================================
 
+
 window.onload = () => {
+
+    // 検索条件をリセット
+    currentKeyword = "";
+
+    const searchBox =
+        document.getElementById("searchBox");
+
+    if (searchBox) {
+        searchBox.value = "";
+    }
 
     updateList();
     loadWaitData();
@@ -787,12 +798,13 @@ window.onload = () => {
 
     }
 
-    // ★★★ ここに追加 ★★★
     if (pageId === "omakePage") {
         loadOmake();
     }
 
 };
+
+
 // ==========================================
 // 校内図切り替え
 // ==========================================
