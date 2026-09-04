@@ -194,13 +194,7 @@ const timetableData = {
             boothId: "Adel 1000％"
         },
 
-        {
-            place: "視聴覚室",
-            start: "11:20",
-            end: "11:45",
-            name: "ちょりっすー",
-            boothId: "ちょりっすー"
-        },
+
 
         {
             place: "視聴覚室",
@@ -228,8 +222,8 @@ const timetableData = {
 
         {
             place: "視聴覚室",
-            start: "13:40",
-            end: "14:05",
+            start: "14:15",
+            end: "14:40",
             name: "∅くーしゅーごー",
             boothId: "∅くーしゅーごー"
         },
