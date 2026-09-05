@@ -354,25 +354,26 @@ const timetableData = {
             place: "剣道場",
             start: "09:30",
             end: "10:30",
+            name: "1-1",
+            boothId: "1年1組"
+        },
+                {
+            place: "剣道場",
+            start: "10:50",
+            end: "11:50",
             name: "2-5",
             boothId: "2年5組"
         },
 
         {
             place: "剣道場",
-            start: "11:15",
-            end: "12:15",
+            start: "12:05",
+            end: "13:15",
             name: "ますらを",
             boothId: "ますらを黙示録"
         },
 
-        {
-            place: "剣道場",
-            start: "12:30",
-            end: "13:30",
-            name: "1-1",
-            boothId: "1年1組"
-        },
+
 
         {
             place: "剣道場",
