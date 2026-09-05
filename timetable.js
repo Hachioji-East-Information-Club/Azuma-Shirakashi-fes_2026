@@ -307,7 +307,7 @@ const timetableData = {
                 {
             place: "5ホール",
             start: "11:30",
-            end: "13:00",
+            end: "12:00",
             name: "3-8",
             boothId: "3年8組"
         },
