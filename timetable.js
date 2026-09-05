@@ -299,27 +299,28 @@ const timetableData = {
 
         {
             place: "5ホール",
-            start: "10:25",
-            end: "11:05",
+            start: "10:35",
+            end: "11:15",
             name: "室内楽",
             boothId: "室内楽部"
         },
-
-        {
+                {
             place: "5ホール",
-            start: "11:20",
-            end: "12:00",
-            name: "1-6",
-            boothId: "1年6組"
+            start: "11:30",
+            end: "13:00",
+            name: "3-8",
+            boothId: "3年8組"
         },
+
 
         {
             place: "5ホール",
             start: "12:20",
             end: "13:00",
-            name: "3-8",
-            boothId: "3年8組"
+            name: "1-6",
+            boothId: "1年6組"
         },
+
 
         {
             place: "5ホール",
